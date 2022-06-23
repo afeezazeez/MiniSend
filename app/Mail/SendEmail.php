@@ -30,9 +30,17 @@ class SendEmail extends Mailable
      */
     public function build()
     {
-        return $this->
-        from($this->email->from_email)
+
+        $email = $this->from($this->email->from_email)
         ->subject($this->email->subject)
         ->markdown('emails.send_email',['email' => $this->email]);
+
+        // Attach email files
+        foreach ($this->email->attachments->pluck('filepath') as $attachment) {
+            $email->attach($attachment);
+        }
+
+        return $email;
+
     }
 }

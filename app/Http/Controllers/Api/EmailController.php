@@ -8,9 +8,12 @@ use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use App\Services\FileService;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Traits\ApiResponseStructure;
 use App\Http\Requests\SendEmailRequest;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Resources\EmailShowResource;
 
 class EmailController extends Controller
 {
@@ -21,18 +24,30 @@ class EmailController extends Controller
     {
 
 
-        // store the email database
-        $email =  Email::create(Arr::except($request->validated()  ,'files'));
+        try{
 
-        // upload email files
-        if($request->files->all()){
-           return $request->files;
-            $fileService->uploadFiles($request->file);
+            DB::beginTransaction();
+
+                // store the email database
+                $email =  Email::create(Arr::except($request->validated()  ,'files'));
+
+                // upload email attachments
+                if($request->hasFile('files')){
+                    $fileService->uploadFiles($request->file('files'),$email);
+                }
+
+            DB::commit();
         }
+        catch(\Exception $e){
+           DB::rollBack();
+           return $this->error($e->getMessage(),Response::HTTP_INTERNAL_SERVER_ERROR,null);
+        }
+
+
 
         //send email through background job
         if($email){
-            //SendEmailJob::dispatch($email);
+            SendEmailJob::dispatch($email);
         }
 
 
