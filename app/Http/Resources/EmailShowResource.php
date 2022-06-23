@@ -19,9 +19,10 @@ class EmailShowResource extends JsonResource
             'from_email'=>$this->from_email,
             'to_email'=>$this->to_email,
             'subject'=>$this->subject,
-            'sent_at'=>$this->created_at,
+            'status'=>$this->status,
             'text_content'=>$this->text_content,
             'html_content'=>$this->html_content,
+            'sent_at'=>$this->created_at,
             'attachments'=>$this->attachments->pluck('filepath')
         ];
     }

@@ -4,48 +4,38 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Email;
 use App\Jobs\SendEmailJob;
-use Illuminate\Support\Arr;
-use Illuminate\Http\Request;
-use App\Services\FileService;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\DB;
+use App\Services\EmailService;
 use App\Http\Controllers\Controller;
 use App\Traits\ApiResponseStructure;
+use App\Http\Resources\EmailResource;
 use App\Http\Requests\SendEmailRequest;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Resources\EmailShowResource;
 
 class EmailController extends Controller
 {
     use ApiResponseStructure;
 
+    public $emailService;
+
+    public function __construct(EmailService $emailService)
+    {
+        $this->emailService = $emailService;
+
+    }
+
     // get all emails
-    public function store(SendEmailRequest $request, FileService $fileService)
+    public function index()
+    {
+        $emails = EmailResource::collection(Email::orderBy('created_at','desc')->paginate(10));
+        return $this->success($emails,null,Response::HTTP_OK);
+    }
+
+    // create and send email
+    public function store(SendEmailRequest $request)
     {
 
-        $path = "http://minisend.test/storage/uploads/1656022956-Screenshot_2022-06-10_at_18.21.59_(2).png";
-
-        return $path;
-
-        try{
-
-            DB::beginTransaction();
-
-                // store the email database
-                $email =  Email::create(Arr::except($request->validated()  ,'files'));
-
-                // upload email attachments
-                if($request->hasFile('files')){
-                    $fileService->uploadFiles($request->file('files'),$email);
-                }
-
-            DB::commit();
-        }
-        catch(\Exception $e){
-           DB::rollBack();
-           return $this->error($e->getMessage(),Response::HTTP_INTERNAL_SERVER_ERROR,null);
-        }
-
+        $email = $this->emailService->createAndSendEmail($request);
 
 
         //send email through background job
@@ -56,5 +46,10 @@ class EmailController extends Controller
 
         return $this->success(null,'Email sent successfully',Response::HTTP_CREATED);
 
+    }
+
+    public function show(Email $email)
+    {
+        return EmailShowResource::make($email);
     }
 }
