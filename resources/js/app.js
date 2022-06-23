@@ -21,6 +21,10 @@ window.Vue = require('vue').default;
 
 Vue.component('app', require('./App.vue').default);
 
+Vue.component('emails', require('./components/Emails.vue').default);
+
+Vue.component('compose', require('./components/ComposeEmail.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
