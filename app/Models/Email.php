@@ -11,6 +11,9 @@ class Email extends Model
 
     protected $guarded= [];
 
+    CONST EMAIL_FAILED_STATUS = 'Failed';
+    CONST EMAIL_SENT_STATUS = 'Sent';
+   
     public function attachments()
     {
         return $this->hasMany(EmailAttachment::class);

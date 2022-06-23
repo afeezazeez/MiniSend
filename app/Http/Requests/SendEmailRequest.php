@@ -2,11 +2,12 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
+use App\Models\Email;
 use Illuminate\Http\Response;
+use Illuminate\Foundation\Http\FormRequest;
 
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 
 
@@ -35,17 +36,40 @@ class SendEmailRequest extends FormRequest
             'subject' => 'required',
             'text_content' => 'required',
             'html_content' => 'nullable',
-            'attachments' =>'nullable'
+            'files'=>'nullable',
+            'files.*' => 'required|mimes:png,jpg,jpeg,pdf,docx|max:20000',
 
         ];
     }
 
-    protected function failedValidation(Validator $validator) {
+
+    public function messages()
+    {
+        return [
+            'files.*.mimes' => 'Only jpeg, png, jpg,pdf,docx images are allowed',
+            'files.*.max' => 'Sorry! Maximum allowed size for an image is 20MB',
+        ];
+    }
+
+
+
+    protected function failedValidation(Validator $validator)
+    {
 
         throw new HttpResponseException(response([
             'status' => 'error',
             'message' =>null,
             'data'=>$validator->errors()
         ],Response::HTTP_BAD_REQUEST));
+        //  throw new HttpResponseException(response()->json([
+        //     'status' => 'error',
+        //     'message' =>null,
+        //     'data'=>$validator->errors()->all()],Response::HTTP_BAD_REQUEST
+        // ));
     }
+
+
+
+
+
 }

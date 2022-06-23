@@ -2,8 +2,11 @@
 
 namespace App\Jobs;
 
+use Carbon\Carbon;
+use App\Models\Email;
 use App\Mail\SendEmail;
 use Illuminate\Bus\Queueable;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -34,6 +37,16 @@ class SendEmailJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to($this->email->to_email)->send(new SendEmail($this->email));
+        try{
+            if( Mail::to($this->email->to_email)->send(new SendEmail($this->email))){
+                $this->email->update(['status'=> Email::EMAIL_SENT_STATUS]);
+            }
+        }
+        catch(\Exception $e){
+            $this->email->update(['status'=> Email::EMAIL_FAILED_STATUS]);
+            Log::error("[Email Sending failed ]". " Email ID : ".$this->email->id. "  Time : " .Carbon::now()->toDateTimeString());
+            Log::error("[Exception Message]". $e->getMessage());
+        }
+
     }
 }
