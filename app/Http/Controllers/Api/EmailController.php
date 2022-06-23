@@ -23,6 +23,9 @@ class EmailController extends Controller
     public function store(SendEmailRequest $request, FileService $fileService)
     {
 
+        $path = "http://minisend.test/storage/uploads/1656022956-Screenshot_2022-06-10_at_18.21.59_(2).png";
+
+        return $path;
 
         try{
 

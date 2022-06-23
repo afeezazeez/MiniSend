@@ -23,7 +23,7 @@ class FileService{
 
     public function generateFilePath($file){
         $clientName = str_replace(' ', '_', $file->getClientOriginalName());
-        return time() .'-'.$clientName.'.' . $file->getClientOriginalExtension();
+        return time() .'-'.$clientName;
     }
 
 
