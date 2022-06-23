@@ -24,6 +24,21 @@ class EmailController extends Controller
 
     }
 
+
+    // analytics
+    public function analytics()
+    {
+        $analytics = [
+            'total_emails'=>Email::count(),
+            'total_sent'=>Email::where('status',Email::EMAIL_SENT_STATUS)->count(),
+            'total_posted'=>Email::where('status',Email::EMAIL_POSTED_STATUS)->count(),
+            'total_failed'=>Email::where('status',Email::EMAIL_FAILED_STATUS)->count()
+        ];
+
+        return $this->success($analytics,null,Response::HTTP_OK);
+    }
+
+
     // get all emails
     public function index()
     {

@@ -17,5 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
+Route::get('/emails/analytics','App\Http\Controllers\Api\EmailController@analytics');
 Route::apiResource('/emails','App\Http\Controllers\Api\EmailController');
