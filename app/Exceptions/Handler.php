@@ -2,8 +2,12 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Http\Response;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -36,15 +40,20 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
-    /**
-     * Register the exception handling callbacks for the application.
-     *
-     * @return void
-     */
-    public function register()
+    public function render($request,Throwable $e)
     {
-        $this->reportable(function (Throwable $e) {
-            //
-        });
+        if($e instanceof  ModelNotFoundException || $e instanceof NotFoundHttpException){
+            return response()->json(['message'=>'Resource not found'],Response::HTTP_NOT_FOUND);
+        }
+        $res = [
+            'message'=>$e->getMessage(),
+            'file'=>$e->getFile(),
+            'line' =>$e->getLine(),
+            'trace'=>$e->getTraceAsString(),
+           ];
+
+       return response()->json($res,Response::HTTP_INTERNAL_SERVER_ERROR);
+
+
     }
 }
