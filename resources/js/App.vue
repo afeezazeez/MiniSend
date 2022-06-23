@@ -86,11 +86,11 @@
     <div class="row mt-5">
 
         <div class="col-md-8">
-           <emails></emails>
+           <Emails></Emails>
         </div>
 
         <div class="col-md-4">
-            <compose></compose>
+            <ComposeEmail></ComposeEmail>
         </div>
 
     </div>
@@ -113,5 +113,15 @@
 </style>
 
 <script>
-    export default {}
+
+    import ComposeEmail from './components/ComposeEmail'
+    import Emails from './components/Emails'
+
+    export default {
+        name: "app",
+        components:{
+            ComposeEmail,
+            Emails
+        }
+    }
 </script>
