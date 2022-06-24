@@ -28,7 +28,6 @@
     import ComposeEmail from './components/ComposeEmail'
     import Emails from './components/Emails'
     import Analytics from './components/Analytics'
-    import SearchInput from './components/SearchInput'
 
     export default {
         name: "app",
@@ -36,7 +35,7 @@
             ComposeEmail,
             Emails,
             Analytics,
-            SearchInput
+            
         }
     }
 </script>

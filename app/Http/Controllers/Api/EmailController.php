@@ -11,6 +11,7 @@ use App\Traits\ApiResponseStructure;
 use App\Http\Resources\EmailResource;
 use App\Http\Requests\SendEmailRequest;
 use App\Http\Resources\EmailShowResource;
+use App\Http\Resources\EmailResourceCollection;
 
 class EmailController extends Controller
 {
@@ -42,8 +43,9 @@ class EmailController extends Controller
     // get all emails
     public function index()
     {
-        $emails = EmailResource::collection(Email::orderBy('created_at','desc')->paginate(10));
-        return $this->success($emails,null,Response::HTTP_OK);
+        $emails = Email::orderBy('created_at','desc')->paginate(4);
+        return EmailResource::collection($emails);
+
     }
 
     // create and send email
@@ -52,12 +54,10 @@ class EmailController extends Controller
 
         $email = $this->emailService->createAndSendEmail($request);
 
-
         //send email through background job
         if($email){
             SendEmailJob::dispatch($email);
         }
-
 
         return $this->success(null,'Email sent successfully',Response::HTTP_CREATED);
 

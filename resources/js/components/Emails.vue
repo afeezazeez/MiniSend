@@ -1,6 +1,6 @@
 <template>
     <div>
-        <SearchInput @search="onSearch"></SearchInput>
+        <SearchFilter @search="onSearch"></SearchFilter>
         <div class="emails  card mt-3">
            <Table :emails="emails"></Table>
         </div>
@@ -8,7 +8,7 @@
 </template>
 <script>
 
-import SearchInput from './SearchInput'
+import SearchFilter from './SearchFilter'
 import Table from './Table'
 
 
@@ -21,7 +21,7 @@ import Table from './Table'
             };
         },
         components:{
-            SearchInput,
+            SearchFilter,
             Table
         },
         mounted(){
