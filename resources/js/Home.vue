@@ -2,22 +2,12 @@
 
 <div class="container mt-4">
 
-   
-
     <Analytics></Analytics>
-
-
     <div class="row mt-3">
-        <div class="col-md-9">
+        <div class="col-md-12">
             <Emails></Emails>
         </div>
-
-        <div class="col-md-3">
-            <ComposeEmail></ComposeEmail>
-        </div>
-
     </div>
-
 
 </div>
 

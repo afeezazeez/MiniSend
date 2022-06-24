@@ -6,54 +6,25 @@
 
 
 
-    <div class="card col-md-9">
-        <div class="row email-row">
-            <div class="col-md-4">
-                <h6>Sender</h6>
-                <p>{{email.from_email}}</p>
-            </div>
-            <div class="col-md-4">
-                <h6>Recipient</h6>
-                <p>{{email.from_email}}</p>
-            </div>
-
-            <div class="col-md-4">
-                <h6>Status</h6>
-                <p>
-                    <span  v-if="email.status == 'Sent'" class="badge badge-success rounded-pill d-inline">{{email.status}}</span>
-                    <span  v-else-if="email.status == 'Posted'" class="badge badge-warning rounded-pill d-inline">{{email.status}}</span>
-                    <span  v-else="email.status == 'Failed'" class="badge badge-danger rounded-pill d-inline">{{email.status}}</span>
-                </p>
-
+    <div class="card col-md-8">
+         <div class="row ">
+            <div class="col-md-7">
+                <h3 class="mt-4">{{email.subject}}</h3>
+                <h6 class="mt-3">From : {{email.from_email}}</h6>
+                <h6 class="mt-3">To : {{email.to_email}}</h6>
+                <h6 class="mt-3">Date : {{email.sent_at}}</h6>
             </div>
 
         </div>
 
-        <div class="row email-row">
-            <div class="col-md-12">
-                <h6>Subject</h6>
-                <hr>
-                <p>{{email.subject}}</p>
+       <hr>
+         <div class="row email-row body-row">
+            <div class="col-md-8  email-row">
+                 <p v-html="email.html_content"></p>
             </div>
         </div>
 
-         <div class="row email-row">
-            <div class="col-md-12">
-                <h6>Body (Text)</h6>
-                <hr>
-                <p><i>{{email.text_content}}</i></p>
-            </div>
-        </div>
-
-         <div class="row email-row">
-            <div class="col-md-12">
-                <h6>Body (HTML)</h6>
-                <hr>
-                <p v-html="email.html_content"></p>
-            </div>
-        </div>
-
-         <div class="row email-row">
+         <div class="row email-row mt-4">
             <div class="col-md-12">
                 <h5>Attachments</h5>
                 <hr>
@@ -133,4 +104,24 @@
     .email-row{
         padding:20px;
     }
+    .body-row{
+        display: flex;
+        
+    }
+
+    .line {
+  overflow: hidden;
+  position: relative;
+}
+
+.line::after {
+  content: '';
+  width: 100%;
+  box-sizing: border-box;
+  border-top: 1px solid gray;
+  position: absolute;
+  bottom: 0.5em;
+  margin-left: 0.5em;
+}
+
 </style>

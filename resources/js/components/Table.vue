@@ -6,8 +6,8 @@
             <thead class="bg-light">
                 <tr>
                 <th>Email ID</th>
-                <th>From Email</th>
-                <th>To Email</th>
+                <th>Sender</th>
+                <th>Recipient</th>
                 <th>Subject</th
                 <th>Date Sent</th>
                 <th>Status</th>
@@ -25,8 +25,9 @@
                     </div>
                 </td>
                 <td>
-                    <p class="fw-normal mb-1">{{email.to_email}}</p>
-
+                    <router-link :to="{name:'recipient.emails',params:{id:email.to_email} }" exact class="view-link">
+                        <p class="fw-normal mb-1">{{email.to_email}}  </p>
+                    </router-link>
                 </td>
                 <td>
                     <p class="fw-normal mb-1">{{email.subject}}</p>

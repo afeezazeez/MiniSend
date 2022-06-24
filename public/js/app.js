@@ -5386,16 +5386,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -5608,35 +5598,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config.js */ "./resources/js/config.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -6046,6 +6007,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     emails: Array
@@ -6180,6 +6142,10 @@ __webpack_require__.r(__webpack_exports__);
     path: '/data-view/emails/:id',
     component: _components_Email__WEBPACK_IMPORTED_MODULE_1__["default"],
     name: 'email.show'
+  }, {
+    path: '/data-view/emails/recipient/:email',
+    component: _components_Email__WEBPACK_IMPORTED_MODULE_1__["default"],
+    name: 'recipient.emails'
   }]
 });
 
@@ -11277,7 +11243,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.card[data-v-50b99641]{\n    padding-left:40px;\n     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);\n}\n.email-row[data-v-50b99641]{\n    padding:20px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.card[data-v-50b99641]{\n        padding-left:40px;\n         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);\n}\n.email-row[data-v-50b99641]{\n        padding:20px;\n}\n.body-row[data-v-50b99641]{\n        display: flex;\n}\n.line[data-v-50b99641] {\n  overflow: hidden;\n  position: relative;\n}\n.line[data-v-50b99641]::after {\n  content: '';\n  width: 100%;\n  box-sizing: border-box;\n  border-top: 1px solid gray;\n  position: absolute;\n  bottom: 0.5em;\n  margin-left: 0.5em;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30075,9 +30041,7 @@ var render = function () {
       _c("Analytics"),
       _vm._v(" "),
       _c("div", { staticClass: "row mt-3" }, [
-        _c("div", { staticClass: "col-md-9" }, [_c("Emails")], 1),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-3" }, [_c("ComposeEmail")], 1),
+        _c("div", { staticClass: "col-md-12" }, [_c("Emails")], 1),
       ]),
     ],
     1
@@ -30428,76 +30392,36 @@ var render = function () {
   return _c("div", { staticClass: "container mt-4" }, [
     _c("h5", [_vm._v("Email Information")]),
     _vm._v(" "),
-    _c("div", { staticClass: "card col-md-9" }, [
-      _c("div", { staticClass: "row email-row" }, [
-        _c("div", { staticClass: "col-md-4" }, [
-          _c("h6", [_vm._v("Sender")]),
+    _c("div", { staticClass: "card col-md-8" }, [
+      _c("div", { staticClass: "row " }, [
+        _c("div", { staticClass: "col-md-7" }, [
+          _c("h3", { staticClass: "mt-4" }, [
+            _vm._v(_vm._s(_vm.email.subject)),
+          ]),
           _vm._v(" "),
-          _c("p", [_vm._v(_vm._s(_vm.email.from_email))]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-4" }, [
-          _c("h6", [_vm._v("Recipient")]),
+          _c("h6", { staticClass: "mt-3" }, [
+            _vm._v("From : " + _vm._s(_vm.email.from_email)),
+          ]),
           _vm._v(" "),
-          _c("p", [_vm._v(_vm._s(_vm.email.from_email))]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-4" }, [
-          _c("h6", [_vm._v("Status")]),
+          _c("h6", { staticClass: "mt-3" }, [
+            _vm._v("To : " + _vm._s(_vm.email.to_email)),
+          ]),
           _vm._v(" "),
-          _c("p", [
-            _vm.email.status == "Sent"
-              ? _c(
-                  "span",
-                  { staticClass: "badge badge-success rounded-pill d-inline" },
-                  [_vm._v(_vm._s(_vm.email.status))]
-                )
-              : _vm.email.status == "Posted"
-              ? _c(
-                  "span",
-                  { staticClass: "badge badge-warning rounded-pill d-inline" },
-                  [_vm._v(_vm._s(_vm.email.status))]
-                )
-              : _c(
-                  "span",
-                  { staticClass: "badge badge-danger rounded-pill d-inline" },
-                  [_vm._v(_vm._s(_vm.email.status))]
-                ),
+          _c("h6", { staticClass: "mt-3" }, [
+            _vm._v("Date : " + _vm._s(_vm.email.sent_at)),
           ]),
         ]),
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "row email-row" }, [
-        _c("div", { staticClass: "col-md-12" }, [
-          _c("h6", [_vm._v("Subject")]),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("p", [_vm._v(_vm._s(_vm.email.subject))]),
-        ]),
-      ]),
+      _c("hr"),
       _vm._v(" "),
-      _c("div", { staticClass: "row email-row" }, [
-        _c("div", { staticClass: "col-md-12" }, [
-          _c("h6", [_vm._v("Body (Text)")]),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("p", [_c("i", [_vm._v(_vm._s(_vm.email.text_content))])]),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row email-row" }, [
-        _c("div", { staticClass: "col-md-12" }, [
-          _c("h6", [_vm._v("Body (HTML)")]),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
+      _c("div", { staticClass: "row email-row body-row" }, [
+        _c("div", { staticClass: "col-md-8  email-row" }, [
           _c("p", { domProps: { innerHTML: _vm._s(_vm.email.html_content) } }),
         ]),
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "row email-row" }, [
+      _c("div", { staticClass: "row email-row mt-4" }, [
         _c("div", { staticClass: "col-md-12" }, [
           _c("h5", [_vm._v("Attachments")]),
           _vm._v(" "),
@@ -30943,11 +30867,30 @@ var render = function () {
                   ]),
                 ]),
                 _vm._v(" "),
-                _c("td", [
-                  _c("p", { staticClass: "fw-normal mb-1" }, [
-                    _vm._v(_vm._s(email.to_email)),
-                  ]),
-                ]),
+                _c(
+                  "td",
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "view-link",
+                        attrs: {
+                          to: {
+                            name: "recipient.emails",
+                            params: { id: email.to_email },
+                          },
+                          exact: "",
+                        },
+                      },
+                      [
+                        _c("p", { staticClass: "fw-normal mb-1" }, [
+                          _vm._v(_vm._s(email.to_email) + "  "),
+                        ]),
+                      ]
+                    ),
+                  ],
+                  1
+                ),
                 _vm._v(" "),
                 _c("td", [
                   _c("p", { staticClass: "fw-normal mb-1" }, [
@@ -31028,9 +30971,9 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("Email ID")]),
         _vm._v(" "),
-        _c("th", [_vm._v("From Email")]),
+        _c("th", [_vm._v("Sender")]),
         _vm._v(" "),
-        _c("th", [_vm._v("To Email")]),
+        _c("th", [_vm._v("Recipient")]),
         _vm._v(" "),
         _c("th", [_vm._v("Subject")]),
         _vm._v("Date Sent"),

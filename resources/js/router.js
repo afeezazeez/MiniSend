@@ -7,5 +7,6 @@ export default {
     routes:[
         {path: '/', component:Home},
         {path: '/data-view/emails/:id', component:Email,name:'email.show'},
+        {path: '/data-view/emails/recipient/:email', component:Email,name:'recipient.emails'},
     ]
 }
