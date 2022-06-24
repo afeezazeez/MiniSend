@@ -49,7 +49,6 @@ class EmailController extends Controller
     public function index()
     {
         $emails = Email::orderBy('created_at','desc')->paginate(10);
-        $emails = Email::orderBy('id','asc')->paginate(10);
         return EmailResource::collection($emails);
 
     }

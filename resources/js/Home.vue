@@ -2,7 +2,6 @@
 
 <div class="container mt-4">
 
-    <h3>MiniSend</h3>
 
     <Analytics></Analytics>
 
@@ -30,12 +29,12 @@
     import Analytics from './components/Analytics'
 
     export default {
-        name: "app",
+        name: "Home",
         components:{
             ComposeEmail,
             Emails,
             Analytics,
-            
+
         }
     }
 </script>
