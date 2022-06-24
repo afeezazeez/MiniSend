@@ -1,6 +1,6 @@
 <template>
     <div>
-        <SearchFilter @search="onSearch"></SearchFilter>
+        <SearchFilter :errors="errors" @applyFilter="search"></SearchFilter>
         <div class="emails  card mt-3">
            <Table :emails="emails"></Table>
         </div>
@@ -17,7 +17,9 @@ import Table from './Table'
         data(){
             return {
                  emails:[],
-                 searchValue:''
+                 searchValue:'',
+                 filteredEmails:[],
+                 errors:[]
             };
         },
         components:{
@@ -38,8 +40,18 @@ import Table from './Table'
                     console.log(error);
                 });
             },
-            onSearch (value) {
-                this.searchValue=value
+            search (searchData) {
+
+                if ( !(Object.values(searchData).every(value => !value)) ) {
+                     axios.post('/api/emails/search',searchData)
+                    .then((response) => {
+                        this.emails = response.data.data
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+                }
+
             },
 
         },

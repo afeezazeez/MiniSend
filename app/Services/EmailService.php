@@ -1,10 +1,14 @@
 <?php
 namespace App\Services;
 
+use App\Filters\FromAndToEmailsFilter;
 use App\Models\Email;
 use Illuminate\Support\Arr;
+use App\Filters\StatusFilter;
 use App\Services\FileService;
 use Illuminate\Http\Response;
+use App\Filters\SubjectFilter;
+use Illuminate\Routing\Pipeline;
 use Illuminate\Support\Facades\DB;
 use App\Traits\ApiResponseStructure;
 
@@ -43,6 +47,24 @@ class EmailService{
         }
 
         return $email;
+
+    }
+
+    public function applyFilter($request)
+    {
+        $query = Email::query();
+
+        $products = app(Pipeline::class)
+        ->send($query)
+        ->through([
+            StatusFilter::class,
+            FromAndToEmailsFilter::class,
+            SubjectFilter::class
+        ])
+        ->via('filter')
+        ->thenReturn()
+        ->paginate(10);
+        return $products;
 
     }
 

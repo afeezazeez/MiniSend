@@ -6,7 +6,9 @@ use App\Models\Email;
 use App\Jobs\SendEmailJob;
 use Illuminate\Http\Response;
 use App\Services\EmailService;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SearchRequest;
 use App\Traits\ApiResponseStructure;
 use App\Http\Resources\EmailResource;
 use App\Http\Requests\SendEmailRequest;
@@ -29,11 +31,14 @@ class EmailController extends Controller
     // analytics
     public function analytics()
     {
+        $emails = DB::table('emails')->select('status')->get();
+
+       // return $emails;
         $analytics = [
-            'total_emails'=>Email::count(),
-            'total_sent'=>Email::where('status',Email::EMAIL_SENT_STATUS)->count(),
-            'total_posted'=>Email::where('status',Email::EMAIL_POSTED_STATUS)->count(),
-            'total_failed'=>Email::where('status',Email::EMAIL_FAILED_STATUS)->count()
+            'total_emails'=>$emails->count(),
+            'total_sent'=>$emails->where('status',Email::EMAIL_SENT_STATUS)->count(),
+            'total_posted'=>$emails->where('status',Email::EMAIL_POSTED_STATUS)->count(),
+            'total_failed'=>$emails->where('status',Email::EMAIL_FAILED_STATUS)->count()
         ];
 
         return $this->success($analytics,null,Response::HTTP_OK);
@@ -43,7 +48,7 @@ class EmailController extends Controller
     // get all emails
     public function index()
     {
-        $emails = Email::orderBy('created_at','desc')->paginate(4);
+        $emails = Email::orderBy('created_at','desc')->paginate(10);
         return EmailResource::collection($emails);
 
     }
@@ -67,4 +72,14 @@ class EmailController extends Controller
     {
         return EmailShowResource::make($email);
     }
+
+
+    public function search(SearchRequest $request)
+    {
+        $emails = $this->emailService->applyFilter($request->validated());
+        
+        return EmailResource::collection($emails);
+    }
+
+
 }

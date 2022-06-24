@@ -1,5 +1,5 @@
 <template>
-   <form id="contact-form" method="post" enctype="multipart/form-data">
+   <form id="contact-form" method="post" enctype="multipart/form-data" class="card">
          <h4>Compose Email</h4>
         <div class="controls">
 
@@ -63,3 +63,11 @@
 
 <script>
 </script>
+
+<style scoped>
+    .card{
+        padding:20px;
+         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+</style>
+
