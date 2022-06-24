@@ -74,7 +74,7 @@
             this.searchData.recipient= '',
             this.searchData.subject= '',
             this.searchData.status= ''
-            this.$emit('clearFilterErrors')
+            this.$emit('clearFilter')
         }
     }
  }

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <SearchFilter :errors="errors" @applyFilter="search" @clearFilterErrors='clearErrors'></SearchFilter>
+        <SearchFilter :errors="errors" @applyFilter="search" @clearFilter='clearFilter'></SearchFilter>
         <div class="emails  card mt-3">
            <Table :emails="emails"></Table>
            <Pagination :pagination="pagination" @fetchEmails="fetchEmails"></Pagination>
@@ -12,12 +12,14 @@
 import SearchFilter from './SearchFilter'
 import Table from './Table'
 import Pagination from './Pagination'
+import CONFIG from '../config.js';
 
 
  export default {
 
         data(){
             return {
+                 baseURL: CONFIG.API_URL_ROOT,
                  emails:[],
                  searchValue:'',
                  filteredEmails:[],
@@ -34,8 +36,9 @@ import Pagination from './Pagination'
             this.fetchEmails()
         },
         methods:{
-                clearErrors(){
+                clearFilter(){
                     this.errors = {}
+                    this.fetchEmails()
                 },
                 makePagination(meta,links){
                     let pagination = {
@@ -49,7 +52,7 @@ import Pagination from './Pagination'
                 },
                 fetchEmails(page_url){
                     let vm = this;
-                    page_url = page_url || '/api/emails'
+                    page_url = page_url || this.baseURL
                     axios.get(page_url)
                     .then((response) => {
                         this.emails = response.data.data;
@@ -81,7 +84,7 @@ import Pagination from './Pagination'
                             queryString+= `${key}=${payload[key]}`;
                             if (index < length-1) queryString += '&';
                         });
-                        axios.get(`api/emails/search/${queryString}`)
+                        axios.get(`${this.baseURL}/search/${queryString}`)
                         .then((response) => {
                             this.emails = response.data.data
                               vm.makePagination(response.data.meta,response.data.links);

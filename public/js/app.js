@@ -5421,6 +5421,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config.js */ "./resources/js/config.js");
 //
 //
 //
@@ -5497,9 +5498,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      baseURL: _config_js__WEBPACK_IMPORTED_MODULE_0__["default"].API_URL_ROOT,
       info: []
     };
   },
@@ -5510,7 +5513,7 @@ __webpack_require__.r(__webpack_exports__);
     fetchAnalytics: function fetchAnalytics() {
       var _this = this;
 
-      axios.get('/api/emails/analytics').then(function (response) {
+      axios.get("".concat(this.baseURL, "/analytics")).then(function (response) {
         _this.info = response.data.data;
       })["catch"](function (error) {
         console.log(error);
@@ -5607,6 +5610,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SearchFilter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SearchFilter */ "./resources/js/components/SearchFilter.vue");
 /* harmony import */ var _Table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Table */ "./resources/js/components/Table.vue");
 /* harmony import */ var _Pagination__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pagination */ "./resources/js/components/Pagination.vue");
+/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../config.js */ "./resources/js/config.js");
 //
 //
 //
@@ -5616,12 +5620,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      baseURL: _config_js__WEBPACK_IMPORTED_MODULE_3__["default"].API_URL_ROOT,
       emails: [],
       searchValue: '',
       filteredEmails: [],
@@ -5638,8 +5644,9 @@ __webpack_require__.r(__webpack_exports__);
     this.fetchEmails();
   },
   methods: {
-    clearErrors: function clearErrors() {
+    clearFilter: function clearFilter() {
       this.errors = {};
+      this.fetchEmails();
     },
     makePagination: function makePagination(meta, links) {
       var pagination = {
@@ -5655,7 +5662,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var vm = this;
-      page_url = page_url || '/api/emails';
+      page_url = page_url || this.baseURL;
       axios.get(page_url).then(function (response) {
         _this.emails = response.data.data;
         vm.makePagination(response.data.meta, response.data.links); //vm.makePagination(response.meta,response.links)
@@ -5684,7 +5691,7 @@ __webpack_require__.r(__webpack_exports__);
           queryString += "".concat(key, "=").concat(payload[key]);
           if (index < length - 1) queryString += '&';
         });
-        axios.get("api/emails/search/".concat(queryString)).then(function (response) {
+        axios.get("".concat(this.baseURL, "/search/").concat(queryString)).then(function (response) {
           _this2.emails = response.data.data;
           vm.makePagination(response.data.meta, response.data.links);
         })["catch"](function (error) {
@@ -5818,7 +5825,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     clearFilter: function clearFilter() {
       this.searchData.sender = '', this.searchData.recipient = '', this.searchData.subject = '', this.searchData.status = '';
-      this.$emit('clearFilterErrors');
+      this.$emit('clearFilter');
     }
   }
 });
@@ -5975,6 +5982,24 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/config.js":
+/*!********************************!*\
+  !*** ./resources/js/config.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var CONFIG = {
+  API_URL_ROOT: '/api/v1/emails'
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CONFIG);
 
 /***/ }),
 
@@ -30084,7 +30109,7 @@ var render = function () {
     [
       _c("SearchFilter", {
         attrs: { errors: _vm.errors },
-        on: { applyFilter: _vm.search, clearFilterErrors: _vm.clearErrors },
+        on: { applyFilter: _vm.search, clearFilter: _vm.clearFilter },
       }),
       _vm._v(" "),
       _c(
