@@ -8,15 +8,17 @@
                 <div class="row">
                     <div class="col-md-3">
                         <input type="text" v-model="searchData.sender" class="form-control " placeholder="Sender">
-                        <p v-if="sender" class="text-danger mt-1">{{sender}}</p>
+                        <p v-if="errors.sender" class="text-danger mt-1 error-message">{{errors.sender[0]}}</p>
                     </div>
 
                     <div class="col-md-3">
                         <input type="text" v-model="searchData.recipient" class="form-control " placeholder="Recipient">
+                        <p v-if="errors.recipient" class="text-danger mt-1 error-message">{{errors.sender[0]}}</p>
                     </div>
 
                     <div class="col-md-3">
                         <input type="text" v-model="searchData.subject" class="form-control " placeholder="Subject">
+                        <p v-if="errors.subject" class="text-danger mt-1 error-message">{{errors.subject[0]}}</p>
                     </div>
 
                     <div class="col-md-2">
@@ -26,6 +28,7 @@
                             <option value="Sent">Sent</option>
                             <option value="Failed">Failed</option>
                         </select>
+                         <p v-if="errors.status" class="text-danger mt-1 error-message">{{errors.status[0]}}</p>
                     </div>
 
                     <div class="col-md-1">
@@ -46,8 +49,8 @@
 </template>
 <script>
  export default {
-      props:{
-        sender: String
+    props:{
+        errors: Object
     },
      data() {
         return {
@@ -55,12 +58,13 @@
                 sender: '',
                 recipient: '',
                 subject: '',
-                status:'',
+                status:''
             },
 
 
         };
     },
+
     methods:{
         applyFilter(){
            this.$emit('applyFilter',this.searchData);
@@ -70,7 +74,7 @@
             this.searchData.recipient= '',
             this.searchData.subject= '',
             this.searchData.status= ''
-
+            this.$emit('clearFilterErrors')
         }
     }
  }
@@ -79,5 +83,8 @@
     .search{
         padding:20px;
          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+    .error-message{
+        font-size:12px;
     }
 </style>

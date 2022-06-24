@@ -63,7 +63,7 @@ class EmailService{
         ])
         ->via('filter')
         ->thenReturn()
-        ->paginate(10);
+        ->paginate(10)->withQueryString();
         return $products;
 
     }

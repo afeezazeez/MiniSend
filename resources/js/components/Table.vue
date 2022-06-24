@@ -5,7 +5,7 @@
         <table class="table align-middle mb-0 bg-white">
             <thead class="bg-light">
                 <tr>
-                <th>S/N</th>
+                <th>Email ID</th>
                 <th>From Email</th>
                 <th>To Email</th>
                 <th>Subject</th
@@ -16,7 +16,7 @@
             </thead>
             <tbody v-if="emails.length">
                 <tr v-for="(email,index) in emails" v-bind:key="email.id">
-                <td>{{index+1}}</td>
+                <td>{{email.id}}</td>
                 <td>
                     <div class="d-flex align-items-center">
                     <div class="ms-3">

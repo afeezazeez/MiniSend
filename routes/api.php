@@ -18,5 +18,5 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/emails/analytics','App\Http\Controllers\Api\EmailController@analytics');
-Route::post('/emails/search','App\Http\Controllers\Api\EmailController@search');
+Route::get('/emails/search','App\Http\Controllers\Api\EmailController@search');
 Route::apiResource('/emails','App\Http\Controllers\Api\EmailController');
