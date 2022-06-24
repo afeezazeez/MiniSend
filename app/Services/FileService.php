@@ -15,7 +15,8 @@ class FileService{
             $fullPath = url('/').'/storage/uploads/'. $filePath;
             $file->storeAs('public/uploads',$filePath);
             $email->attachments()->create([
-                'filepath'=>$fullPath
+                'filepath'=>$fullPath,
+                'filename'=>$file->getClientOriginalName()
             ]);
         }
 

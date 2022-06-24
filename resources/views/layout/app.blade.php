@@ -14,16 +14,24 @@
     <style>
         .app-header {
             margin-top:50px;
+
+        }
+        .h-link{
+            text-decoration: none;
+        }
+        .h-link:hover{
+            text-decoration: none;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1 class="app-header"><font color="lightblue">M</font>ini<font color="blue">S</font>end</h1>
+        <a href="/" class="h-link"><h1 class="app-header"><font color="lightblue">M</font>ini<font color="blue">S</font>end</h1></a>
     </div>
     <div id="app">
-        <router-view></router-view>
+        <router-view>
+        </router-view>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

@@ -2,10 +2,10 @@ import Home from './Home'
 import Email from './components/Email'
 
 export default {
-    model:'history',
+    mode:'history',
+    linkExactActiveClass: 'active',
     routes:[
         {path: '/', component:Home},
-        {path: '/data-view/emails', component:Email},
-    ],
-    mode:'history'
+        {path: '/data-view/emails/:id', component:Email,name:'email.show'},
+    ]
 }

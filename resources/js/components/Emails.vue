@@ -1,5 +1,6 @@
 <template>
     <div>
+    
         <SearchFilter :errors="errors" @applyFilter="search" @clearFilter='clearFilter'></SearchFilter>
         <div class="emails  card mt-3">
            <Table :emails="emails"></Table>

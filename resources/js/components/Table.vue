@@ -45,7 +45,7 @@
                 </td>
 
                 <td>
-                <a href="#" class="view-link"><i class="fa fa-eye"></i></a>
+                    <router-link :to="{name:'email.show',params:{id:email.id} }" exact class="view-link"><i class="fa fa-eye"></i></router-link>
                 </td>
                 </tr>
             </tbody>
@@ -65,6 +65,7 @@ export default {
     props:{
         emails: Array
     },
+
 
 }
 

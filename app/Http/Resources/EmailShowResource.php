@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Resources\EmailAttachmentResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class EmailShowResource extends JsonResource
@@ -23,7 +24,7 @@ class EmailShowResource extends JsonResource
             'text_content'=>$this->text_content,
             'html_content'=>$this->html_content,
             'sent_at'=>$this->created_at,
-            'attachments'=>$this->attachments->pluck('filepath')
+            'attachments'=>EmailAttachmentResource::collection($this->attachments)
         ];
     }
 }
