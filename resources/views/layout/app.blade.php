@@ -7,7 +7,7 @@
     <meta name="csrf-token" value="{{ csrf_token() }}" />
     <!-- CSS only -->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"/>
     <title>MiniSend</title>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">

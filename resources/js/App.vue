@@ -1,18 +1,18 @@
 <template>
 
-<div class="container mt-5">
+<div class="container mt-4">
 
-    <h1>MiniSend</h1>
+    <h3>MiniSend</h3>
 
     <Analytics></Analytics>
 
-    <div class="row mt-5">
 
-        <div class="col-md-8">
-           <Emails></Emails>
+    <div class="row mt-3">
+        <div class="col-md-9">
+            <Emails></Emails>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <ComposeEmail></ComposeEmail>
         </div>
 
@@ -28,13 +28,15 @@
     import ComposeEmail from './components/ComposeEmail'
     import Emails from './components/Emails'
     import Analytics from './components/Analytics'
+    import SearchInput from './components/SearchInput'
 
     export default {
         name: "app",
         components:{
             ComposeEmail,
             Emails,
-            Analytics
+            Analytics,
+            SearchInput
         }
     }
 </script>

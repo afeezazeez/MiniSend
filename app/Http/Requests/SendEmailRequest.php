@@ -33,7 +33,7 @@ class SendEmailRequest extends FormRequest
         return [
             'from_email' => 'required',
             'to_email' => 'required|different:from_email',
-            'subject' => 'required',
+            'subject' => 'required|max:225',
             'text_content' => 'required',
             'html_content' => 'nullable',
             'files'=>'nullable',

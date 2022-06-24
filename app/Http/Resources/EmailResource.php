@@ -21,6 +21,7 @@ class EmailResource extends JsonResource
             'subject'=>$this->subject,
             'status'=>$this->status,
             'sent_at'=>$this->created_at,
+
         ];
     }
 }

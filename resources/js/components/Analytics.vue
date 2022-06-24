@@ -5,7 +5,6 @@
                 <div class="col-xl-3 col-lg-6">
                     <div class="card l-bg-orange-dark">
                         <div class="card-statistic-3 p-4">
-                            <div class="card-icon card-icon-large"><i class="fas fa-dollar-sign"></i></div>
                             <div class="mb-4">
                                 <h5 class="card-title mb-0">Total Emails</h5></h5>
                             </div>
@@ -23,7 +22,6 @@
                 <div class="col-xl-3 col-lg-6">
                     <div class="card l-bg-orange-dark">
                         <div class="card-statistic-3 p-4">
-                            <div class="card-icon card-icon-large"><i class="fas fa-dollar-sign"></i></div>
                             <div class="mb-4">
                                 <h5 class="card-title mb-0">Total Sent</h5></h5>
                             </div>
@@ -41,7 +39,6 @@
                 <div class="col-xl-3 col-lg-6">
                     <div class="card l-bg-orange-dark">
                         <div class="card-statistic-3 p-4">
-                            <div class="card-icon card-icon-large"><i class="fas fa-dollar-sign"></i></div>
                             <div class="mb-4">
                                 <h5 class="card-title mb-0">Total Posted</h5></h5>
                             </div>
@@ -59,7 +56,6 @@
                 <div class="col-xl-3 col-lg-6">
                     <div class="card l-bg-orange-dark">
                         <div class="card-statistic-3 p-4">
-                            <div class="card-icon card-icon-large"><i class="fas fa-dollar-sign"></i></div>
                             <div class="mb-4">
                                 <h5 class="card-title mb-0">Total Failed</h5></h5>
                             </div>
