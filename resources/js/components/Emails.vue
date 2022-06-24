@@ -26,14 +26,15 @@
                     <p class="fw-normal mb-1">{{email.to_email}}</p>
 
                 </td>
-                <td>
+                  <td>
                     <p class="fw-normal mb-1">{{email.sent_at}}</p>
                 </td>
-                <td>Senior</td>
                 <td>
-                    <button type="button" class="btn btn-link btn-sm btn-rounded">
-                    Edit
-                    </button>
+                    <span class="badge badge-success rounded-pill d-inline">Sent</span>
+                </td>
+
+                <td>
+                   <a href="#">View</a>
                 </td>
                 </tr>
             </tbody>
@@ -48,7 +49,7 @@
                  emails:[]
             };
         },
-        created(){
+        mounted(){
             this.fetchEmails()
         },
         methods:{
@@ -56,7 +57,6 @@
                 axios.get('/api/emails')
                 .then((response) => {
                     this.emails = response.data.data;
-                      console.log(this.emails);
                 })
                 .catch((error) => {
                     console.log(error);
