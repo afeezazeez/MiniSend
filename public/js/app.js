@@ -5645,6 +5645,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -11243,7 +11244,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.card[data-v-50b99641]{\n        padding-left:40px;\n         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);\n}\n.email-row[data-v-50b99641]{\n        padding:20px;\n}\n.body-row[data-v-50b99641]{\n        display: flex;\n}\n.line[data-v-50b99641] {\n  overflow: hidden;\n  position: relative;\n}\n.line[data-v-50b99641]::after {\n  content: '';\n  width: 100%;\n  box-sizing: border-box;\n  border-top: 1px solid gray;\n  position: absolute;\n  bottom: 0.5em;\n  margin-left: 0.5em;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.card[data-v-50b99641]{\n    padding-left:40px;\n     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);\n}\n.email-row[data-v-50b99641]{\n    padding:20px;\n}\n.body-row[data-v-50b99641]{\n    display: flex;\n}\n.email[data-v-50b99641]{\n\n    margin: 0 auto;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30390,11 +30391,11 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container mt-4" }, [
-    _c("h5", [_vm._v("Email Information")]),
+    _c("h3", { staticClass: "text-center" }, [_vm._v("Mail Information")]),
     _vm._v(" "),
-    _c("div", { staticClass: "card col-md-8" }, [
+    _c("div", { staticClass: "card col-md-8 email" }, [
       _c("div", { staticClass: "row " }, [
-        _c("div", { staticClass: "col-md-7" }, [
+        _c("div", { staticClass: "col-md-8" }, [
           _c("h3", { staticClass: "mt-4" }, [
             _vm._v(_vm._s(_vm.email.subject)),
           ]),

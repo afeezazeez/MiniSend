@@ -2,13 +2,13 @@
 
 <div class="container mt-4">
 
-    <h5>Email Information</h5>
+    <h3 class="text-center">Mail Information</h3>
 
 
+    <div class="card col-md-8 email">
 
-    <div class="card col-md-8">
-         <div class="row ">
-            <div class="col-md-7">
+        <div class="row ">
+            <div class="col-md-8">
                 <h3 class="mt-4">{{email.subject}}</h3>
                 <h6 class="mt-3">From : {{email.from_email}}</h6>
                 <h6 class="mt-3">To : {{email.to_email}}</h6>
@@ -17,14 +17,15 @@
 
         </div>
 
-       <hr>
-         <div class="row email-row body-row">
+        <hr>
+
+        <div class="row email-row body-row">
             <div class="col-md-8  email-row">
                  <p v-html="email.html_content"></p>
             </div>
         </div>
 
-         <div class="row email-row mt-4">
+        <div class="row email-row mt-4">
             <div class="col-md-12">
                 <h5>Attachments</h5>
                 <hr>
@@ -106,22 +107,10 @@
     }
     .body-row{
         display: flex;
-        
+
     }
+    .email{
 
-    .line {
-  overflow: hidden;
-  position: relative;
-}
-
-.line::after {
-  content: '';
-  width: 100%;
-  box-sizing: border-box;
-  border-top: 1px solid gray;
-  position: absolute;
-  bottom: 0.5em;
-  margin-left: 0.5em;
-}
-
+        margin: 0 auto;
+    }
 </style>
