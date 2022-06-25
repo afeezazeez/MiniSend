@@ -50,11 +50,12 @@ class EmailService{
 
     }
 
-    public function applyFilter($request)
+    public function applyFilter($request=null,$email=null)
     {
+
         $query = Email::query();
 
-        $products = app(Pipeline::class)
+        $emails = app(Pipeline::class)
         ->send($query)
         ->through([
             StatusFilter::class,
@@ -63,8 +64,11 @@ class EmailService{
         ])
         ->via('filter')
         ->thenReturn()
+        ->when($email, function($q) use ($email) {
+            return $q->where('to_email', $email);
+        })
         ->paginate(10)->withQueryString();
-        return $products;
+        return $emails;
 
     }
 

@@ -75,9 +75,16 @@ class EmailController extends Controller
 
     public function search(SearchRequest $request)
     {
-        $emails = $this->emailService->applyFilter($request->validated());
+        $emails = $this->emailService->applyFilter($request->validated(),$email=null);
 
         return EmailResource::collection($emails);
+    }
+
+
+    public function fetchRecipientEmails($email)
+    {
+        $recipientEmails = $this->emailService->applyFilter($request=null,$email);
+        return EmailResource::collection($recipientEmails);
     }
 
 

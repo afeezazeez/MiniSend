@@ -20,6 +20,7 @@ Route::group(['prefix'=>'v1'], function(){
 
     Route::get('/emails/analytics','App\Http\Controllers\Api\EmailController@analytics');
     Route::get('/emails/search','App\Http\Controllers\Api\EmailController@search');
+    Route::get('/emails/recipient/{email}','App\Http\Controllers\Api\EmailController@fetchRecipientEmails');
     Route::apiResource('/emails','App\Http\Controllers\Api\EmailController');
 
 });

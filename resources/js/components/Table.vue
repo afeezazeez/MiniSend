@@ -25,9 +25,7 @@
                     </div>
                 </td>
                 <td>
-                    <router-link :to="{name:'recipient.emails',params:{id:email.to_email} }" exact class="view-link">
-                        <p class="fw-normal mb-1">{{email.to_email}}  </p>
-                    </router-link>
+                    <router-link :to="{name:'recipient.emails',params:{email:email.to_email} }" exact class="link2">{{email.to_email}}</router-link>
                 </td>
                 <td>
                     <p class="fw-normal mb-1">{{email.subject}}</p>
@@ -75,6 +73,10 @@ export default {
 <style scoped>
     .view-link{
         color:black;
+        text-decoration:none;
+    }
+    .link2{
+        text-decoration:none;
     }
 </style>
 

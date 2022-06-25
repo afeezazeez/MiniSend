@@ -56,7 +56,7 @@
                  baseURL: CONFIG.API_URL_ROOT,
                  email:[],
                  id:this.$route.params.id,
-                filesCount:0
+                 filesCount:0
             };
         },
         mounted(){
