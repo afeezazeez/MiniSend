@@ -5525,6 +5525,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config.js */ "./resources/js/config.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ "./resources/js/utils.js");
 //
 //
 //
@@ -5623,10 +5625,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: {
-    errors: Object
-  },
   data: function data() {
     return {
       formData: {
@@ -5635,19 +5636,79 @@ __webpack_require__.r(__webpack_exports__);
         subject: '',
         html_content: '',
         files: null
-      }
+      },
+      from_email_error: '',
+      to_email_error: '',
+      subject_error: '',
+      html_content_error: '',
+      attachments_error: ''
     };
   },
   methods: {
     sendEmail: function sendEmail() {
-      this.$emit('sendEmail', this.formData);
+      this.clearErrors();
+
+      if (this.passedValidation(this.formData)) {
+        this.$emit('sendEmail', this.formData);
+      }
     },
     clearForm: function clearForm() {
       this.formData.from_email = '', this.formData.to_email = '', this.formData.subject = '', this.formData.html_content = '';
       this.$refs.attachments.value = '';
     },
+    clearErrors: function clearErrors() {
+      this.from_email_error = '', this.to_email_error = '', this.subject_error = '', this.html_content_error = '', this.attachments_error = '';
+    },
     handleFileObject: function handleFileObject() {
       this.formData.files = this.$refs.attachments.files;
+    },
+    passedValidation: function passedValidation(formData) {
+      var passed = true;
+
+      if (!this.formData.from_email) {
+        this.from_email_error = 'The from email field is required';
+        passed = false;
+      }
+
+      if (!this.formData.to_email) {
+        this.to_email_error = 'The to email field is required';
+        passed = false;
+      }
+
+      if (this.formData.from_email != '' && this.formData.to_email === this.formData.from_email) {
+        this.to_email_error = 'The to email and from email must be different.';
+        passed = false;
+      }
+
+      if (!this.formData.subject) {
+        this.subject_error = 'The subject field is required';
+        passed = false;
+      }
+
+      if (!this.formData.html_content) {
+        this.html_content_error = 'The html content field is required';
+        passed = false;
+      }
+
+      var files = this.formData.files;
+
+      if (files) {
+        for (var i = 0; i < files.length; i++) {
+          var file = files[i];
+
+          if (!(0,_utils__WEBPACK_IMPORTED_MODULE_1__.extensionIsValid)(file.name)) {
+            this.attachments_error = 'One or more files have invalid format';
+            passed = false;
+          }
+
+          if (file.size > 5000000) {
+            this.attachments_error = 'One or more files have size greater than 5mb';
+            passed = false;
+          }
+        }
+      }
+
+      return passed;
     }
   }
 });
@@ -5735,7 +5796,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.email = response.data.data;
         _this.filesCount = Object.keys(_this.email.attachments).length;
       })["catch"](function (error) {
-        console.log(error);
+        _this.errorAlert(error.response.data.message);
       });
     },
     forceFileDownload: function forceFileDownload(response, title) {
@@ -5760,6 +5821,15 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function () {
         return console.log('error occured');
       });
+    },
+    errorAlert: function errorAlert(error) {
+      this.$swal({
+        type: 'error',
+        title: 'Failed!',
+        text: error
+      }).then(function () {
+        window.location = "/";
+      });
     }
   }
 });
@@ -5782,7 +5852,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Pagination__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pagination */ "./resources/js/components/Pagination.vue");
 /* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../config.js */ "./resources/js/config.js");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils */ "./resources/js/utils.js");
-//
 //
 //
 //
@@ -6003,7 +6072,7 @@ __webpack_require__.r(__webpack_exports__);
         _this2.emails = response.data.data;
         _this2.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_4__.makePagination)(response.data.meta, response.data.links);
       })["catch"](function (error) {
-        _this2.errors = error.response.data.data;
+        _this2.errorAlert(error.response.data.message);
       });
     },
     search: function search(searchData) {
@@ -6033,6 +6102,15 @@ __webpack_require__.r(__webpack_exports__);
           _this3.errors = error.response.data.data;
         });
       }
+    },
+    errorAlert: function errorAlert(error) {
+      this.$swal({
+        type: 'error',
+        title: 'Failed!',
+        text: error
+      }).then(function () {
+        window.location = "/";
+      });
     }
   }
 });
@@ -6155,8 +6233,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      baseURL: _config_js__WEBPACK_IMPORTED_MODULE_0__["default"].API_URL_ROOT,
-      errors: {}
+      baseURL: _config_js__WEBPACK_IMPORTED_MODULE_0__["default"].API_URL_ROOT
     };
   },
   components: {
@@ -6187,7 +6264,7 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.$refs.composeEmail.clearForm();
       })["catch"](function (error) {
-        _this.errors = error.response.data.data;
+        _this.errorAlert(error.response.data.message);
       });
     },
     successAlert: function successAlert() {
@@ -6195,6 +6272,13 @@ __webpack_require__.r(__webpack_exports__);
         type: 'success',
         title: 'Success!',
         text: 'Email sent successfully'
+      });
+    },
+    errorAlert: function errorAlert(error) {
+      this.$swal({
+        type: 'error',
+        title: 'Failed!',
+        text: error
       });
     }
   }
@@ -6444,6 +6528,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "extensionIsValid": () => (/* binding */ extensionIsValid),
 /* harmony export */   "makePagination": () => (/* binding */ makePagination)
 /* harmony export */ });
 function makePagination(meta, links) {
@@ -6455,6 +6540,17 @@ function makePagination(meta, links) {
     total_result: meta.total
   };
   return pagination;
+}
+function extensionIsValid(filename) {
+  var allowedFileTypes = ['jpg', 'png', 'jpeg', 'pdf', 'docx'];
+  var parts = filename.split('.');
+  var ext = parts[parts.length - 1];
+
+  if (allowedFileTypes.includes(ext)) {
+    return true;
+  }
+
+  return false;
 }
 
 /***/ }),
@@ -30907,13 +31003,9 @@ var render = function () {
                 }),
                 _vm._v(" "),
                 _c("div", { staticClass: "help-block with-errors" }, [
-                  _vm.errors.from_email
-                    ? _c(
-                        "p",
-                        { staticClass: "text-danger mt-1 error-message" },
-                        [_vm._v(_vm._s(_vm.errors.from_email[0]))]
-                      )
-                    : _vm._e(),
+                  _c("p", { staticClass: "text-danger mt-1 error-message" }, [
+                    _vm._v(_vm._s(_vm.from_email_error)),
+                  ]),
                 ]),
               ]),
             ]),
@@ -30952,13 +31044,9 @@ var render = function () {
                 }),
                 _vm._v(" "),
                 _c("div", { staticClass: "help-block with-errors" }, [
-                  _vm.errors.to_email
-                    ? _c(
-                        "p",
-                        { staticClass: "text-danger mt-1 error-message" },
-                        [_vm._v(_vm._s(_vm.errors.to_email[0]))]
-                      )
-                    : _vm._e(),
+                  _c("p", { staticClass: "text-danger mt-1 error-message" }, [
+                    _vm._v(_vm._s(_vm.to_email_error)),
+                  ]),
                 ]),
               ]),
             ]),
@@ -31000,13 +31088,9 @@ var render = function () {
                 }),
                 _vm._v(" "),
                 _c("div", { staticClass: "help-block with-errors" }, [
-                  _vm.errors.subject
-                    ? _c(
-                        "p",
-                        { staticClass: "text-danger mt-1 error-message" },
-                        [_vm._v(_vm._s(_vm.errors.subject[0]))]
-                      )
-                    : _vm._e(),
+                  _c("p", { staticClass: "text-danger mt-1 error-message" }, [
+                    _vm._v(_vm._s(_vm.subject_error)),
+                  ]),
                 ]),
               ]),
             ]),
@@ -31042,13 +31126,9 @@ var render = function () {
                 }),
                 _vm._v(" "),
                 _c("div", { staticClass: "help-block with-errors" }, [
-                  _vm.errors["files.0"]
-                    ? _c(
-                        "p",
-                        { staticClass: "text-danger mt-1 error-message" },
-                        [_vm._v("One or more invalid file was selected")]
-                      )
-                    : _vm._e(),
+                  _c("p", { staticClass: "text-danger mt-1 error-message" }, [
+                    _vm._v(_vm._s(_vm.attachments_error)),
+                  ]),
                 ]),
               ]),
             ]),
@@ -31094,13 +31174,9 @@ var render = function () {
                 }),
                 _vm._v(" "),
                 _c("div", { staticClass: "help-block with-errors" }, [
-                  _vm.errors.html_content
-                    ? _c(
-                        "p",
-                        { staticClass: "text-danger mt-1 error-message" },
-                        [_vm._v(_vm._s(_vm.errors.html_content[0]))]
-                      )
-                    : _vm._e(),
+                  _c("p", { staticClass: "text-danger mt-1 error-message" }, [
+                    _vm._v(_vm._s(_vm.html_content_error)),
+                  ]),
                 ]),
               ]),
             ]),
@@ -31264,7 +31340,7 @@ var render = function () {
     "div",
     [
       _c("SearchFilter", {
-        attrs: { errors: _vm.errors },
+        attrs: { SearchFilter: "", errors: _vm.errors },
         on: { applyFilter: _vm.search, clearFilter: _vm.clearFilter },
       }),
       _vm._v(" "),
@@ -31450,34 +31526,36 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container mt-4" },
-    [
-      _c("h4", [_vm._v("Emails sent to " + _vm._s(_vm.email))]),
-      _vm._v(" "),
-      _c("SearchFilter", {
-        staticClass: "mt-3",
-        attrs: { errors: _vm.errors },
-        on: { applyFilter: _vm.search, clearFilter: _vm.clearFilter },
-      }),
-      _vm._v(" "),
-      _c(
+  return _vm.emails.length
+    ? _c(
         "div",
-        { staticClass: "emails  card mt-3" },
+        { staticClass: "container mt-4" },
         [
-          _c("Table", { attrs: { emails: _vm.emails } }),
+          _c("h4", [_vm._v("Emails sent to " + _vm._s(_vm.email))]),
           _vm._v(" "),
-          _c("Pagination", {
-            attrs: { pagination: _vm.pagination },
-            on: { fetchEmails: _vm.fetchEmails },
+          _c("SearchFilter", {
+            staticClass: "mt-3",
+            attrs: { errors: _vm.errors },
+            on: { applyFilter: _vm.search, clearFilter: _vm.clearFilter },
           }),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "emails  card mt-3" },
+            [
+              _c("Table", { attrs: { emails: _vm.emails } }),
+              _vm._v(" "),
+              _c("Pagination", {
+                attrs: { pagination: _vm.pagination },
+                on: { fetchEmails: _vm.fetchEmails },
+              }),
+            ],
+            1
+          ),
         ],
         1
-      ),
-    ],
-    1
-  )
+      )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -31757,7 +31835,6 @@ var render = function () {
         _vm._v(" "),
         _c("ComposeEmail", {
           ref: "composeEmail",
-          attrs: { errors: _vm.errors },
           on: { sendEmail: _vm.sendEmail },
         }),
       ],

@@ -58,7 +58,7 @@ class SendEmailRequest extends FormRequest
 
         throw new HttpResponseException(response([
             'status' => 'error',
-            'message' =>null,
+            'message' =>'An error occurred while sending email.',
             'data'=>$validator->errors()
         ],Response::HTTP_BAD_REQUEST));
         //  throw new HttpResponseException(response()->json([

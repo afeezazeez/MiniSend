@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-4">
+    <div class="container mt-4"  v-if="emails.length">
         <h4 >Emails sent to {{email}}</h4>
         <SearchFilter :errors="errors" @applyFilter="search" @clearFilter='clearFilter' class="mt-3"></SearchFilter>
         <div class="emails  card mt-3">
@@ -63,10 +63,10 @@ import { makePagination } from '../utils';
                         this.pagination = makePagination(response.data.meta,response.data.links)
                 })
                 .catch((error) => {
-                    this.errors = error.response.data.data
+                    this.errorAlert(error.response.data.message);
                 });
             },
-             search (searchData) {
+            search (searchData) {
                     let queryString = "";
                     let isEmpty = true;
                     const payload = {}
@@ -97,6 +97,16 @@ import { makePagination } from '../utils';
 
 
             },
+            errorAlert(error) {
+                this.$swal({
+                    type: 'error',
+                    title: 'Failed!',
+                    text: error
+                })
+                .then(function() {
+                    window.location = "/";
+                });
+            }
 
         },
     }

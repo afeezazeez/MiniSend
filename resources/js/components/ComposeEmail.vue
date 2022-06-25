@@ -14,7 +14,7 @@
                                 value="ddd"
                             >
                             <div class="help-block with-errors">
-                                <p v-if="errors.from_email" class="text-danger mt-1 error-message">{{errors.from_email[0]}}</p>
+                                <p  class="text-danger mt-1 error-message">{{from_email_error}}</p>
                             </div>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                                 v-model="formData.to_email"
                             >
                             <div class="help-block with-errors">
-                                <p v-if="errors.to_email" class="text-danger mt-1 error-message">{{errors.to_email[0]}}</p>
+                                <p  class="text-danger mt-1 error-message">{{to_email_error}}</p>
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                                 v-model="formData.subject"
                                 >
                             <div class="help-block with-errors">
-                                <p v-if="errors.subject" class="text-danger mt-1 error-message">{{errors.subject[0]}}</p>
+                                <p  class="text-danger mt-1 error-message">{{subject_error}}</p>
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                                 @change="handleFileObject()"
                             >
                             <div class="help-block with-errors">
-                                 <p v-if="errors['files.0']" class="text-danger mt-1 error-message">One or more invalid file was selected</p>
+                                 <p  class="text-danger mt-1 error-message">{{attachments_error}}</p>
                             </div>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                             >
                             </textarea>
                             <div class="help-block with-errors">
-                                <p v-if="errors.html_content" class="text-danger mt-1 error-message">{{errors.html_content[0]}}</p>
+                                <p  class="text-danger mt-1 error-message">{{html_content_error}}</p>
                             </div>
                         </div>
                     </div>
@@ -97,10 +97,13 @@
 </template>
 
 <script>
+
+import CONFIG from '../config.js';
+import { extensionIsValid } from '../utils';
+
+
  export default {
-    props:{
-        errors: Object
-    },
+
      data() {
         return {
             formData: {
@@ -110,12 +113,21 @@
                 html_content:'',
                 files:null
             },
+            from_email_error: '',
+            to_email_error: '',
+            subject_error: '',
+            html_content_error: '',
+            attachments_error: ''
+
         };
     },
 
     methods:{
         sendEmail(){
-           this.$emit('sendEmail',this.formData);
+            this.clearErrors()
+            if(this.passedValidation(this.formData)){
+                this.$emit('sendEmail',this.formData);
+            }
         },
         clearForm(){
             this.formData.from_email= '',
@@ -124,8 +136,54 @@
             this.formData.html_content= ''
             this.$refs.attachments.value = ''
         },
+        clearErrors(){
+            this.from_email_error= '',
+            this.to_email_error= '',
+            this.subject_error= '',
+            this.html_content_error= '',
+            this.attachments_error= ''
+        },
         handleFileObject() {
             this.formData.files = this.$refs.attachments.files;
+        },
+        passedValidation(formData){
+            let passed = true;
+            if(!this.formData.from_email){
+                this.from_email_error = 'The from email field is required'
+                passed = false
+            }
+            if(!this.formData.to_email){
+                this.to_email_error = 'The to email field is required'
+                passed = false
+            }
+            if( (this.formData.from_email != '')  && this.formData.to_email === this.formData.from_email){
+                this.to_email_error = 'The to email and from email must be different.'
+                passed = false
+            }
+            if(!this.formData.subject){
+                this.subject_error = 'The subject field is required'
+                passed = false
+            }
+             if(!this.formData.html_content){
+                this.html_content_error = 'The html content field is required'
+                passed = false
+            }
+
+            let files =  this.formData.files
+            if(files){
+                for (let i=0; i<files.length; i++) {
+                    let file = files[i]
+                    if(!extensionIsValid(file.name)){
+                        this.attachments_error = 'One or more files have invalid format'
+                        passed = false
+                    }
+                    if(file.size > 5000000){
+                        this.attachments_error = 'One or more files have size greater than 5mb'
+                        passed = false
+                    }
+                }
+            }
+            return passed;
         }
 
     }

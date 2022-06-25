@@ -1,9 +1,8 @@
 <template>
     <div>
-
-        <SearchFilter :errors="errors" @applyFilter="search" @clearFilter='clearFilter'></SearchFilter>
+     <SearchFilter  SearchFilter :errors="errors" @applyFilter="search" @clearFilter='clearFilter'></SearchFilter>
         <div class="emails  card mt-3">
-           <Table :emails="emails"></Table>
+           <Table  :emails="emails"></Table>
            <Pagination :pagination="pagination" @fetchEmails="fetchEmails"></Pagination>
         </div>
     </div>
@@ -86,6 +85,7 @@ import { makePagination } from '../utils';
 
 
                 },
+                
 
         },
     }

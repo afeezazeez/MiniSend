@@ -66,12 +66,11 @@
             fetchEmail(){
                 axios.get(`${this.baseURL}/${this.id}`)
                 .then((response) => {
-                   
                     this.email = response.data.data;
                     this.filesCount = Object.keys(this.email.attachments).length
                 })
                 .catch((error) => {
-                    console.log(error);
+                     this.errorAlert(error.response.data.message);
                 });
             },
             forceFileDownload(response, title) {
@@ -93,7 +92,18 @@
                     this.forceFileDownload(response, filename)
                 })
                 .catch(() => console.log('error occured'))
+            },
+            errorAlert(error) {
+                this.$swal({
+                    type: 'error',
+                    title: 'Failed!',
+                    text: error
+                })
+                .then(function() {
+                    window.location = "/";
+                });
             }
+
         }
     }
 </script>

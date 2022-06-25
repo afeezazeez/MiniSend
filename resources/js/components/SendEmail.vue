@@ -2,7 +2,7 @@
     <div class="container mt-4">
         <div class="col-md-8">
           <h4>Compose Email</h4>
-            <ComposeEmail ref="composeEmail" @sendEmail="sendEmail"  :errors="errors"></ComposeEmail>
+            <ComposeEmail ref="composeEmail" @sendEmail="sendEmail"></ComposeEmail>
         </div>
     </div>
 </template>
@@ -11,12 +11,12 @@
 import CONFIG from '../config.js';
 import ComposeEmail from './ComposeEmail';
 
+
  export default {
 
         data(){
             return {
                  baseURL: CONFIG.API_URL_ROOT,
-                 errors:{},
             };
         },
         components:{
@@ -43,7 +43,7 @@ import ComposeEmail from './ComposeEmail';
 
                 })
                 .catch((error) => {
-                   this.errors = error.response.data.data
+                   this.errorAlert(error.response.data.message)
                 });
             },
             successAlert() {
@@ -51,6 +51,13 @@ import ComposeEmail from './ComposeEmail';
                     type: 'success',
                     title: 'Success!',
                     text: 'Email sent successfully'
+                });
+            },
+            errorAlert(error) {
+                this.$swal({
+                    type: 'error',
+                    title: 'Failed!',
+                    text: error
                 });
             }
         },

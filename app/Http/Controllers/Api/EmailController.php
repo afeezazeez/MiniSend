@@ -84,6 +84,10 @@ class EmailController extends Controller
     public function fetchRecipientEmails($email)
     {
         $emails = Email::where('to_email',$email)->orderBy('created_at','desc')->paginate(10);
+        if(!count($emails)){
+            return $this->error('Recipient email not found',Response::HTTP_NOT_FOUND,null);
+        }
+
         return EmailResource::collection($emails);
     }
 
