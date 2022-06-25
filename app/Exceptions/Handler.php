@@ -54,6 +54,6 @@ class Handler extends ExceptionHandler
             return $this->error('Resource not found',Response::HTTP_NOT_FOUND,null);
         }
         Logger::logError($e);
-        return $this->error('Error handling request',Response::HTTP_INTERNAL_SERVER_ERROR,null);
+        return $this->error('Error handling request. Please try again',Response::HTTP_INTERNAL_SERVER_ERROR,null);
     }
 }

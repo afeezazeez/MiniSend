@@ -8,7 +8,7 @@
 </template>
 <script>
 
-import CONFIG from '../config.js';
+
 import ComposeEmail from './ComposeEmail';
 
 
@@ -16,7 +16,7 @@ import ComposeEmail from './ComposeEmail';
 
         data(){
             return {
-                 baseURL: CONFIG.API_URL_ROOT,
+
             };
         },
         components:{
@@ -35,7 +35,7 @@ import ComposeEmail from './ComposeEmail';
                     formData.append("files[]", files[index]);
                 }
                 }
-                axios.post(this.baseURL,formData)
+                axios.post('/',formData)
                 .then((response) => {
                     this.successAlert()
                     this.errors = {}
@@ -54,6 +54,7 @@ import ComposeEmail from './ComposeEmail';
                 });
             },
             errorAlert(error) {
+                this.$refs.composeEmail.clearForm()
                 this.$swal({
                     type: 'error',
                     title: 'Failed!',

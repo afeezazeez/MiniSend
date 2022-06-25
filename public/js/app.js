@@ -5411,7 +5411,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config.js */ "./resources/js/config.js");
 //
 //
 //
@@ -5488,11 +5487,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      baseURL: _config_js__WEBPACK_IMPORTED_MODULE_0__["default"].API_URL_ROOT,
       info: []
     };
   },
@@ -5503,7 +5500,7 @@ __webpack_require__.r(__webpack_exports__);
     fetchAnalytics: function fetchAnalytics() {
       var _this = this;
 
-      axios.get("".concat(this.baseURL, "/analytics")).then(function (response) {
+      axios.get('/analytics').then(function (response) {
         _this.info = response.data.data;
       })["catch"](function (error) {
         console.log(error);
@@ -5741,7 +5738,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config.js */ "./resources/js/config.js");
 //
 //
 //
@@ -5800,11 +5796,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      baseURL: _config_js__WEBPACK_IMPORTED_MODULE_0__["default"].API_URL_ROOT,
       email: [],
       id: this.$route.params.id,
       filesCount: 0,
@@ -5818,7 +5812,7 @@ __webpack_require__.r(__webpack_exports__);
     fetchEmail: function fetchEmail() {
       var _this = this;
 
-      axios.get("".concat(this.baseURL, "/").concat(this.id)).then(function (response) {
+      axios.get("/".concat(this.id)).then(function (response) {
         _this.email = response.data.data;
         _this.filesCount = Object.keys(_this.email.attachments).length;
       })["catch"](function (error) {
@@ -5876,8 +5870,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SearchFilter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SearchFilter */ "./resources/js/components/SearchFilter.vue");
 /* harmony import */ var _Table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Table */ "./resources/js/components/Table.vue");
 /* harmony import */ var _Pagination__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pagination */ "./resources/js/components/Pagination.vue");
-/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../config.js */ "./resources/js/config.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils */ "./resources/js/utils.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils */ "./resources/js/utils.js");
 //
 //
 //
@@ -5887,7 +5880,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 
 
 
@@ -5895,7 +5887,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      baseURL: _config_js__WEBPACK_IMPORTED_MODULE_3__["default"].API_URL_ROOT,
       emails: [],
       searchValue: '',
       filteredEmails: [],
@@ -5919,10 +5910,10 @@ __webpack_require__.r(__webpack_exports__);
     fetchEmails: function fetchEmails(page_url) {
       var _this = this;
 
-      page_url = page_url || this.baseURL;
+      page_url = page_url || '/';
       axios.get(page_url).then(function (response) {
         _this.emails = response.data.data;
-        _this.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_4__.makePagination)(response.data.meta, response.data.links);
+        _this.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.makePagination)(response.data.meta, response.data.links);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -5947,9 +5938,9 @@ __webpack_require__.r(__webpack_exports__);
           queryString += "".concat(key, "=").concat(payload[key]);
           if (index < length - 1) queryString += '&';
         });
-        axios.get("".concat(this.baseURL, "/search/").concat(queryString)).then(function (response) {
+        axios.get("/search/".concat(queryString)).then(function (response) {
           _this2.emails = response.data.data;
-          _this2.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_4__.makePagination)(response.data.meta, response.data.links);
+          _this2.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.makePagination)(response.data.meta, response.data.links);
         })["catch"](function (error) {
           _this2.errors = error.response.data.data;
         });
@@ -6039,8 +6030,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SearchFilter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SearchFilter */ "./resources/js/components/SearchFilter.vue");
 /* harmony import */ var _Table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Table */ "./resources/js/components/Table.vue");
 /* harmony import */ var _Pagination__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pagination */ "./resources/js/components/Pagination.vue");
-/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../config.js */ "./resources/js/config.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils */ "./resources/js/utils.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils */ "./resources/js/utils.js");
 //
 //
 //
@@ -6051,7 +6041,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 
 
 
@@ -6059,7 +6048,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      baseURL: _config_js__WEBPACK_IMPORTED_MODULE_3__["default"].API_URL_ROOT,
       emails: [],
       errors: {},
       pagination: {},
@@ -6082,11 +6070,11 @@ __webpack_require__.r(__webpack_exports__);
     fetchEmails: function fetchEmails(page_url) {
       var _this = this;
 
-      page_url = page_url || baseURL;
+      page_url = page_url || '/';
       axios.get(page_url).then(function (response) {
         console.log(response.data.data);
         _this.emails = response.data.data;
-        _this.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_4__.makePagination)(response.data.meta, response.data.links);
+        _this.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.makePagination)(response.data.meta, response.data.links);
       })["catch"](function (error) {
         console.log(error.response);
       });
@@ -6094,9 +6082,9 @@ __webpack_require__.r(__webpack_exports__);
     fetchRecipientEmails: function fetchRecipientEmails() {
       var _this2 = this;
 
-      axios.get("".concat(this.baseURL, "/recipient/").concat(this.email)).then(function (response) {
+      axios.get("/recipient/".concat(this.email)).then(function (response) {
         _this2.emails = response.data.data;
-        _this2.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_4__.makePagination)(response.data.meta, response.data.links);
+        _this2.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.makePagination)(response.data.meta, response.data.links);
       })["catch"](function (error) {
         _this2.errorAlert(error.response.data.message);
       });
@@ -6121,9 +6109,9 @@ __webpack_require__.r(__webpack_exports__);
           queryString += "".concat(key, "=").concat(payload[key]);
           if (index < length - 1) queryString += '&';
         });
-        axios.get("".concat(this.baseURL, "/recipient/search/").concat(this.email, "/").concat(queryString)).then(function (response) {
+        axios.get("/recipient/search/".concat(this.email, "/").concat(queryString)).then(function (response) {
           _this3.emails = response.data.data;
-          _this3.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_4__.makePagination)(response.data.meta, response.data.links);
+          _this3.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.makePagination)(response.data.meta, response.data.links);
         })["catch"](function (error) {
           _this3.errors = error.response.data.data;
         });
@@ -6244,8 +6232,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config.js */ "./resources/js/config.js");
-/* harmony import */ var _ComposeEmail__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ComposeEmail */ "./resources/js/components/ComposeEmail.vue");
+/* harmony import */ var _ComposeEmail__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ComposeEmail */ "./resources/js/components/ComposeEmail.vue");
 //
 //
 //
@@ -6254,16 +6241,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
-    return {
-      baseURL: _config_js__WEBPACK_IMPORTED_MODULE_0__["default"].API_URL_ROOT
-    };
+    return {};
   },
   components: {
-    ComposeEmail: _ComposeEmail__WEBPACK_IMPORTED_MODULE_1__["default"]
+    ComposeEmail: _ComposeEmail__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   methods: {
     sendEmail: function sendEmail(form_data) {
@@ -6283,7 +6267,7 @@ __webpack_require__.r(__webpack_exports__);
         }
       }
 
-      axios.post(this.baseURL, formData).then(function (response) {
+      axios.post('/', formData).then(function (response) {
         _this.successAlert();
 
         _this.errors = {};
@@ -6301,6 +6285,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     errorAlert: function errorAlert(error) {
+      this.$refs.composeEmail.clearForm();
       this.$swal({
         type: 'error',
         title: 'Failed!',
@@ -6448,8 +6433,11 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_4__["default"]({
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
   \***********************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./config.js */ "./resources/js/config.js");
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 
 try {
@@ -6462,8 +6450,11 @@ try {
  */
 
 
+
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.baseURL = _config_js__WEBPACK_IMPORTED_MODULE_0__["default"].API_URL_ROOT;
+console.log(window.axios.defaults.baseURL);
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

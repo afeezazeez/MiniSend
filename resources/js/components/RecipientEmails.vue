@@ -13,7 +13,6 @@
 import SearchFilter from './SearchFilter'
 import Table from './Table'
 import Pagination from './Pagination'
-import CONFIG from '../config.js';
 import { makePagination } from '../utils';
 
 
@@ -23,7 +22,6 @@ import { makePagination } from '../utils';
 
         data(){
             return {
-                baseURL: CONFIG.API_URL_ROOT,
                 emails:[],
                 errors:{},
                 pagination: {},
@@ -44,7 +42,7 @@ import { makePagination } from '../utils';
                 this.fetchRecipientEmails()
             },
             fetchEmails(page_url){
-                page_url = page_url || baseURL
+                page_url = page_url || '/'
                 axios.get(page_url)
                 .then((response) => {
                     console.log(response.data.data)
@@ -57,7 +55,7 @@ import { makePagination } from '../utils';
 
             },
             fetchRecipientEmails() {
-                axios.get(`${this.baseURL}/recipient/${this.email}`)
+                axios.get(`/recipient/${this.email}`)
                 .then((response) => {
                         this.emails = response.data.data
                         this.pagination = makePagination(response.data.meta,response.data.links)
@@ -84,7 +82,7 @@ import { makePagination } from '../utils';
                             queryString+= `${key}=${payload[key]}`;
                             if (index < length-1) queryString += '&';
                         });
-                        axios.get(`${this.baseURL}/recipient/search/${this.email}/${queryString}`)
+                        axios.get(`/recipient/search/${this.email}/${queryString}`)
                         .then((response) => {
                             this.emails = response.data.data
                             this.pagination = makePagination(response.data.meta,response.data.links)

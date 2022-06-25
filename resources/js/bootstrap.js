@@ -10,10 +10,17 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
+
+import CONFIG from './config.js';
+
 window.axios = require('axios');
 
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+window.axios.defaults.baseURL = CONFIG.API_URL_ROOT;
+
+console.log(window.axios.defaults.baseURL )
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

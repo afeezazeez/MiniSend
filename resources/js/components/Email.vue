@@ -58,12 +58,10 @@
 
 <script>
 
-    import CONFIG from '../config.js';
-
+   
     export default {
           data(){
             return {
-                 baseURL: CONFIG.API_URL_ROOT,
                  email:[],
                  id:this.$route.params.id,
                  filesCount:0,
@@ -75,7 +73,7 @@
         },
         methods:{
             fetchEmail(){
-                axios.get(`${this.baseURL}/${this.id}`)
+                axios.get(`/${this.id}`)
                 .then((response) => {
                     this.email = response.data.data;
                     this.filesCount = Object.keys(this.email.attachments).length

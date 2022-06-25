@@ -77,13 +77,11 @@
 <script>
 
 
-import CONFIG from '../config.js';
 
  export default {
 
         data(){
             return {
-                 baseURL: CONFIG.API_URL_ROOT,
                  info:[]
             };
         },
@@ -92,7 +90,7 @@ import CONFIG from '../config.js';
         },
         methods:{
             fetchAnalytics(){
-                axios.get(`${this.baseURL}/analytics`)
+                axios.get('/analytics')
                 .then((response) => {
                     this.info = response.data.data;
                 })

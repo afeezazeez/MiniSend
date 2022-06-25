@@ -12,7 +12,7 @@
 import SearchFilter from './SearchFilter'
 import Table from './Table'
 import Pagination from './Pagination'
-import CONFIG from '../config.js';
+
 import { makePagination } from '../utils';
 
 
@@ -20,7 +20,6 @@ import { makePagination } from '../utils';
 
         data(){
             return {
-                 baseURL: CONFIG.API_URL_ROOT,
                  emails:[],
                  searchValue:'',
                  filteredEmails:[],
@@ -43,7 +42,7 @@ import { makePagination } from '../utils';
                 },
 
                 fetchEmails(page_url){
-                    page_url = page_url || this.baseURL
+                    page_url = page_url || '/'
                     axios.get(page_url)
                     .then((response) => {
                         this.emails = response.data.data;
@@ -72,7 +71,7 @@ import { makePagination } from '../utils';
                             queryString+= `${key}=${payload[key]}`;
                             if (index < length-1) queryString += '&';
                         });
-                        axios.get(`${this.baseURL}/search/${queryString}`)
+                        axios.get(`/search/${queryString}`)
                         .then((response) => {
                               this.emails = response.data.data
                               this.pagination = makePagination(response.data.meta,response.data.links)
@@ -85,7 +84,7 @@ import { makePagination } from '../utils';
 
 
                 },
-                
+
 
         },
     }
