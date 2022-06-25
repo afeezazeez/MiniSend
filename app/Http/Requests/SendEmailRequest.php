@@ -34,9 +34,8 @@ class SendEmailRequest extends FormRequest
             'from_email' => 'required',
             'to_email' => 'required|different:from_email',
             'subject' => 'required|max:225',
-            'text_content' => 'required',
-            'html_content' => 'nullable',
-            'files'=>'nullable',
+            'html_content' => 'required',
+            'files'=>'nullable|array',
             'files.*' => 'required|mimes:png,jpg,jpeg,pdf,docx|max:20000',
 
         ];
@@ -46,8 +45,9 @@ class SendEmailRequest extends FormRequest
     public function messages()
     {
         return [
-            'files.*.mimes' => 'Only jpeg, png, jpg,pdf,docx images are allowed',
-            'files.*.max' => 'Sorry! Maximum allowed size for an image is 20MB',
+            'files.*.mimes' => 'Only jpeg, png, jpg,pdf,docx  are allowed',
+            'files.*.max' => 'Sorry! Maximum allowed size file is 20MB',
+            'html_content.required' => 'Email body is required',
         ];
     }
 

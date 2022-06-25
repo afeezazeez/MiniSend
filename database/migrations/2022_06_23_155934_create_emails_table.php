@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('from_email');
             $table->string('to_email');
             $table->string('subject');
-            $table->text('text_content');
-            $table->text('html_content')->nullable();
+            $table->text('text_content')->nullable();
+            $table->text('html_content');
             $table->timestamps();
         });
     }

@@ -66,7 +66,7 @@
             fetchEmail(){
                 axios.get(`${this.baseURL}/${this.id}`)
                 .then((response) => {
-                    console.log(response.data.data)
+                   
                     this.email = response.data.data;
                     this.filesCount = Object.keys(this.email.attachments).length
                 })
