@@ -85,7 +85,7 @@
                         </div>
                     </div>
                     <div class="col-md-12 mt-3">
-                        <input type="submit" class="btn btn-success btn-send" value="Send email">
+                        <button type="submit" :disabled="isSubmit" class="btn btn-success btn-send">{{btnText}}</button>
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -121,19 +121,25 @@ import { extensionIsValid } from '../utils';
             to_email_error: '',
             subject_error: '',
             html_content_error: '',
-            attachments_error: ''
+            attachments_error: '',
+            isSubmit:false,
+            btnText:'Send Email'
 
         };
     },
 
     methods:{
         sendEmail(){
+            this.isSubmit=true
+            this.btnText = 'Sending Email';
             this.clearErrors()
             if(this.passedValidation(this.formData)){
                 this.$emit('sendEmail',this.formData);
             }
         },
         clearForm(){
+            this.isSubmit=false
+            this.btnText = 'Send Email';
             this.formData.from_email= '',
             this.formData.to_email= '',
             this.formData.subject= '',

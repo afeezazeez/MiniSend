@@ -5645,11 +5645,15 @@ __webpack_require__.r(__webpack_exports__);
       to_email_error: '',
       subject_error: '',
       html_content_error: '',
-      attachments_error: ''
+      attachments_error: '',
+      isSubmit: false,
+      btnText: 'Send Email'
     };
   },
   methods: {
     sendEmail: function sendEmail() {
+      this.isSubmit = true;
+      this.btnText = 'Sending Email';
       this.clearErrors();
 
       if (this.passedValidation(this.formData)) {
@@ -5657,6 +5661,8 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     clearForm: function clearForm() {
+      this.isSubmit = false;
+      this.btnText = 'Send Email';
       this.formData.from_email = '', this.formData.to_email = '', this.formData.subject = '', this.formData.html_content = '';
       this.$refs.attachments.value = '';
     },
@@ -31188,27 +31194,25 @@ var render = function () {
               ]),
             ]),
             _vm._v(" "),
-            _vm._m(0),
+            _c("div", { staticClass: "col-md-12 mt-3" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-success btn-send",
+                  attrs: { type: "submit", disabled: _vm.isSubmit },
+                },
+                [_vm._v(_vm._s(_vm.btnText))]
+              ),
+            ]),
           ]),
           _vm._v(" "),
-          _vm._m(1),
+          _vm._m(0),
         ]),
       ]
     ),
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-12 mt-3" }, [
-      _c("input", {
-        staticClass: "btn btn-success btn-send",
-        attrs: { type: "submit", value: "Send email" },
-      }),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
