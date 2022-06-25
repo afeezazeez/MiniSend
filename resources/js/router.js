@@ -9,8 +9,8 @@ export default {
     routes:[
         {path: '*',component: NotFound},
         {path: '/', component:Home,name: 'home'},
-        {path: '/data-view/emails/:id', component:Email,name:'email.show'},
-        {path: '/data-view/emails/recipient/:email', component:RecipientEmails,name:'recipient.emails'},
+        {path: '/emails/:id', component:Email,name:'email.show'},
+        {path: '/emails/recipient/:email', component:RecipientEmails,name:'recipient.emails'},
         {path: '/emails/send', component:SendEmail,name:'emails.send'}
     ]
 

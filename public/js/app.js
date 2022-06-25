@@ -6520,11 +6520,11 @@ __webpack_require__.r(__webpack_exports__);
     component: _Home__WEBPACK_IMPORTED_MODULE_0__["default"],
     name: 'home'
   }, {
-    path: '/data-view/emails/:id',
+    path: '/emails/:id',
     component: _components_Email__WEBPACK_IMPORTED_MODULE_1__["default"],
     name: 'email.show'
   }, {
-    path: '/data-view/emails/recipient/:email',
+    path: '/emails/recipient/:email',
     component: _components_RecipientEmails__WEBPACK_IMPORTED_MODULE_2__["default"],
     name: 'recipient.emails'
   }, {
