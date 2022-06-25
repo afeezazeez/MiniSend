@@ -40,6 +40,16 @@
             </div>
         </div>
 
+         <div class="row email-row mt-4" v-if="email.failed_reason">
+            <div class="col-md-12">
+                <a href="#" @click="isShow = !isShow">{{ !isShow ? 'Show failure response' : 'Hide response' }}</a>
+                <div v-if="isShow">
+                    <hr>
+                    <p>{{email.failed_reason}}</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </div>
@@ -56,7 +66,8 @@
                  baseURL: CONFIG.API_URL_ROOT,
                  email:[],
                  id:this.$route.params.id,
-                 filesCount:0
+                 filesCount:0,
+                 isShow:false
             };
         },
         mounted(){

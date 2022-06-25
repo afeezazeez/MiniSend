@@ -44,7 +44,7 @@ class SendEmailJob implements ShouldQueue
             }
         }
         catch(\Exception $e){
-            $this->email->update(['status'=> Email::EMAIL_FAILED_STATUS]);
+            $this->email->update(['status'=> Email::EMAIL_FAILED_STATUS,'failed_reason'=>$e->getMessage()]);
             Logger::logError($e);
         }
 

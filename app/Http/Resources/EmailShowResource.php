@@ -23,6 +23,7 @@ class EmailShowResource extends JsonResource
             'status'=>$this->status,
             'text_content'=>$this->text_content,
             'html_content'=>$this->html_content,
+            'failed_reason' =>$this->failed_reason,
             'sent_at'=>$this->created_at,
             'attachments'=>EmailAttachmentResource::collection($this->attachments)
         ];

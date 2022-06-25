@@ -5718,6 +5718,11 @@ __webpack_require__.r(__webpack_exports__);
         }
       }
 
+      if (!passed) {
+        this.isSubmit = false;
+        this.btnText = 'Send Email';
+      }
+
       return passed;
     }
   }
@@ -5785,6 +5790,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -5792,7 +5807,8 @@ __webpack_require__.r(__webpack_exports__);
       baseURL: _config_js__WEBPACK_IMPORTED_MODULE_0__["default"].API_URL_ROOT,
       email: [],
       id: this.$route.params.id,
-      filesCount: 0
+      filesCount: 0,
+      isShow: false
     };
   },
   mounted: function mounted() {
@@ -31321,6 +31337,39 @@ var render = function () {
             : _c("p", [_vm._v("Oops ! Email has no attachment")]),
         ]),
       ]),
+      _vm._v(" "),
+      _vm.email.failed_reason
+        ? _c("div", { staticClass: "row email-row mt-4" }, [
+            _c("div", { staticClass: "col-md-12" }, [
+              _c(
+                "a",
+                {
+                  attrs: { href: "#" },
+                  on: {
+                    click: function ($event) {
+                      _vm.isShow = !_vm.isShow
+                    },
+                  },
+                },
+                [
+                  _vm._v(
+                    _vm._s(
+                      !_vm.isShow ? "Show failure response" : "Hide response"
+                    )
+                  ),
+                ]
+              ),
+              _vm._v(" "),
+              _vm.isShow
+                ? _c("div", [
+                    _c("hr"),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(_vm._s(_vm.email.failed_reason))]),
+                  ])
+                : _vm._e(),
+            ]),
+          ])
+        : _vm._e(),
     ]),
   ])
 }

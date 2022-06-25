@@ -193,6 +193,10 @@ import { extensionIsValid } from '../utils';
                     }
                 }
             }
+            if(!passed){
+                  this.isSubmit=false
+                  this.btnText = 'Send Email';
+            }
             return passed;
         }
 

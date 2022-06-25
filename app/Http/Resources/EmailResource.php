@@ -20,7 +20,8 @@ class EmailResource extends JsonResource
             'to_email'=>$this->to_email,
             'subject'=>$this->subject,
             'status'=>$this->status,
-            'sent_at'=>$this->created_at,
+            'sent_at'=>$this->created_at
+
 
         ];
     }
