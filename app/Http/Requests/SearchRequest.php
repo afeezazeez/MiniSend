@@ -32,8 +32,8 @@ class SearchRequest extends FormRequest
     public function rules()
     {
         return [
-            'sender'=>'|nullable|string|max:30',
-            'recipient'=>'nullable|string|max:30',
+            'sender'=>'|nullable|string|max:225',
+            'recipient'=>'nullable|string|max:225',
             'subject'=>'nullable|string|max:225',
             'status'=>['nullable',Rule::in([Email::EMAIL_SENT_STATUS,Email::EMAIL_FAILED_STATUS,Email::EMAIL_POSTED_STATUS])],
         ];

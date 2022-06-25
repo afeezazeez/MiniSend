@@ -78,18 +78,16 @@ import { makePagination } from '../utils';
                     });
 
                     if (!isEmpty) {
-                        let vm = this;
-
                         queryString = '?';
                         const length = Object.keys(payload).length;
                         Object.keys(payload).forEach((key, index)=>{
                             queryString+= `${key}=${payload[key]}`;
                             if (index < length-1) queryString += '&';
                         });
-                        axios.get(`${this.baseURL}/recipient/${this.email}/${queryString}`)
+                        axios.get(`${this.baseURL}/recipient/search/${this.email}/${queryString}`)
                         .then((response) => {
                             this.emails = response.data.data
-                              vm.makePagination(response.data.meta,response.data.links);
+                            this.pagination = makePagination(response.data.meta,response.data.links)
                         })
                         .catch((error) => {
                             this.errors = error.response.data.data

@@ -42,7 +42,7 @@ import { makePagination } from '../utils';
                     this.errors = {}
                     this.fetchEmails()
                 },
-              
+
                 fetchEmails(page_url){
                     page_url = page_url || this.baseURL
                     axios.get(page_url)
@@ -67,7 +67,6 @@ import { makePagination } from '../utils';
                     });
 
                     if (!isEmpty) {
-                        let vm = this;
                         queryString = '?';
                         const length = Object.keys(payload).length;
                         Object.keys(payload).forEach((key, index)=>{
@@ -76,8 +75,8 @@ import { makePagination } from '../utils';
                         });
                         axios.get(`${this.baseURL}/search/${queryString}`)
                         .then((response) => {
-                            this.emails = response.data.data
-                              vm.makePagination(response.data.meta,response.data.links);
+                              this.emails = response.data.data
+                              this.pagination = makePagination(response.data.meta,response.data.links)
                         })
                         .catch((error) => {
                             this.errors = error.response.data.data

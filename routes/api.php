@@ -19,8 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix'=>'v1'], function(){
 
     Route::get('/emails/analytics','App\Http\Controllers\Api\EmailController@analytics');
-    Route::get('/emails/search','App\Http\Controllers\Api\EmailController@search');
+    Route::get('/emails/search','App\Http\Controllers\Api\EmailController@searchEmails');
     Route::get('/emails/recipient/{email}','App\Http\Controllers\Api\EmailController@fetchRecipientEmails');
+    Route::get('/emails/recipient/search/{email}','App\Http\Controllers\Api\EmailController@searchRecipientEmails');
     Route::apiResource('/emails','App\Http\Controllers\Api\EmailController');
 
 });

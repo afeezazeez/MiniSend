@@ -7,17 +7,17 @@
             <form @submit.prevent="applyFilter" >
                 <div class="row">
                     <div class="col-md-3">
-                        <input type="text" v-model="searchData.sender" class="form-control " placeholder="Sender">
+                        <input type="text" v-model="searchData.sender" class="form-control " placeholder="Sender" :maxlength="225">
                         <p v-if="errors.sender" class="text-danger mt-1 error-message">{{errors.sender[0]}}</p>
                     </div>
 
                     <div class="col-md-3">
-                        <input type="text" v-model="searchData.recipient" class="form-control " placeholder="Recipient">
+                        <input type="text" v-model="searchData.recipient" class="form-control " placeholder="Recipient" :maxlength="225">
                         <p v-if="errors.recipient" class="text-danger mt-1 error-message">{{errors.sender[0]}}</p>
                     </div>
 
                     <div class="col-md-3">
-                        <input type="text" v-model="searchData.subject" class="form-control " placeholder="Subject">
+                        <input type="text" v-model="searchData.subject" class="form-control " placeholder="Subject" :maxlength="225">
                         <p v-if="errors.subject" class="text-danger mt-1 error-message">{{errors.subject[0]}}</p>
                     </div>
 
@@ -63,7 +63,6 @@
                 subject: '',
                 status:''
             },
-
 
         };
     },

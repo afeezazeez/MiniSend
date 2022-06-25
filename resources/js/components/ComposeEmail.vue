@@ -1,20 +1,19 @@
 <template>
    <form id="contact-form" method="post" enctype="multipart/form-data" class="card">
-         <h4>Compose Email</h4>
         <div class="controls">
 
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="form_name">From Email *</label>
-                        <input id="from_email" type="text" name="from_email" class="form-control" placeholder="Enter from email address *" required="required" >
+                        <input id="from_email" type="text" name="from_email" class="form-control" placeholder="Enter from email address *" required="required" :maxlength="225" >
                         <div class="help-block with-errors"></div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="form_lastname">To Email *</label>
-                        <input id="to_email" type="text" name="to_email" class="form-control" placeholder="Enter to email address *" required="required" >
+                        <input id="to_email" type="text" name="to_email" class="form-control" placeholder="Enter to email address *" required="required" :maxlength="225" >
                         <div class="help-block with-errors"></div>
                     </div>
                 </div>
@@ -23,7 +22,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="form_email">Subject*</label>
-                        <input id="subject" type="email"  name="subject" class="form-control" placeholder="Enter subject *" required="required">
+                        <input id="subject" type="email"  name="subject" class="form-control" placeholder="Enter subject *" required="required" :maxlength="225">
                         <div class="help-block with-errors"></div>
                     </div>
                 </div>

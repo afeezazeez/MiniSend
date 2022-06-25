@@ -50,7 +50,7 @@ class EmailService{
 
     }
 
-    public function applyFilter($request=null,$email=null)
+    public function applyFilter($email=null)
     {
 
         $query = Email::query();
@@ -66,7 +66,7 @@ class EmailService{
         ->thenReturn()
         ->when($email, function($q) use ($email) {
             return $q->where('to_email', $email);
-        })
+        })->orderBy('created_at','desc')
         ->paginate(10)->withQueryString();
         return $emails;
 

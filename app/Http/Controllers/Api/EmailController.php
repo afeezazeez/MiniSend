@@ -73,9 +73,9 @@ class EmailController extends Controller
     }
 
 
-    public function search(SearchRequest $request)
+    public function searchEmails(SearchRequest $request)
     {
-        $emails = $this->emailService->applyFilter($request->validated(),$email=null);
+        $emails = $this->emailService->applyFilter();
 
         return EmailResource::collection($emails);
     }
@@ -83,7 +83,14 @@ class EmailController extends Controller
 
     public function fetchRecipientEmails($email)
     {
-        $recipientEmails = $this->emailService->applyFilter($request=null,$email);
+        $emails = Email::where('to_email',$email)->orderBy('created_at','desc')->paginate(10);
+        return EmailResource::collection($emails);
+    }
+
+
+    public function searchRecipientEmails(SearchRequest $request,$email)
+    {
+        $recipientEmails = $this->emailService->applyFilter($email);
         return EmailResource::collection($recipientEmails);
     }
 
