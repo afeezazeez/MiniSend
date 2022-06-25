@@ -4,7 +4,7 @@
         <SearchFilter :errors="errors" @applyFilter="search" @clearFilter='clearFilter' class="mt-3"></SearchFilter>
         <div class="emails  card mt-3">
            <Table :emails="emails"></Table>
-           <Pagination :pagination="pagination" @fetchEmails="fetchEmails"></Pagination>
+            <Pagination :pagination="pagination" @fetchEmails="fetchEmails"></Pagination>
         </div>
     </div>
 </template>
@@ -14,6 +14,9 @@ import SearchFilter from './SearchFilter'
 import Table from './Table'
 import Pagination from './Pagination'
 import CONFIG from '../config.js';
+import { makePagination } from '../utils';
+
+
 
 
  export default {
@@ -40,44 +43,30 @@ import CONFIG from '../config.js';
                 this.errors = {}
                 this.fetchRecipientEmails()
             },
-            makePagination(meta,links){
-                let pagination = {
-                    current_page : meta.current_page,
-                    last_page:meta.last_page,
-                    next_page_url:links.next,
-                    prev_page_url :links.prev,
-                    total_result:meta.total
-                }
-                this.pagination = pagination;
-            },
             fetchEmails(page_url){
-                let vm = this;
-                page_url = page_url || this.baseURL
+                page_url = page_url || baseURL
                 axios.get(page_url)
                 .then((response) => {
+                    console.log(response.data.data)
                     this.emails = response.data.data;
-                    vm.makePagination(response.data.meta,response.data.links);
-                    //vm.makePagination(response.meta,response.links)
-
+                    this.pagination = makePagination(response.data.meta,response.data.links)
                 })
                 .catch((error) => {
-                    console.log(error);
+                    console.log(error.response)
                 });
+
             },
-             fetchRecipientEmails() {
-                let vm = this;
+            fetchRecipientEmails() {
                 axios.get(`${this.baseURL}/recipient/${this.email}`)
                 .then((response) => {
                         this.emails = response.data.data
-                        vm.makePagination(response.data.meta,response.data.links);
-
+                        this.pagination = makePagination(response.data.meta,response.data.links)
                 })
                 .catch((error) => {
                     this.errors = error.response.data.data
                 });
             },
-            search (searchData) {
-
+             search (searchData) {
                     let queryString = "";
                     let isEmpty = true;
                     const payload = {}
@@ -90,6 +79,7 @@ import CONFIG from '../config.js';
 
                     if (!isEmpty) {
                         let vm = this;
+
                         queryString = '?';
                         const length = Object.keys(payload).length;
                         Object.keys(payload).forEach((key, index)=>{

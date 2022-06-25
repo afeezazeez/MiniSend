@@ -14,6 +14,7 @@ import SearchFilter from './SearchFilter'
 import Table from './Table'
 import Pagination from './Pagination'
 import CONFIG from '../config.js';
+import { makePagination } from '../utils';
 
 
  export default {
@@ -41,25 +42,13 @@ import CONFIG from '../config.js';
                     this.errors = {}
                     this.fetchEmails()
                 },
-                makePagination(meta,links){
-                    let pagination = {
-                        current_page : meta.current_page,
-                        last_page:meta.last_page,
-                        next_page_url:links.next,
-                        prev_page_url :links.prev,
-                        total_result:meta.total
-                    }
-                    this.pagination = pagination;
-                },
+              
                 fetchEmails(page_url){
-                    let vm = this;
                     page_url = page_url || this.baseURL
                     axios.get(page_url)
                     .then((response) => {
                         this.emails = response.data.data;
-                        vm.makePagination(response.data.meta,response.data.links);
-                        //vm.makePagination(response.meta,response.links)
-
+                        this.pagination = makePagination(response.data.meta,response.data.links)
                     })
                     .catch((error) => {
                         console.log(error);

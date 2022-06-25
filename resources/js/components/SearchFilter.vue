@@ -39,8 +39,11 @@
             </form>
         </div>
 
-        <div class="col-md-1">
+        <div class="col-md-1 d-flex action">
              <button @click="clearFilter"  class="btn btn-danger btn-send"><i class="fas fa-undo"></i></button>
+              <router-link :to="{name:'emails.send'}" exact>
+                <button class="btn btn-info btn-send"><i class="fas fa-paper-plane"></i></button>
+             </router-link>
         </div>
 
         </div>
@@ -86,5 +89,9 @@
     }
     .error-message{
         font-size:12px;
+    }
+    .action{
+        column-gap:20px;
+        margin-left:-30px
     }
 </style>

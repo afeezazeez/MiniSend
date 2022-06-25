@@ -5714,6 +5714,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Table */ "./resources/js/components/Table.vue");
 /* harmony import */ var _Pagination__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pagination */ "./resources/js/components/Pagination.vue");
 /* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../config.js */ "./resources/js/config.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils */ "./resources/js/utils.js");
 //
 //
 //
@@ -5724,6 +5725,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 
@@ -5752,24 +5754,13 @@ __webpack_require__.r(__webpack_exports__);
       this.errors = {};
       this.fetchEmails();
     },
-    makePagination: function makePagination(meta, links) {
-      var pagination = {
-        current_page: meta.current_page,
-        last_page: meta.last_page,
-        next_page_url: links.next,
-        prev_page_url: links.prev,
-        total_result: meta.total
-      };
-      this.pagination = pagination;
-    },
     fetchEmails: function fetchEmails(page_url) {
       var _this = this;
 
-      var vm = this;
       page_url = page_url || this.baseURL;
       axios.get(page_url).then(function (response) {
         _this.emails = response.data.data;
-        vm.makePagination(response.data.meta, response.data.links); //vm.makePagination(response.meta,response.links)
+        _this.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_4__.makePagination)(response.data.meta, response.data.links);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -5864,6 +5855,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Table */ "./resources/js/components/Table.vue");
 /* harmony import */ var _Pagination__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pagination */ "./resources/js/components/Pagination.vue");
 /* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../config.js */ "./resources/js/config.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils */ "./resources/js/utils.js");
 //
 //
 //
@@ -5874,6 +5866,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 
@@ -5901,35 +5894,24 @@ __webpack_require__.r(__webpack_exports__);
       this.errors = {};
       this.fetchRecipientEmails();
     },
-    makePagination: function makePagination(meta, links) {
-      var pagination = {
-        current_page: meta.current_page,
-        last_page: meta.last_page,
-        next_page_url: links.next,
-        prev_page_url: links.prev,
-        total_result: meta.total
-      };
-      this.pagination = pagination;
-    },
     fetchEmails: function fetchEmails(page_url) {
       var _this = this;
 
-      var vm = this;
-      page_url = page_url || this.baseURL;
+      page_url = page_url || baseURL;
       axios.get(page_url).then(function (response) {
+        console.log(response.data.data);
         _this.emails = response.data.data;
-        vm.makePagination(response.data.meta, response.data.links); //vm.makePagination(response.meta,response.links)
+        _this.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_4__.makePagination)(response.data.meta, response.data.links);
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.response);
       });
     },
     fetchRecipientEmails: function fetchRecipientEmails() {
       var _this2 = this;
 
-      var vm = this;
       axios.get("".concat(this.baseURL, "/recipient/").concat(this.email)).then(function (response) {
         _this2.emails = response.data.data;
-        vm.makePagination(response.data.meta, response.data.links);
+        _this2.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_4__.makePagination)(response.data.meta, response.data.links);
       })["catch"](function (error) {
         _this2.errors = error.response.data.data;
       });
@@ -5979,6 +5961,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
 //
 //
 //
@@ -6249,6 +6234,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Home */ "./resources/js/Home.vue");
 /* harmony import */ var _components_Email__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Email */ "./resources/js/components/Email.vue");
 /* harmony import */ var _components_RecipientEmails__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/RecipientEmails */ "./resources/js/components/RecipientEmails.vue");
+/* harmony import */ var _components_ComposeEmail__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/ComposeEmail */ "./resources/js/components/ComposeEmail.vue");
+
 
 
 
@@ -6266,8 +6253,36 @@ __webpack_require__.r(__webpack_exports__);
     path: '/data-view/emails/recipient/:email',
     component: _components_RecipientEmails__WEBPACK_IMPORTED_MODULE_2__["default"],
     name: 'recipient.emails'
+  }, {
+    path: '/emails/send',
+    component: _components_ComposeEmail__WEBPACK_IMPORTED_MODULE_3__["default"],
+    name: 'emails.send'
   }]
 });
+
+/***/ }),
+
+/***/ "./resources/js/utils.js":
+/*!*******************************!*\
+  !*** ./resources/js/utils.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "makePagination": () => (/* binding */ makePagination)
+/* harmony export */ });
+function makePagination(meta, links) {
+  var pagination = {
+    current_page: meta.current_page,
+    last_page: meta.last_page,
+    next_page_url: links.next,
+    prev_page_url: links.prev,
+    total_result: meta.total
+  };
+  return pagination;
+}
 
 /***/ }),
 
@@ -11459,7 +11474,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.search[data-v-e1bdd9aa]{\n    padding:20px;\n     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);\n}\n.error-message[data-v-e1bdd9aa]{\n    font-size:12px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.search[data-v-e1bdd9aa]{\n    padding:20px;\n     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);\n}\n.error-message[data-v-e1bdd9aa]{\n    font-size:12px;\n}\n.action[data-v-e1bdd9aa]{\n    -moz-column-gap:20px;\n         column-gap:20px;\n    margin-left:-30px\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -31110,16 +31125,31 @@ var render = function () {
         ),
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-danger btn-send",
-            on: { click: _vm.clearFilter },
-          },
-          [_c("i", { staticClass: "fas fa-undo" })]
-        ),
-      ]),
+      _c(
+        "div",
+        { staticClass: "col-md-1 d-flex action" },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-danger btn-send",
+              on: { click: _vm.clearFilter },
+            },
+            [_c("i", { staticClass: "fas fa-undo" })]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            { attrs: { to: { name: "emails.send" }, exact: "" } },
+            [
+              _c("button", { staticClass: "btn btn-info btn-send" }, [
+                _c("i", { staticClass: "fas fa-paper-plane" }),
+              ]),
+            ]
+          ),
+        ],
+        1
+      ),
     ]),
   ])
 }
