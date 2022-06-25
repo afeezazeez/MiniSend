@@ -5625,6 +5625,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -30989,7 +30993,7 @@ var render = function () {
                     type: "email",
                     placeholder: "Enter from email address *",
                     maxlength: 225,
-                    value: "ddd",
+                    required: "required",
                   },
                   domProps: { value: _vm.formData.from_email },
                   on: {
@@ -31031,6 +31035,7 @@ var render = function () {
                     type: "email",
                     placeholder: "Enter to email address *",
                     maxlength: 225,
+                    required: "required",
                   },
                   domProps: { value: _vm.formData.to_email },
                   on: {
@@ -31075,6 +31080,7 @@ var render = function () {
                     name: "subject",
                     placeholder: "Enter subject *",
                     maxlength: 225,
+                    required: "required",
                   },
                   domProps: { value: _vm.formData.subject },
                   on: {
@@ -31157,6 +31163,7 @@ var render = function () {
                     placeholder: "Message for me *",
                     rows: "4",
                     "data-error": "Please, leave us a message.",
+                    required: "required",
                   },
                   domProps: { value: _vm.formData.html_content },
                   on: {

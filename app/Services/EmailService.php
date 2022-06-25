@@ -8,6 +8,7 @@ use App\Filters\StatusFilter;
 use App\Services\FileService;
 use Illuminate\Http\Response;
 use App\Filters\SubjectFilter;
+use App\Helpers\Logger;
 use Illuminate\Routing\Pipeline;
 use Illuminate\Support\Facades\DB;
 use App\Traits\ApiResponseStructure;
@@ -37,7 +38,6 @@ class EmailService{
                 $emailData =array_merge($request->validated(),['text_content' =>$request->html_content]);
 
                 $email =  Email::create(Arr::except($emailData ,'files'));
-
                 // upload email attachments
                 if($request->hasFile('files')){
                     $this->fileService->uploadFiles($request->file('files'),$email);
@@ -47,7 +47,9 @@ class EmailService{
         }
         catch(\Exception $e){
            DB::rollBack();
-           return $this->error($e->getMessage(),Response::HTTP_INTERNAL_SERVER_ERROR,null);
+           Logger::logError($e);
+           return $this->error('Error occured while sending email. Please try again',Response::HTTP_INTERNAL_SERVER_ERROR,null);
+
         }
 
         return $email;

@@ -209,6 +209,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'Logger' => App\Helpers\Logger::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 

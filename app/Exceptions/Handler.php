@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Helpers\Logger;
 use Throwable;
 use Carbon\Carbon;
 use Illuminate\Http\Response;
@@ -52,9 +53,7 @@ class Handler extends ExceptionHandler
         {
             return $this->error('Resource not found',Response::HTTP_NOT_FOUND,null);
         }
-        Log::error("[Error encountered in file ] " . $e->getFile(). "  Time : " .Carbon::now()->toDateTimeString());
-        Log::error("[Error encountered on line ] " . $e->getLine());
-        Log::error("[Exception Message]". $e->getMessage());
+        Logger::logError($e);
         return $this->error('Error handling request',Response::HTTP_INTERNAL_SERVER_ERROR,null);
     }
 }

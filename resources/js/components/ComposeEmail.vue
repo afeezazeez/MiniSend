@@ -11,7 +11,8 @@
                                 class="form-control" placeholder="Enter from email address *"
                                 :maxlength="225"
                                 v-model="formData.from_email"
-                                value="ddd"
+                                required="required"
+
                             >
                             <div class="help-block with-errors">
                                 <p  class="text-danger mt-1 error-message">{{from_email_error}}</p>
@@ -25,6 +26,7 @@
                                 class="form-control" placeholder="Enter to email address *"
                                 :maxlength="225"
                                 v-model="formData.to_email"
+                                required="required"
                             >
                             <div class="help-block with-errors">
                                 <p  class="text-danger mt-1 error-message">{{to_email_error}}</p>
@@ -40,6 +42,7 @@
                                 class="form-control" placeholder="Enter subject *"
                                 :maxlength="225"
                                 v-model="formData.subject"
+                                required="required"
                                 >
                             <div class="help-block with-errors">
                                 <p  class="text-danger mt-1 error-message">{{subject_error}}</p>
@@ -73,6 +76,7 @@
                                 placeholder="Message for me *" rows="4"
                                 data-error="Please, leave us a message."
                                 v-model="formData.html_content"
+                                required="required"
                             >
                             </textarea>
                             <div class="help-block with-errors">

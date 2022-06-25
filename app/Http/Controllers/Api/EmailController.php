@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Email;
+use App\Helpers\Logger;
 use App\Jobs\SendEmailJob;
 use Illuminate\Http\Response;
 use App\Services\EmailService;
@@ -48,6 +49,7 @@ class EmailController extends Controller
     // get all emails
     public function index()
     {
+
         $emails = Email::orderBy('created_at','desc')->paginate(10);
         return EmailResource::collection($emails);
 
@@ -58,9 +60,10 @@ class EmailController extends Controller
     {
         $email = $this->emailService->createAndSendEmail($request);
 
+
         //send email through background job
         if($email){
-            //SendEmailJob::dispatch($email);
+            SendEmailJob::dispatch($email);
         }
 
         return $this->success(null,'Email sent successfully',Response::HTTP_CREATED);

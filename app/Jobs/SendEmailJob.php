@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Helpers\Logger;
 use Carbon\Carbon;
 use App\Models\Email;
 use App\Mail\SendEmail;
@@ -44,8 +45,7 @@ class SendEmailJob implements ShouldQueue
         }
         catch(\Exception $e){
             $this->email->update(['status'=> Email::EMAIL_FAILED_STATUS]);
-            Log::error("[Email Sending failed ]". " Email ID : ".$this->email->id. "  Time : " .Carbon::now()->toDateTimeString());
-            Log::error("[Exception Message]". $e->getMessage());
+            Logger::logError($e);
         }
 
     }
