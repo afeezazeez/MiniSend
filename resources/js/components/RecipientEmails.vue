@@ -53,6 +53,9 @@ import Spinner from './Spinner'
                 type: 'error',
                 title: 'Failed!',
                 text: error
+                })
+                .then(function() {
+                    window.location = "/";
                 });
             },
             fetchEmails(page_url){

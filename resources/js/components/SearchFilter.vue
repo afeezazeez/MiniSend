@@ -65,9 +65,9 @@
 
     methods:{
         applyFilter(){
-
             this.clearErrors()
             if(this.passedValidation(this.searchData)){
+                console.log('sent')
                  this.$emit('applyFilter',this.searchData);
             }
 
@@ -79,7 +79,7 @@
             this.searchData.subject= '',
             this.searchData.status= ''
             this.$emit("refresh")
-            
+
         },
          clearErrors(){
             this.subject_error= '',
@@ -105,6 +105,11 @@
                 this.status_error = 'Invalid email status.'
                 passed = false
             }
+            if( !this.searchData.subject.length && !this.searchData.status && !this.searchData.sender && !this.searchData.recipient){
+                passed = false
+            }
+            // check if no filter is specified
+
             return passed;
         }
     }

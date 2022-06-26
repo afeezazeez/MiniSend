@@ -61,7 +61,7 @@ import { makePagination } from '../utils';
                     page_url = page_url || '/'
                     axios.get(page_url)
                     .then((response) => {
-                        console.log(response)
+                     
                         this.emails = response.data.data;
                         this.pagination = makePagination(response.data.current_page,response.data.last_page,response.data.prev_page_url,response.data.next_page_url,response.data.total)
                         this.isLoading=false
