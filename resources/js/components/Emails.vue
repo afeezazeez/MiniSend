@@ -1,6 +1,6 @@
 <template>
     <div>
-     <SearchFilter ref="searchFilter"  @applyFilter="search" ></SearchFilter>
+     <SearchFilter ref="searchFilter"  @applyFilter="search"  @refresh="fetchEmails"></SearchFilter>
         <div class="emails mt-2" >
            <Table :emails="emails"></Table>
            <Pagination :pagination="pagination" @fetchEmails="fetchEmails"></Pagination>

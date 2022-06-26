@@ -2,7 +2,7 @@
     <div class="container mt-4">
         <div >
             <h4 >Emails sent to {{email}}</h4>
-            <SearchFilter  ref="searchFilter" @applyFilter="search"  class="mt-3"></SearchFilter>
+            <SearchFilter  ref="searchFilter" @applyFilter="search" @refresh="fetchRecipientEmails" class="mt-3"></SearchFilter>
             <div class="emails mt-3">
             <Table :emails="emails"></Table>
                 <Pagination :pagination="pagination" @fetchEmails="fetchEmails"></Pagination>

@@ -74,6 +74,7 @@
             this.searchData.recipient= '',
             this.searchData.subject= '',
             this.searchData.status= ''
+            this.$emit("refresh")
         },
          clearErrors(){
             this.subject_error= '',

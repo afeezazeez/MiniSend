@@ -6247,6 +6247,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     clearFilter: function clearFilter() {
       this.searchData.sender = '', this.searchData.recipient = '', this.searchData.subject = '', this.searchData.status = '';
+      this.$emit("refresh");
     },
     clearErrors: function clearErrors() {
       this.subject_error = '', this.sender_error = '', this.recipient_error = '', this.status_error = '';
@@ -31327,7 +31328,7 @@ var render = function () {
     [
       _c("SearchFilter", {
         ref: "searchFilter",
-        on: { applyFilter: _vm.search },
+        on: { applyFilter: _vm.search, refresh: _vm.fetchEmails },
       }),
       _vm._v(" "),
       _c(
@@ -31521,7 +31522,7 @@ var render = function () {
         _c("SearchFilter", {
           ref: "searchFilter",
           staticClass: "mt-3",
-          on: { applyFilter: _vm.search },
+          on: { applyFilter: _vm.search, refresh: _vm.fetchRecipientEmails },
         }),
         _vm._v(" "),
         _c(
