@@ -5386,7 +5386,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -44535,9 +44534,7 @@ var render = function () {
     [
       Object.keys(_vm.analytics).length > 0
         ? _c("Analytics", { attrs: { analytics: _vm.analytics } })
-        : _c("h4", { staticClass: "text-danger" }, [
-            _vm._v("Error occured while fetching analytics."),
-          ]),
+        : _vm._e(),
       _vm._v(" "),
       _c("div", { staticClass: "row mt-3" }, [
         _c("div", { staticClass: "col-md-12" }, [_c("Emails")], 1),

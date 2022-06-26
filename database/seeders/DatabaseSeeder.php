@@ -17,11 +17,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-       // Email::factory()->count(3)->make();
 
-         // for ($i=0; $i < 5000; $i++) {
+       // \App\Models\Email::factory(10)->create();
+
+
                 Email::factory()->count(200)->create();
-        // }
 
 
         // \App\Models\User::factory()->create([

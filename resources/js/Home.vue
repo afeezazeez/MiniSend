@@ -3,7 +3,6 @@
 <div class="container mt-4">
 
     <Analytics v-if="Object.keys(analytics).length > 0" :analytics="analytics"></Analytics>
-    <h4 v-else class="text-danger">Error occured while fetching analytics.</h4>
     <div class="row mt-3">
         <div class="col-md-12">
             <Emails></Emails>

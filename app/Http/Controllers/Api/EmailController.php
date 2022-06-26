@@ -32,18 +32,22 @@ class EmailController extends Controller
     public function analytics()
     {
 
-        $emails = DB::table('emails')->select('status')->get();
+        $result = DB::select("SELECT
+                    COUNT(*) as totalCount,
+                    COUNT(IF(`status` = 'Posted', 1, NULL)) as postedCount,
+                    COUNT(IF(`status` = 'Sent', 1, NULL)) as sentCount,
+                    COUNT(IF(`status` = 'Failed', 1, NULL)) as failedCount
+                    FROM emails");
 
-       // return $emails;
         $analytics = [
-            'total_emails'=>$emails->count(),
-            'total_sent'=>$emails->where('status',Email::EMAIL_SENT_STATUS)->count(),
-            'total_posted'=>$emails->where('status',Email::EMAIL_POSTED_STATUS)->count(),
-            'total_failed'=>$emails->where('status',Email::EMAIL_FAILED_STATUS)->count()
+            'total_emails'=> $result[0]->totalCount,
+            'total_sent'=>$result[0]->sentCount,
+            'total_posted'=>$result[0]->postedCount,
+            'total_failed'=>$result[0]->failedCount
         ];
 
         return $this->success($analytics,null,Response::HTTP_OK);
-    
+
 
     }
 
@@ -52,7 +56,9 @@ class EmailController extends Controller
     public function index()
     {
 
-        $emails = DB::table('emails')->select('id','from_email','to_email','subject','status','created_at')->paginate(10);
+        $emails = DB::table('emails')->select('id','from_email','to_email','subject','status','created_at')
+        ->orderBy('created_at','desc')
+        ->paginate(10);
         return $emails;
 
     }
