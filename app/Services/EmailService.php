@@ -59,7 +59,7 @@ class EmailService{
     public function applyFilter($email=null)
     {
 
-        $query = Email::query();
+        $query = DB::table('emails');
 
         $emails = app(Pipeline::class)
         ->send($query)
@@ -72,7 +72,9 @@ class EmailService{
         ->thenReturn()
         ->when($email, function($q) use ($email) {
             return $q->where('to_email', $email);
-        })->orderBy('created_at','desc')
+        })
+        ->select('id','from_email','to_email','subject','status','created_at')
+        ->orderBy('created_at','desc')
         ->paginate(10)->withQueryString();
         return $emails;
 

@@ -31,6 +31,7 @@ class EmailController extends Controller
     // analytics
     public function analytics()
     {
+
         $emails = DB::table('emails')->select('status')->get();
 
        // return $emails;
@@ -42,6 +43,8 @@ class EmailController extends Controller
         ];
 
         return $this->success($analytics,null,Response::HTTP_OK);
+    
+
     }
 
 
@@ -49,8 +52,8 @@ class EmailController extends Controller
     public function index()
     {
 
-        $emails = Email::orderBy('created_at','desc')->paginate(10);
-        return EmailResource::collection($emails);
+        $emails = DB::table('emails')->select('id','from_email','to_email','subject','status','created_at')->paginate(10);
+        return $emails;
 
     }
 
@@ -80,25 +83,26 @@ class EmailController extends Controller
 
         $emails = $this->emailService->applyFilter();
 
-        return EmailResource::collection($emails);
+       return $emails;
     }
 
 
     public function fetchRecipientEmails($email)
     {
-        $emails = Email::where('to_email',$email)->orderBy('created_at','desc')->paginate(10);
-        if(!count($emails)){
+        $emails =DB::table('emails')->where('to_email',$email)->orderBy('created_at','desc')->paginate(10);
+        if(!$emails->total()){
             return $this->error('Recipient email not found',Response::HTTP_NOT_FOUND,null);
         }
 
-        return EmailResource::collection($emails);
+        return $emails;
     }
 
 
     public function searchRecipientEmails(SearchRequest $request,$email)
     {
+
         $recipientEmails = $this->emailService->applyFilter($email);
-        return EmailResource::collection($recipientEmails);
+        return $recipientEmails;
     }
 
 

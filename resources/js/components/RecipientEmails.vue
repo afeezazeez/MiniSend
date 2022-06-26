@@ -8,7 +8,7 @@
                 <Pagination :pagination="pagination" @fetchEmails="fetchEmails"></Pagination>
             </div>
         </div>
-       
+
     </div>
 </template>
 <script>
@@ -57,7 +57,7 @@ import { makePagination } from '../utils';
                 .then((response) => {
                     console.log(response.data.data)
                     this.emails = response.data.data;
-                    this.pagination = makePagination(response.data.meta,response.data.links)
+                    this.pagination = makePagination(response.data.current_page,response.data.last_page,response.data.prev_page_url,response.data.next_page_url,response.data.total)
                 })
                 .catch((error) => {
                    this.errorAlert(error.response.data.message)
@@ -68,7 +68,7 @@ import { makePagination } from '../utils';
                 axios.get(`/recipient/${this.email}`)
                 .then((response) => {
                         this.emails = response.data.data
-                        this.pagination = makePagination(response.data.meta,response.data.links)
+                        this.pagination = makePagination(response.data.current_page,response.data.last_page,response.data.prev_page_url,response.data.next_page_url,response.data.total)
                 })
                 .catch((error) => {
                     this.errorAlert(error.response.data.message)
@@ -95,7 +95,7 @@ import { makePagination } from '../utils';
                         axios.get(`/recipient/search/${this.email}/${queryString}`)
                         .then((response) => {
                             this.emails = response.data.data
-                            this.pagination = makePagination(response.data.meta,response.data.links)
+                            this.pagination = makePagination(response.data.current_page,response.data.last_page,response.data.prev_page_url,response.data.next_page_url,response.data.total)
                         })
                         .catch((error) => {
                             this.$refs.searchFilter.clearFilter()

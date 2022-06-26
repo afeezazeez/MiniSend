@@ -5942,8 +5942,9 @@ __webpack_require__.r(__webpack_exports__);
 
       page_url = page_url || '/';
       axios.get(page_url).then(function (response) {
+        console.log(response);
         _this.emails = response.data.data;
-        _this.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.makePagination)(response.data.meta, response.data.links);
+        _this.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.makePagination)(response.data.current_page, response.data.last_page, response.data.prev_page_url, response.data.next_page_url, response.data.total);
       })["catch"](function (error) {
         _this.errorAlert(error.response.data.message);
       });
@@ -5970,7 +5971,7 @@ __webpack_require__.r(__webpack_exports__);
         });
         axios.get("/search/".concat(queryString)).then(function (response) {
           _this2.emails = response.data.data;
-          _this2.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.makePagination)(response.data.meta, response.data.links);
+          _this2.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.makePagination)(response.data.current_page, response.data.last_page, response.data.prev_page_url, response.data.next_page_url, response.data.total);
         })["catch"](function (error) {
           _this2.$refs.searchFilter.clearFilter();
 
@@ -6115,7 +6116,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get(page_url).then(function (response) {
         console.log(response.data.data);
         _this.emails = response.data.data;
-        _this.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.makePagination)(response.data.meta, response.data.links);
+        _this.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.makePagination)(response.data.current_page, response.data.last_page, response.data.prev_page_url, response.data.next_page_url, response.data.total);
       })["catch"](function (error) {
         _this.errorAlert(error.response.data.message);
       });
@@ -6125,7 +6126,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/recipient/".concat(this.email)).then(function (response) {
         _this2.emails = response.data.data;
-        _this2.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.makePagination)(response.data.meta, response.data.links);
+        _this2.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.makePagination)(response.data.current_page, response.data.last_page, response.data.prev_page_url, response.data.next_page_url, response.data.total);
       })["catch"](function (error) {
         _this2.errorAlert(error.response.data.message);
       });
@@ -6152,7 +6153,7 @@ __webpack_require__.r(__webpack_exports__);
         });
         axios.get("/recipient/search/".concat(this.email, "/").concat(queryString)).then(function (response) {
           _this3.emails = response.data.data;
-          _this3.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.makePagination)(response.data.meta, response.data.links);
+          _this3.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.makePagination)(response.data.current_page, response.data.last_page, response.data.prev_page_url, response.data.next_page_url, response.data.total);
         })["catch"](function (error) {
           _this3.$refs.searchFilter.clearFilter();
 
@@ -6606,13 +6607,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "extensionIsValid": () => (/* binding */ extensionIsValid),
 /* harmony export */   "makePagination": () => (/* binding */ makePagination)
 /* harmony export */ });
-function makePagination(meta, links) {
+function makePagination(current_page, last_page, prev_page_url, next_page_url, total) {
   var pagination = {
-    current_page: meta.current_page,
-    last_page: meta.last_page,
-    next_page_url: links.next,
-    prev_page_url: links.prev,
-    total_result: meta.total
+    current_page: current_page,
+    last_page: last_page,
+    next_page_url: next_page_url,
+    prev_page_url: prev_page_url,
+    total_result: total
   };
   return pagination;
 }
@@ -31203,7 +31204,7 @@ var render = function () {
                 ]),
                 _vm._v(" "),
                 _c("h6", { staticClass: "mt-3" }, [
-                  _vm._v("Date : " + _vm._s(_vm.email.sent_at)),
+                  _vm._v("Date : " + _vm._s(_vm.email.created)),
                 ]),
               ]),
             ]),
@@ -31875,7 +31876,7 @@ var render = function () {
                 _vm._v(" "),
                 _c("td", [
                   _c("p", { staticClass: "fw-normal mb-1" }, [
-                    _vm._v(_vm._s(email.sent_at)),
+                    _vm._v(_vm._s(email.created_at)),
                   ]),
                 ]),
                 _vm._v(" "),

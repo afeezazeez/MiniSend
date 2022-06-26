@@ -1,11 +1,11 @@
 
-export function makePagination(meta,links) {
+export function makePagination(current_page,last_page,prev_page_url,next_page_url,total) {
     let pagination = {
-        current_page : meta.current_page,
-        last_page:meta.last_page,
-        next_page_url:links.next,
-        prev_page_url :links.prev,
-        total_result:meta.total
+        current_page : current_page,
+        last_page:last_page,
+        next_page_url:next_page_url,
+        prev_page_url :prev_page_url,
+        total_result:total
     }
     return pagination
  }

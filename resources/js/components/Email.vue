@@ -11,7 +11,7 @@
                     <h3 class="mt-4">{{email.subject}}</h3>
                     <h6 class="mt-3">From : {{email.from_email}}</h6>
                     <h6 class="mt-3">To : {{email.to_email}}</h6>
-                    <h6 class="mt-3">Date : {{email.sent_at}}</h6>
+                    <h6 class="mt-3">Date : {{email.created}}</h6>
                 </div>
 
             </div>
@@ -51,7 +51,7 @@
 
         </div>
     </div>
-    
+
 
 </div>
 

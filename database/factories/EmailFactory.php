@@ -21,8 +21,9 @@ class EmailFactory extends Factory
             'from_email' => $this->faker->safeEmail(),
             'to_email' => $this->faker->unique()->safeEmail(),
             'subject'=>$this->faker->word,
-            'text_content'=>$this->faker->text(40),
-            'status'=>$this->faker->randomElement([Email::EMAIL_SENT_STATUS,Email::EMAIL_FAILED_STATUS,Email::EMAIL_POSTED_STATUS]),
+            'html_content'=>$this->faker->text(40),
+            'status'=>$status = $this->faker->randomElement([Email::EMAIL_SENT_STATUS,Email::EMAIL_FAILED_STATUS,Email::EMAIL_POSTED_STATUS]),
+            'failed_reason'=> $status == Email::EMAIL_FAILED_STATUS ? $this->faker->randomElement(['Expected response 205 but received 302','Mailer not configured','Failed to Authenticate SMTP with given credentials']):null
         ];
     }
 }

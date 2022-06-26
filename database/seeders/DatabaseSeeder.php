@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
+use App\Models\Email;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,7 +16,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         \App\Models\Email::factory(50)->create();
+
+       // Email::factory()->count(3)->make();
+
+         // for ($i=0; $i < 5000; $i++) {
+                Email::factory()->count(200)->create();
+        // }
+
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

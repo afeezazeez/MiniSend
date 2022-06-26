@@ -31,7 +31,7 @@
                     <p class="fw-normal mb-1">{{email.subject}}</p>
                 </td>
                 <td>
-                    <p class="fw-normal mb-1">{{email.sent_at}}</p>
+                    <p class="fw-normal mb-1">{{email.created_at}}</p>
                 </td>
                 <td v-if="email.status == 'Sent'">
                     <span class="badge badge-success rounded-pill d-inline">Sent</span>
