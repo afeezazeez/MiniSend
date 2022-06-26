@@ -72,13 +72,14 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="form_message">Message *</label>
-                            <textarea id="form_message" name="message" class="form-control"
-                                placeholder="Message for me *" rows="4"
-                                data-error="Please, leave us a message."
+
+                            <quill-editor
+                                ref="myQuillEditor"
                                 v-model="formData.html_content"
-                                required="required"
-                            >
-                            </textarea>
+                                rows="50"
+
+                            />
+
                             <div class="help-block with-errors">
                                 <p class="text-danger mt-1 error-message">{{html_content_error}}</p>
                             </div>
@@ -130,12 +131,13 @@ import { extensionIsValid } from '../utils';
 
     methods:{
         sendEmail(){
-            this.isSubmit=true
-            this.btnText = 'Sending Email';
-            this.clearErrors()
-            if(this.passedValidation(this.formData)){
-                this.$emit('sendEmail',this.formData);
-            }
+            console.log(this.formData.html_content)
+            // this.isSubmit=true
+            // this.btnText = 'Sending Email';
+            // this.clearErrors()
+            // if(this.passedValidation(this.formData)){
+            //     this.$emit('sendEmail',this.formData);
+            // }
         },
         clearForm(){
             this.isSubmit=false
@@ -217,5 +219,6 @@ import { extensionIsValid } from '../utils';
         padding:20px;
          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     }
+
 </style>
 
