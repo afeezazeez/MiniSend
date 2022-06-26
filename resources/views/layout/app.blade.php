@@ -22,12 +22,14 @@
         .h-link:hover{
             text-decoration: none;
         }
+
     </style>
 </head>
 
 <body>
     <div class="container">
         <a href="/" class="h-link"><h1 class="app-header"><font color="lightblue">M</font>ini<font color="blue">S</font>end</h1></a>
+        <a href="/"class="btn btn-primary"> <i class="fa fa-home home-link"></i></a>
     </div>
     <div id="app">
         <router-view>

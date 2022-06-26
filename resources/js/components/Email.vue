@@ -98,7 +98,7 @@
                     responseType: 'arraybuffer',
                 })
                 .then((response) => {
-                    console.log(response.data)
+                   
                     this.forceFileDownload(response, filename)
                 })
                 .catch(() => console.log('error occured'))

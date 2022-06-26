@@ -1,17 +1,18 @@
 <?php
 namespace App\Services;
 
-use App\Filters\FromAndToEmailsFilter;
 use App\Models\Email;
+use App\Helpers\Logger;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use App\Filters\StatusFilter;
 use App\Services\FileService;
 use Illuminate\Http\Response;
 use App\Filters\SubjectFilter;
-use App\Helpers\Logger;
 use Illuminate\Routing\Pipeline;
 use Illuminate\Support\Facades\DB;
 use App\Traits\ApiResponseStructure;
+use App\Filters\FromAndToEmailsFilter;
 
 
 class EmailService{
@@ -33,9 +34,8 @@ class EmailService{
             DB::beginTransaction();
 
                 // store the email database
-
                 //compute email text content
-                $emailData =array_merge($request->validated(),['text_content' =>$request->html_content]);
+                $emailData =array_merge($request->validated(),['text_content' =>Str::ScriptStripper($request->html_content)]);
 
                 $email =  Email::create(Arr::except($emailData ,'files'));
                 // upload email attachments

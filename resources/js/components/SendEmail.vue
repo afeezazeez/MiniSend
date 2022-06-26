@@ -10,6 +10,8 @@
 
 
 import ComposeEmail from './ComposeEmail';
+import { stripScripts } from '../utils';
+
 
 
  export default {
@@ -19,11 +21,15 @@ import ComposeEmail from './ComposeEmail';
 
             };
         },
+        mounted(){
+
+        },
         components:{
             ComposeEmail,
         },
         methods:{
             sendEmail(form_data){
+
                 let formData = new FormData()
                 formData.append('from_email',form_data.from_email)
                 formData.append('to_email',form_data.to_email)
@@ -38,7 +44,6 @@ import ComposeEmail from './ComposeEmail';
                 axios.post('/',formData)
                 .then((response) => {
                     this.successAlert()
-                    this.errors = {}
                     this.$refs.composeEmail.clearForm()
 
                 })

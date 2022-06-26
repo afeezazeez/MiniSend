@@ -67,6 +67,7 @@ class EmailController extends Controller
     // create and send email
     public function store(SendEmailRequest $request)
     {
+        
         $email = $this->emailService->createAndSendEmail($request);
 
 

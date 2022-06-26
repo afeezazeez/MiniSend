@@ -5,6 +5,8 @@
                  <button class="btn btn-primary">Send Email <i class="fa fa-paper-plane"></i></button>
               </router-link>
             <button @click="clearFilter" class="btn btn-danger">Clear Filter <i class="fa fa-undo"></i></button>
+
+
         </div>
       <div class="  card search mt-3">
         <form @submit.prevent="applyFilter" class="mt-4">
@@ -31,7 +33,7 @@
                 <p  class="text-danger mt-1 error-message">{{status_error}}</p>
                 </div>
                 <div class="col-md-1 mb-3">
-                <button class="btn btn-primary" :disabled="isSubmit" type="submit"><i class="fa fa-search"></i></button>
+                <button class="btn btn-primary"  type="submit"><i class="fa fa-search"></i></button>
                 </div>
             </div>
         </form>
@@ -56,17 +58,19 @@
             recipient_error: '',
             subject_error: '',
             status_error:'',
-            isSubmit:false,
+
 
         };
     },
 
     methods:{
         applyFilter(){
-             this.clearErrors()
+
+            this.clearErrors()
             if(this.passedValidation(this.searchData)){
                  this.$emit('applyFilter',this.searchData);
             }
+
         },
 
         clearFilter(){
@@ -75,6 +79,7 @@
             this.searchData.subject= '',
             this.searchData.status= ''
             this.$emit("refresh")
+            
         },
          clearErrors(){
             this.subject_error= '',

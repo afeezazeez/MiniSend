@@ -16,6 +16,7 @@ import router from './router'
 import VueQuillEditor from 'quill-vuejs'
 import VueSweetalert2 from 'vue-sweetalert2';
 import {BootstrapVue, IconsPlugin} from 'bootstrap-vue'
+import VueButtonSpinner from 'vue-button-spinner';
 
 
 import 'sweetalert2/dist/sweetalert2.min.css';
@@ -32,6 +33,7 @@ Vue.use(VueQuillEditor)
 Vue.use(VueRouter);
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+Vue.use(VueButtonSpinner)
 
 
 /**
