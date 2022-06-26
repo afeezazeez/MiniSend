@@ -43,9 +43,7 @@
 </template>
 <script>
  export default {
-    props:{
-        errors: Object
-    },
+   
      data() {
         return {
             searchData: {

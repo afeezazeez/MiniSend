@@ -1,6 +1,6 @@
 <template>
     <div>
-     <SearchFilter ref="searchFilter"  @applyFilter="search"  @refresh="fetchEmails"></SearchFilter>
+     <SearchFilter ref="searchFilter"  @applyFilter="search"  @refresh="fetchEmails" ></SearchFilter>
         <div class="emails mt-2" >
            <div v-if="!isLoading">
                 <Table :emails="emails"></Table>
@@ -61,7 +61,7 @@ import { makePagination } from '../utils';
                     page_url = page_url || '/'
                     axios.get(page_url)
                     .then((response) => {
-                     
+
                         this.emails = response.data.data;
                         this.pagination = makePagination(response.data.current_page,response.data.last_page,response.data.prev_page_url,response.data.next_page_url,response.data.total)
                         this.isLoading=false
