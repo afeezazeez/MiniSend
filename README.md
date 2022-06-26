@@ -1,4 +1,4 @@
-# MiniSend Email Service
+# MiniSend Email App
  A simple transactional email app that allows clients to; 
 
 > Send emails with a sender and recipient emails,subject,text content,html content and attachments(optional)
@@ -86,7 +86,7 @@ $ npm install && npm run dev
 You should be able to visit your app at your laravel app base url e.g http://localhost:8000 or http://minisend.test/ (Provided you use Laravel Valet).
 
 
->If you will like to setup queue,Database was used as queue driver. When app is setup, Update `QUEUE_CONNECTION` to `database` in `.env`and ensure to run `php artisan queue:work` in seperate terminal of your project to make sure your queue workers runs in background otherwise leave the queue driver as default `sync` in `.env`
+>If you will like to setup queue,Database was used as queue driver. When app is setup, Update `QUEUE_CONNECTION` to `database` in `.env`and ensure to run `php artisan queue:work` in seperate terminal of your project to make sure your queue worker runs in background otherwise leave the queue driver as default `sync` in `.env`
 
 ## Design & Implementation Decisions
 - Attachments sizes was validated to be less or equal to 5MB (both clients and server side)
@@ -96,12 +96,12 @@ You should be able to visit your app at your laravel app base url e.g http://loc
 - Reusable components were used on frontend to avoid duplication
 - To view emails for a recipient, All recipient emails on the dashboard were made clickable which link to a page for viewing emails of the recipient
 -  Email  attachments were uploaded to public storage.
-- Queueing systems was implemented for sending emails. Database was configured as
+- Queue  was implemented for sending emails. Database was configured as
 queue driver. By this, Clients don't need to wait for long time to get response when they send emails. Instead,emails sent are saved, then picked up by a job that runs in the background. This job will send the email to appropriate recipient.
 - Emails sent have status 'Posted' by default
 - The underground job is responsible for updating the email status in the database to 'Sent' or 'Failed' depending on the outcome of the job action.
-- If sending of emails fails, the underground jpb will update the status in db and also
-add the failure reason in a new column which I added for emails. This can be viewd on the frontend
+- If sending of emails fails, the underground job will update the status in db and also
+add the failure reason in a new column which I added for emails. This can be viewed on the frontend
 - Whenever an email is sent and get saved in the database, if it has attachments,attachments are immediately uploaded. If these two operations are successful, the email get sent to the recipient.
 - In a case where attachments upload fail, Database transaction was used to rollback such email from the database and mail doesn't get sent.
 - As  a layer of security against DDOS, backend api was throttled(rate limited)
@@ -112,7 +112,7 @@ add the failure reason in a new column which I added for emails. This can be vie
 ## Suggesions
 - As it was mentioned earlier, Email attachments were uploaded to app server public storage. For reliable security and simplicity of management storages such as Amazon S3, Cloudinary e.t.c should be used to upload attachments.
 
-- A retry logic can be implemented which will be used to resend emails that have failed. This can simply be done by grabbing the emails and sending them back to the underground job which will resend again again and subsequently update email status.
+- A retry logic can be implemented which will be used to resend emails that have failed. This can simply be done by grabbing the emails and sending them back to the underground job which will resend again and subsequently update email status.
 
 - As it was mentioned earlier,Database was configured as queue driver.
 As opposed to this, Redis,Memcached or Amazon SQS can be used as queue driver.
