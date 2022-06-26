@@ -1,12 +1,12 @@
 <template>
-    <div v-if="emails.length">
+    <div>
      <SearchFilter ref="searchFilter"  @applyFilter="search" ></SearchFilter>
-        <div class="emails mt-3" >
+        <div class="emails mt-2" >
            <Table :emails="emails"></Table>
            <Pagination :pagination="pagination" @fetchEmails="fetchEmails"></Pagination>
         </div>
     </div>
-    <h4 v-else class="text-danger">Error occured while fetching emails.</h4>
+   
 </template>
 <script>
 
@@ -99,8 +99,5 @@ import { makePagination } from '../utils';
     }
 </script>
 <style scoped>
-    .card{
-        padding:20px;
-         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    }
+
 </style>

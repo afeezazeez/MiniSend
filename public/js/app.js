@@ -5398,7 +5398,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   name: "Home",
   components: {
-    ComposeEmail: _components_ComposeEmail__WEBPACK_IMPORTED_MODULE_0__["default"],
     Emails: _components_Emails__WEBPACK_IMPORTED_MODULE_1__["default"],
     Analytics: _components_Analytics__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
@@ -6177,6 +6176,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -11747,30 +11753,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, "\n.card[data-v-50b99641]{\n    padding
 
 /***/ }),
 
-/***/ "./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Emails.vue?vue&type=style&index=0&id=6bb659fc&scoped=true&lang=css&":
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Emails.vue?vue&type=style&index=0&id=6bb659fc&scoped=true&lang=css& ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/laravel-mix/node_modules/css-loader/dist/runtime/api.js */ "./node_modules/laravel-mix/node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.card[data-v-6bb659fc]{\n    padding:20px;\n     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);\n}\n", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
 /***/ "./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Pagination.vue?vue&type=style&index=0&id=d7acf176&scoped=true&lang=css&":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Pagination.vue?vue&type=style&index=0&id=d7acf176&scoped=true&lang=css& ***!
@@ -11795,30 +11777,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, "\n.pagination[data-v-d7acf176]{\n    j
 
 /***/ }),
 
-/***/ "./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/RecipientEmails.vue?vue&type=style&index=0&id=237b7435&scoped=true&lang=css&":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/RecipientEmails.vue?vue&type=style&index=0&id=237b7435&scoped=true&lang=css& ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/laravel-mix/node_modules/css-loader/dist/runtime/api.js */ "./node_modules/laravel-mix/node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.card[data-v-237b7435]{\n    padding:20px;\n     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);\n}\n", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
 /***/ "./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SearchFilter.vue?vue&type=style&index=0&id=e1bdd9aa&scoped=true&lang=css&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SearchFilter.vue?vue&type=style&index=0&id=e1bdd9aa&scoped=true&lang=css& ***!
@@ -11836,7 +11794,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.search[data-v-e1bdd9aa]{\n    padding:20px;\n}\n.error-message[data-v-e1bdd9aa]{\n    font-size:12px;\n}\n.action[data-v-e1bdd9aa]{\n    -moz-column-gap:20px;\n         column-gap:20px;\n    margin-left:-30px\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.btns[data-v-e1bdd9aa]{\n    -moz-column-gap:20px;\n         column-gap:20px;\n}\n.search[data-v-e1bdd9aa]{\n    padding-left:13px !important;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29482,36 +29440,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Emails.vue?vue&type=style&index=0&id=6bb659fc&scoped=true&lang=css&":
-/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Emails.vue?vue&type=style&index=0&id=6bb659fc&scoped=true&lang=css& ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Emails_vue_vue_type_style_index_0_id_6bb659fc_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Emails.vue?vue&type=style&index=0&id=6bb659fc&scoped=true&lang=css& */ "./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Emails.vue?vue&type=style&index=0&id=6bb659fc&scoped=true&lang=css&");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Emails_vue_vue_type_style_index_0_id_6bb659fc_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Emails_vue_vue_type_style_index_0_id_6bb659fc_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
-
-/***/ }),
-
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Pagination.vue?vue&type=style&index=0&id=d7acf176&scoped=true&lang=css&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Pagination.vue?vue&type=style&index=0&id=d7acf176&scoped=true&lang=css& ***!
@@ -29539,36 +29467,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Pagination_vue_vue_type_style_index_0_id_d7acf176_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
-
-/***/ }),
-
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/RecipientEmails.vue?vue&type=style&index=0&id=237b7435&scoped=true&lang=css&":
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/RecipientEmails.vue?vue&type=style&index=0&id=237b7435&scoped=true&lang=css& ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_RecipientEmails_vue_vue_type_style_index_0_id_237b7435_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./RecipientEmails.vue?vue&type=style&index=0&id=237b7435&scoped=true&lang=css& */ "./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/RecipientEmails.vue?vue&type=style&index=0&id=237b7435&scoped=true&lang=css&");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_RecipientEmails_vue_vue_type_style_index_0_id_237b7435_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_RecipientEmails_vue_vue_type_style_index_0_id_237b7435_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
@@ -30086,17 +29984,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Emails_vue_vue_type_template_id_6bb659fc_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Emails.vue?vue&type=template&id=6bb659fc&scoped=true& */ "./resources/js/components/Emails.vue?vue&type=template&id=6bb659fc&scoped=true&");
 /* harmony import */ var _Emails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Emails.vue?vue&type=script&lang=js& */ "./resources/js/components/Emails.vue?vue&type=script&lang=js&");
-/* harmony import */ var _Emails_vue_vue_type_style_index_0_id_6bb659fc_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Emails.vue?vue&type=style&index=0&id=6bb659fc&scoped=true&lang=css& */ "./resources/js/components/Emails.vue?vue&type=style&index=0&id=6bb659fc&scoped=true&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
-;
 
 
 /* normalize component */
-
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _Emails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Emails_vue_vue_type_template_id_6bb659fc_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
   _Emails_vue_vue_type_template_id_6bb659fc_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
@@ -30207,17 +30103,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _RecipientEmails_vue_vue_type_template_id_237b7435_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RecipientEmails.vue?vue&type=template&id=237b7435&scoped=true& */ "./resources/js/components/RecipientEmails.vue?vue&type=template&id=237b7435&scoped=true&");
 /* harmony import */ var _RecipientEmails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RecipientEmails.vue?vue&type=script&lang=js& */ "./resources/js/components/RecipientEmails.vue?vue&type=script&lang=js&");
-/* harmony import */ var _RecipientEmails_vue_vue_type_style_index_0_id_237b7435_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RecipientEmails.vue?vue&type=style&index=0&id=237b7435&scoped=true&lang=css& */ "./resources/js/components/RecipientEmails.vue?vue&type=style&index=0&id=237b7435&scoped=true&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
-;
 
 
 /* normalize component */
-
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _RecipientEmails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _RecipientEmails_vue_vue_type_template_id_237b7435_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
   _RecipientEmails_vue_vue_type_template_id_237b7435_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
@@ -30571,19 +30465,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Emails.vue?vue&type=style&index=0&id=6bb659fc&scoped=true&lang=css&":
-/*!*****************************************************************************************************!*\
-  !*** ./resources/js/components/Emails.vue?vue&type=style&index=0&id=6bb659fc&scoped=true&lang=css& ***!
-  \*****************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Emails_vue_vue_type_style_index_0_id_6bb659fc_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Emails.vue?vue&type=style&index=0&id=6bb659fc&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Emails.vue?vue&type=style&index=0&id=6bb659fc&scoped=true&lang=css&");
-
-
-/***/ }),
-
 /***/ "./resources/js/components/Pagination.vue?vue&type=style&index=0&id=d7acf176&scoped=true&lang=css&":
 /*!*********************************************************************************************************!*\
   !*** ./resources/js/components/Pagination.vue?vue&type=style&index=0&id=d7acf176&scoped=true&lang=css& ***!
@@ -30593,19 +30474,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Pagination_vue_vue_type_style_index_0_id_d7acf176_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Pagination.vue?vue&type=style&index=0&id=d7acf176&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Pagination.vue?vue&type=style&index=0&id=d7acf176&scoped=true&lang=css&");
-
-
-/***/ }),
-
-/***/ "./resources/js/components/RecipientEmails.vue?vue&type=style&index=0&id=237b7435&scoped=true&lang=css&":
-/*!**************************************************************************************************************!*\
-  !*** ./resources/js/components/RecipientEmails.vue?vue&type=style&index=0&id=237b7435&scoped=true&lang=css& ***!
-  \**************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_RecipientEmails_vue_vue_type_style_index_0_id_237b7435_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./RecipientEmails.vue?vue&type=style&index=0&id=237b7435&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/RecipientEmails.vue?vue&type=style&index=0&id=237b7435&scoped=true&lang=css&");
 
 
 /***/ }),
@@ -31453,34 +31321,30 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.emails.length
-    ? _c(
+  return _c(
+    "div",
+    [
+      _c("SearchFilter", {
+        ref: "searchFilter",
+        on: { applyFilter: _vm.search },
+      }),
+      _vm._v(" "),
+      _c(
         "div",
+        { staticClass: "emails mt-2" },
         [
-          _c("SearchFilter", {
-            ref: "searchFilter",
-            on: { applyFilter: _vm.search },
-          }),
+          _c("Table", { attrs: { emails: _vm.emails } }),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "emails mt-3" },
-            [
-              _c("Table", { attrs: { emails: _vm.emails } }),
-              _vm._v(" "),
-              _c("Pagination", {
-                attrs: { pagination: _vm.pagination },
-                on: { fetchEmails: _vm.fetchEmails },
-              }),
-            ],
-            1
-          ),
+          _c("Pagination", {
+            attrs: { pagination: _vm.pagination },
+            on: { fetchEmails: _vm.fetchEmails },
+          }),
         ],
         1
-      )
-    : _c("h4", { staticClass: "text-danger" }, [
-        _vm._v("Error occured while fetching emails."),
-      ])
+      ),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -31648,37 +31512,33 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container mt-4" }, [
-    _vm.emails.length
-      ? _c(
+    _c(
+      "div",
+      [
+        _c("h4", [_vm._v("Emails sent to " + _vm._s(_vm.email))]),
+        _vm._v(" "),
+        _c("SearchFilter", {
+          ref: "searchFilter",
+          staticClass: "mt-3",
+          on: { applyFilter: _vm.search },
+        }),
+        _vm._v(" "),
+        _c(
           "div",
+          { staticClass: "emails mt-3" },
           [
-            _c("h4", [_vm._v("Emails sent to " + _vm._s(_vm.email))]),
+            _c("Table", { attrs: { emails: _vm.emails } }),
             _vm._v(" "),
-            _c("SearchFilter", {
-              ref: "searchFilter",
-              staticClass: "mt-3",
-              on: { applyFilter: _vm.search },
+            _c("Pagination", {
+              attrs: { pagination: _vm.pagination },
+              on: { fetchEmails: _vm.fetchEmails },
             }),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "emails mt-3" },
-              [
-                _c("Table", { attrs: { emails: _vm.emails } }),
-                _vm._v(" "),
-                _c("Pagination", {
-                  attrs: { pagination: _vm.pagination },
-                  on: { fetchEmails: _vm.fetchEmails },
-                }),
-              ],
-              1
-            ),
           ],
           1
-        )
-      : _c("h4", { staticClass: "text-danger" }, [
-          _vm._v("Error occured while fetching emails."),
-        ]),
+        ),
+      ],
+      1
+    ),
   ])
 }
 var staticRenderFns = []
@@ -31704,170 +31564,203 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: " card search" }, [
+  return _c("div", [
     _c(
-      "form",
-      {
-        on: {
-          submit: function ($event) {
-            $event.preventDefault()
-            return _vm.applyFilter.apply(null, arguments)
+      "div",
+      { staticClass: "d-flex btns" },
+      [
+        _c(
+          "router-link",
+          { attrs: { to: { name: "emails.send" }, exact: "" } },
+          [
+            _c("button", { staticClass: "btn btn-primary" }, [
+              _vm._v("Send Email "),
+              _c("i", { staticClass: "fa fa-paper-plane" }),
+            ]),
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-danger", on: { click: _vm.clearFilter } },
+          [_vm._v("Clear Filter "), _c("i", { staticClass: "fa fa-undo" })]
+        ),
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "  card search mt-3" }, [
+      _c(
+        "form",
+        {
+          staticClass: "mt-4",
+          on: {
+            submit: function ($event) {
+              $event.preventDefault()
+              return _vm.applyFilter.apply(null, arguments)
+            },
           },
         },
-      },
-      [
-        _c("div", { staticClass: "form-row" }, [
-          _c("div", { staticClass: "col-md-3 mb-3" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.searchData.sender,
-                  expression: "searchData.sender",
-                },
-              ],
-              staticClass: "form-control ",
-              attrs: { type: "text", placeholder: "Sender", maxlength: 225 },
-              domProps: { value: _vm.searchData.sender },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.searchData, "sender", $event.target.value)
-                },
-              },
-            }),
-            _vm._v(" "),
-            _c("p", { staticClass: "text-danger mt-1 error-message" }, [
-              _vm._v(_vm._s(_vm.sender_error)),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-3 mb-3" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.searchData.recipient,
-                  expression: "searchData.recipient",
-                },
-              ],
-              staticClass: "form-control ",
-              attrs: { type: "text", placeholder: "Recipient", maxlength: 225 },
-              domProps: { value: _vm.searchData.recipient },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.searchData, "recipient", $event.target.value)
-                },
-              },
-            }),
-            _vm._v(" "),
-            _c("p", { staticClass: "text-danger mt-1 error-message" }, [
-              _vm._v(_vm._s(_vm.recipient_error)),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-3 mb-3" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.searchData.subject,
-                  expression: "searchData.subject",
-                },
-              ],
-              staticClass: "form-control ",
-              attrs: { type: "text", placeholder: "Subject", maxlength: 225 },
-              domProps: { value: _vm.searchData.subject },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.searchData, "subject", $event.target.value)
-                },
-              },
-            }),
-            _vm._v(" "),
-            _c("p", { staticClass: "text-danger mt-1 error-message" }, [
-              _vm._v(_vm._s(_vm.subject_error)),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-2 mb-3" }, [
-            _c(
-              "select",
-              {
+        [
+          _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "col-md-3 mb-3" }, [
+              _c("input", {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.searchData.status,
-                    expression: "searchData.status",
+                    value: _vm.searchData.sender,
+                    expression: "searchData.sender",
                   },
                 ],
-                staticClass: "form-control",
-                attrs: { type: "text", id: "validationDefault05" },
+                staticClass: "form-control ",
+                attrs: { type: "text", placeholder: "Sender", maxlength: 225 },
+                domProps: { value: _vm.searchData.sender },
                 on: {
-                  change: function ($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function (o) {
-                        return o.selected
-                      })
-                      .map(function (o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.searchData,
-                      "status",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.searchData, "sender", $event.target.value)
                   },
                 },
-              },
-              [
-                _c("option", { attrs: { value: "" } }, [
-                  _vm._v("Select status"),
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Posted" } }, [
-                  _vm._v("Posted"),
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Sent" } }, [_vm._v("Sent")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Failed" } }, [
-                  _vm._v("Failed"),
-                ]),
-              ]
-            ),
+              }),
+              _vm._v(" "),
+              _c("p", { staticClass: "text-danger mt-1 error-message" }, [
+                _vm._v(_vm._s(_vm.sender_error)),
+              ]),
+            ]),
             _vm._v(" "),
-            _c("p", { staticClass: "text-danger mt-1 error-message" }, [
-              _vm._v(_vm._s(_vm.status_error)),
+            _c("div", { staticClass: "col-md-3 mb-3" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.searchData.recipient,
+                    expression: "searchData.recipient",
+                  },
+                ],
+                staticClass: "form-control ",
+                attrs: {
+                  type: "text",
+                  placeholder: "Recipient",
+                  maxlength: 225,
+                },
+                domProps: { value: _vm.searchData.recipient },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.searchData, "recipient", $event.target.value)
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _c("p", { staticClass: "text-danger mt-1 error-message" }, [
+                _vm._v(_vm._s(_vm.recipient_error)),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-3 mb-3" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.searchData.subject,
+                    expression: "searchData.subject",
+                  },
+                ],
+                staticClass: "form-control ",
+                attrs: { type: "text", placeholder: "Subject", maxlength: 225 },
+                domProps: { value: _vm.searchData.subject },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.searchData, "subject", $event.target.value)
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _c("p", { staticClass: "text-danger mt-1 error-message" }, [
+                _vm._v(_vm._s(_vm.subject_error)),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-2 mb-3" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.searchData.status,
+                      expression: "searchData.status",
+                    },
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", id: "validationDefault05" },
+                  on: {
+                    change: function ($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function (o) {
+                          return o.selected
+                        })
+                        .map(function (o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.searchData,
+                        "status",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    },
+                  },
+                },
+                [
+                  _c("option", { attrs: { value: "" } }, [
+                    _vm._v("Select status"),
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Posted" } }, [
+                    _vm._v("Posted"),
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Sent" } }, [_vm._v("Sent")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "Failed" } }, [
+                    _vm._v("Failed"),
+                  ]),
+                ]
+              ),
+              _vm._v(" "),
+              _c("p", { staticClass: "text-danger mt-1 error-message" }, [
+                _vm._v(_vm._s(_vm.status_error)),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-1 mb-3" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { disabled: _vm.isSubmit, type: "submit" },
+                },
+                [_c("i", { staticClass: "fa fa-search" })]
+              ),
             ]),
           ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-1 mb-3" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary",
-                attrs: { disabled: _vm.isSubmit, type: "submit" },
-              },
-              [_c("i", { staticClass: "fa fa-search" })]
-            ),
-          ]),
-        ]),
-      ]
-    ),
+        ]
+      ),
+    ]),
   ])
 }
 var staticRenderFns = []

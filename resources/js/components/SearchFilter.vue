@@ -1,36 +1,43 @@
 <template>
-
-    <div class=" card search">
-
-    <form @submit.prevent="applyFilter" >
-        <div class="form-row">
-            <div class="col-md-3 mb-3">
-             <input type="text" v-model="searchData.sender" class="form-control " placeholder="Sender" :maxlength="225" >
-              <p class="text-danger mt-1 error-message">{{sender_error}}</p>
-            </div>
-            <div class="col-md-3 mb-3">
-            <input type="text" v-model="searchData.recipient" class="form-control " placeholder="Recipient" :maxlength="225">
-            <p class="text-danger mt-1 error-message">{{recipient_error}}</p>
-            </div>
-            <div class="col-md-3 mb-3">
-            <input type="text" v-model="searchData.subject" class="form-control " placeholder="Subject" :maxlength="225">
-               <p class="text-danger mt-1 error-message">{{subject_error}}</p>
-            </div>
-            <div class="col-md-2 mb-3">
-            <select type="text" class="form-control" id="validationDefault05" v-model="searchData.status">
-               <option value="">Select status</option>
-                <option value="Posted">Posted</option>
-                <option value="Sent">Sent</option>
-                <option value="Failed">Failed</option>
-            </select>
-             <p  class="text-danger mt-1 error-message">{{status_error}}</p>
-            </div>
-            <div class="col-md-1 mb-3">
-            <button class="btn btn-primary" :disabled="isSubmit" type="submit"><i class="fa fa-search"></i></button>
-            </div>
+    <div>
+      <div class="d-flex btns">
+              <router-link :to="{name:'emails.send'}" exact>
+                 <button class="btn btn-primary">Send Email <i class="fa fa-paper-plane"></i></button>
+              </router-link>
+            <button @click="clearFilter" class="btn btn-danger">Clear Filter <i class="fa fa-undo"></i></button>
         </div>
-    </form>
+      <div class="  card search mt-3">
+        <form @submit.prevent="applyFilter" class="mt-4">
+            <div class="form-row">
+                <div class="col-md-3 mb-3">
+                <input type="text" v-model="searchData.sender" class="form-control " placeholder="Sender" :maxlength="225" >
+                <p class="text-danger mt-1 error-message">{{sender_error}}</p>
+                </div>
+                <div class="col-md-3 mb-3">
+                <input type="text" v-model="searchData.recipient" class="form-control " placeholder="Recipient" :maxlength="225">
+                <p class="text-danger mt-1 error-message">{{recipient_error}}</p>
+                </div>
+                <div class="col-md-3 mb-3">
+                <input type="text" v-model="searchData.subject" class="form-control " placeholder="Subject" :maxlength="225">
+                <p class="text-danger mt-1 error-message">{{subject_error}}</p>
+                </div>
+                <div class="col-md-2 mb-3">
+                <select type="text" class="form-control" id="validationDefault05" v-model="searchData.status">
+                <option value="">Select status</option>
+                    <option value="Posted">Posted</option>
+                    <option value="Sent">Sent</option>
+                    <option value="Failed">Failed</option>
+                </select>
+                <p  class="text-danger mt-1 error-message">{{status_error}}</p>
+                </div>
+                <div class="col-md-1 mb-3">
+                <button class="btn btn-primary" :disabled="isSubmit" type="submit"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </form>
+      </div>
     </div>
+
 </template>
 <script>
  export default {
@@ -98,15 +105,11 @@
  }
 </script>
 <style scoped>
-    .search{
-        padding:20px;
-
-    }
-    .error-message{
-        font-size:12px;
-    }
-    .action{
+    .btns{
         column-gap:20px;
-        margin-left:-30px
     }
+    .search{
+        padding-left:13px !important;
+    }
+
 </style>

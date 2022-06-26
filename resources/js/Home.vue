@@ -28,7 +28,6 @@
         },
         name: "Home",
         components:{
-            ComposeEmail,
             Emails,
             Analytics,
 
@@ -57,3 +56,4 @@
         }
     }
 </script>
+
