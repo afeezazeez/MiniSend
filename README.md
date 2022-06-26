@@ -72,6 +72,7 @@ Also Seeder was set up for emails. Emails can be seeded into database using
 ```console
 $ composer install
 $ php artisan key:generate
+$ php artisan migrate
 $ php artisan db:seed 
 $ php artisan serve
 ```
