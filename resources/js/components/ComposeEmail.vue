@@ -196,8 +196,8 @@ import { extensionIsValid } from '../utils';
                         this.attachments_error = 'One or more files have invalid format'
                         passed = false
                     }
-                    if(file.size > 20000000){
-                        this.attachments_error = 'One or more files have size greater than 20mb'
+                    if(file.size > 5000000){
+                        this.attachments_error = 'One or more files have size greater than 5mb'
                         passed = false
                     }
                 }
