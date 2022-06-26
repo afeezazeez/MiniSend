@@ -20,7 +20,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 window.axios.defaults.baseURL = CONFIG.API_URL_ROOT;
 
-console.log(window.axios.defaults.baseURL )
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

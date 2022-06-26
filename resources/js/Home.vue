@@ -2,7 +2,8 @@
 
 <div class="container mt-4">
 
-    <Analytics></Analytics>
+    <Analytics v-if="Object.keys(analytics).length > 0" :analytics="analytics"></Analytics>
+    <h4 v-else class="text-danger">Error occured while fetching analytics.</h4>
     <div class="row mt-3">
         <div class="col-md-12">
             <Emails></Emails>
@@ -20,11 +21,38 @@
     import Analytics from './components/Analytics'
 
     export default {
+          data(){
+            return {
+                 analytics:{}
+            };
+        },
         name: "Home",
         components:{
             ComposeEmail,
             Emails,
             Analytics,
+
+        },
+          mounted(){
+            this.fetchAnalytics()
+        },
+        methods:{
+            fetchAnalytics(){
+                axios.get('/analytics')
+                .then((response) => {
+                    this.analytics = response.data.data;
+                })
+                .catch((error) => {
+                    this.errorAlert(error.response.data.message);
+                });
+            },
+             errorAlert(error) {
+                this.$swal({
+                    type: 'error',
+                    title: 'Failed!',
+                    text: error
+                });
+            },
 
         }
     }

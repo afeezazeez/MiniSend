@@ -1,56 +1,57 @@
 <template>
 
 <div class="container mt-4">
+    <div v-if="Object.keys(email).length > 0">
+        <h3 class="text-center">Mail Information</h3>
+        <div class="card col-md-8 email">
 
-    <h3 class="text-center">Mail Information</h3>
 
+            <div class="row ">
+                <div class="col-md-8">
+                    <h3 class="mt-4">{{email.subject}}</h3>
+                    <h6 class="mt-3">From : {{email.from_email}}</h6>
+                    <h6 class="mt-3">To : {{email.to_email}}</h6>
+                    <h6 class="mt-3">Date : {{email.sent_at}}</h6>
+                </div>
 
-    <div class="card col-md-8 email">
-
-        <div class="row ">
-            <div class="col-md-8">
-                <h3 class="mt-4">{{email.subject}}</h3>
-                <h6 class="mt-3">From : {{email.from_email}}</h6>
-                <h6 class="mt-3">To : {{email.to_email}}</h6>
-                <h6 class="mt-3">Date : {{email.sent_at}}</h6>
             </div>
 
-        </div>
+            <hr>
 
-        <hr>
-
-        <div class="row email-row body-row">
-            <div class="col-md-8  email-row">
-                 <p v-html="email.html_content"></p>
-            </div>
-        </div>
-
-        <div class="row email-row mt-4">
-            <div class="col-md-12">
-                <h5>Attachments</h5>
-                <hr>
-                <ul v-if="filesCount" id="example-1">
-                    <li v-for="attachment in email.attachments" :key="attachment.id">
-                        <a href="#" @click="downloadWithAxios(attachment.filepath,attachment.filename)">
-                            {{ attachment.filename }}
-                        </a>
-                    </li>
-                </ul>
-                <p v-else>Oops ! Email has no attachment</p>
-            </div>
-        </div>
-
-         <div class="row email-row mt-4" v-if="email.failed_reason">
-            <div class="col-md-12">
-                <a href="#" @click="isShow = !isShow">{{ !isShow ? 'Show failure response' : 'Hide response' }}</a>
-                <div v-if="isShow">
-                    <hr>
-                    <p>{{email.failed_reason}}</p>
+            <div class="row email-row body-row">
+                <div class="col-md-8  email-row">
+                    <p v-html="email.html_content"></p>
                 </div>
             </div>
-        </div>
 
+            <div class="row email-row mt-4">
+                <div class="col-md-12">
+                    <h5>Attachments</h5>
+                    <hr>
+                    <ul v-if="filesCount" id="example-1">
+                        <li v-for="attachment in email.attachments" :key="attachment.id">
+                            <a href="#" @click="downloadWithAxios(attachment.filepath,attachment.filename)">
+                                {{ attachment.filename }}
+                            </a>
+                        </li>
+                    </ul>
+                    <p v-else>Oops ! Email has no attachment</p>
+                </div>
+            </div>
+
+            <div class="row email-row mt-4" v-if="email.failed_reason">
+                <div class="col-md-12">
+                    <a href="#" @click="isShow = !isShow">{{ !isShow ? 'Show failure response' : 'Hide response' }}</a>
+                    <div v-if="isShow">
+                        <hr>
+                        <p>{{email.failed_reason}}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
+    
 
 </div>
 
@@ -58,7 +59,7 @@
 
 <script>
 
-   
+
     export default {
           data(){
             return {

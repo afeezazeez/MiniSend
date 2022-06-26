@@ -11,7 +11,7 @@
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
                                     <h2 class="d-flex align-items-center mb-0">
-                                        {{info.total_emails}}
+                                        {{analytics.total_emails}}
                                     </h2>
                                 </div>
                             </div>
@@ -28,7 +28,7 @@
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
                                     <h2 class="d-flex align-items-center mb-0">
-                                        {{info.total_sent}}
+                                        {{analytics.total_sent}}
                                     </h2>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
                                     <h2 class="d-flex align-items-center mb-0">
-                                         {{info.total_posted}}
+                                         {{analytics.total_posted}}
                                     </h2>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
                                     <h2 class="d-flex align-items-center mb-0">
-                                        {{info.total_failed}}
+                                        {{analytics.total_failed}}
                                     </h2>
                                 </div>
                             </div>
@@ -80,25 +80,15 @@
 
  export default {
 
+        props:{
+            analytics:Object
+        },
         data(){
             return {
-                 info:[]
+
             };
         },
-        mounted(){
-            this.fetchAnalytics()
-        },
-        methods:{
-            fetchAnalytics(){
-                axios.get('/analytics')
-                .then((response) => {
-                    this.info = response.data.data;
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-            }
-        }
+
     }
 </script>
 

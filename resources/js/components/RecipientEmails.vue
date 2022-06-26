@@ -1,11 +1,14 @@
 <template>
-    <div class="container mt-4"  v-if="emails.length">
-        <h4 >Emails sent to {{email}}</h4>
-        <SearchFilter :errors="errors" @applyFilter="search" @clearFilter='clearFilter' class="mt-3"></SearchFilter>
-        <div class="emails  card mt-3">
-           <Table :emails="emails"></Table>
-            <Pagination :pagination="pagination" @fetchEmails="fetchEmails"></Pagination>
+    <div class="container mt-4">
+        <div v-if="emails.length">
+            <h4 >Emails sent to {{email}}</h4>
+            <SearchFilter  ref="searchFilter" @applyFilter="search"  class="mt-3"></SearchFilter>
+            <div class="emails mt-3">
+            <Table :emails="emails"></Table>
+                <Pagination :pagination="pagination" @fetchEmails="fetchEmails"></Pagination>
+            </div>
         </div>
+         <h4 v-else class="text-danger">Error occured while fetching emails.</h4>
     </div>
 </template>
 <script>
@@ -38,8 +41,15 @@ import { makePagination } from '../utils';
         },
         methods:{
             clearFilter(){
-                this.errors = {}
+
                 this.fetchRecipientEmails()
+            },
+            errorAlert(error) {
+                this.$swal({
+                type: 'error',
+                title: 'Failed!',
+                text: error
+                });
             },
             fetchEmails(page_url){
                 page_url = page_url || '/'
@@ -50,7 +60,7 @@ import { makePagination } from '../utils';
                     this.pagination = makePagination(response.data.meta,response.data.links)
                 })
                 .catch((error) => {
-                    console.log(error.response)
+                   this.errorAlert(error.response.data.message)
                 });
 
             },
@@ -61,7 +71,7 @@ import { makePagination } from '../utils';
                         this.pagination = makePagination(response.data.meta,response.data.links)
                 })
                 .catch((error) => {
-                    this.errorAlert(error.response.data.message);
+                    this.errorAlert(error.response.data.message)
                 });
             },
             search (searchData) {
@@ -88,22 +98,13 @@ import { makePagination } from '../utils';
                             this.pagination = makePagination(response.data.meta,response.data.links)
                         })
                         .catch((error) => {
-                            this.errors = error.response.data.data
+                            this.$refs.searchFilter.clearFilter()
+                            this.errorAlert(error.response.data.message)
                         });
 
                     }
 
 
-            },
-            errorAlert(error) {
-                this.$swal({
-                    type: 'error',
-                    title: 'Failed!',
-                    text: error
-                })
-                .then(function() {
-                    window.location = "/";
-                });
             }
 
         },

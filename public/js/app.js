@@ -5386,15 +5386,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      analytics: {}
+    };
+  },
   name: "Home",
   components: {
     ComposeEmail: _components_ComposeEmail__WEBPACK_IMPORTED_MODULE_0__["default"],
     Emails: _components_Emails__WEBPACK_IMPORTED_MODULE_1__["default"],
     Analytics: _components_Analytics__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  mounted: function mounted() {
+    this.fetchAnalytics();
+  },
+  methods: {
+    fetchAnalytics: function fetchAnalytics() {
+      var _this = this;
+
+      axios.get('/analytics').then(function (response) {
+        _this.analytics = response.data.data;
+      })["catch"](function (error) {
+        _this.errorAlert(error.response.data.message);
+      });
+    },
+    errorAlert: function errorAlert(error) {
+      this.$swal({
+        type: 'error',
+        title: 'Failed!',
+        text: error
+      });
+    }
   }
 });
 
@@ -5488,24 +5515,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    analytics: Object
+  },
   data: function data() {
-    return {
-      info: []
-    };
-  },
-  mounted: function mounted() {
-    this.fetchAnalytics();
-  },
-  methods: {
-    fetchAnalytics: function fetchAnalytics() {
-      var _this = this;
-
-      axios.get('/analytics').then(function (response) {
-        _this.info = response.data.data;
-      })["catch"](function (error) {
-        console.log(error);
-      });
-    }
+    return {};
   }
 });
 
@@ -5682,6 +5696,11 @@ __webpack_require__.r(__webpack_exports__);
         passed = false;
       }
 
+      if (this.formData.from_email.length > 225 || this.formData.to_email.length > 225) {
+        this.to_email_error = 'The to email and from email cannot be greater than 225 characters.';
+        passed = false;
+      }
+
       if (this.formData.from_email != '' && this.formData.to_email === this.formData.from_email) {
         this.to_email_error = 'The to email and from email must be different.';
         passed = false;
@@ -5689,6 +5708,11 @@ __webpack_require__.r(__webpack_exports__);
 
       if (!this.formData.subject) {
         this.subject_error = 'The subject field is required';
+        passed = false;
+      }
+
+      if (!this.formData.subject.length > 225) {
+        this.subject_error = 'The subject cannot be greater than 225 characters';
         passed = false;
       }
 
@@ -5738,6 +5762,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
 //
 //
 //
@@ -5880,6 +5905,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -5890,7 +5916,6 @@ __webpack_require__.r(__webpack_exports__);
       emails: [],
       searchValue: '',
       filteredEmails: [],
-      errors: {},
       pagination: {}
     };
   },
@@ -5904,8 +5929,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     clearFilter: function clearFilter() {
-      this.errors = {};
       this.fetchEmails();
+    },
+    errorAlert: function errorAlert(error) {
+      this.$swal({
+        type: 'error',
+        title: 'Failed!',
+        text: error
+      });
     },
     fetchEmails: function fetchEmails(page_url) {
       var _this = this;
@@ -5915,7 +5946,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.emails = response.data.data;
         _this.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.makePagination)(response.data.meta, response.data.links);
       })["catch"](function (error) {
-        console.log(error);
+        _this.errorAlert(error.response.data.message);
       });
     },
     search: function search(searchData) {
@@ -5942,7 +5973,9 @@ __webpack_require__.r(__webpack_exports__);
           _this2.emails = response.data.data;
           _this2.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.makePagination)(response.data.meta, response.data.links);
         })["catch"](function (error) {
-          _this2.errors = error.response.data.data;
+          _this2.$refs.searchFilter.clearFilter();
+
+          _this2.errorAlert(error.response.data.message);
         });
       }
     }
@@ -6041,6 +6074,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -6064,8 +6100,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     clearFilter: function clearFilter() {
-      this.errors = {};
       this.fetchRecipientEmails();
+    },
+    errorAlert: function errorAlert(error) {
+      this.$swal({
+        type: 'error',
+        title: 'Failed!',
+        text: error
+      });
     },
     fetchEmails: function fetchEmails(page_url) {
       var _this = this;
@@ -6076,7 +6118,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.emails = response.data.data;
         _this.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.makePagination)(response.data.meta, response.data.links);
       })["catch"](function (error) {
-        console.log(error.response);
+        _this.errorAlert(error.response.data.message);
       });
     },
     fetchRecipientEmails: function fetchRecipientEmails() {
@@ -6113,18 +6155,11 @@ __webpack_require__.r(__webpack_exports__);
           _this3.emails = response.data.data;
           _this3.pagination = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.makePagination)(response.data.meta, response.data.links);
         })["catch"](function (error) {
-          _this3.errors = error.response.data.data;
+          _this3.$refs.searchFilter.clearFilter();
+
+          _this3.errorAlert(error.response.data.message);
         });
       }
-    },
-    errorAlert: function errorAlert(error) {
-      this.$swal({
-        type: 'error',
-        title: 'Failed!',
-        text: error
-      }).then(function () {
-        window.location = "/";
-      });
     }
   }
 });
@@ -6176,24 +6211,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     errors: Object
@@ -6205,16 +6222,52 @@ __webpack_require__.r(__webpack_exports__);
         recipient: '',
         subject: '',
         status: ''
-      }
+      },
+      sender_error: '',
+      recipient_error: '',
+      subject_error: '',
+      status_error: '',
+      isSubmit: false
     };
   },
   methods: {
     applyFilter: function applyFilter() {
-      this.$emit('applyFilter', this.searchData);
+      this.clearErrors();
+
+      if (this.passedValidation(this.searchData)) {
+        this.$emit('applyFilter', this.searchData);
+      }
     },
     clearFilter: function clearFilter() {
       this.searchData.sender = '', this.searchData.recipient = '', this.searchData.subject = '', this.searchData.status = '';
-      this.$emit('clearFilter');
+    },
+    clearErrors: function clearErrors() {
+      this.subject_error = '', this.sender_error = '', this.recipient_error = '', this.status_error = '';
+    },
+    passedValidation: function passedValidation(searchData) {
+      var passed = true;
+
+      if (this.searchData.sender.length > 225) {
+        this.sender_error = 'Sender email cannot be greater than 225 characters';
+        passed = false;
+      }
+
+      if (this.searchData.recipient.length > 225) {
+        this.recipient_error = 'Recipient email cannot be greater than 225 characters';
+        passed = false;
+      }
+
+      if (this.searchData.subject.length > 225) {
+        this.subject_error = 'Subject cannot be greater than 225 characters.';
+        passed = false;
+      }
+
+      if (!['Posted', 'Sent', 'Failed'].includes(this.searchData.status) && this.searchData.status != '') {
+        this.status_error = 'Invalid email status.';
+        passed = false;
+      }
+
+      return passed;
     }
   }
 });
@@ -6454,7 +6507,6 @@ try {
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.axios.defaults.baseURL = _config_js__WEBPACK_IMPORTED_MODULE_0__["default"].API_URL_ROOT;
-console.log(window.axios.defaults.baseURL);
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -11784,7 +11836,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.search[data-v-e1bdd9aa]{\n    padding:20px;\n     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);\n}\n.error-message[data-v-e1bdd9aa]{\n    font-size:12px;\n}\n.action[data-v-e1bdd9aa]{\n    -moz-column-gap:20px;\n         column-gap:20px;\n    margin-left:-30px\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.search[data-v-e1bdd9aa]{\n    padding:20px;\n}\n.error-message[data-v-e1bdd9aa]{\n    font-size:12px;\n}\n.action[data-v-e1bdd9aa]{\n    -moz-column-gap:20px;\n         column-gap:20px;\n    margin-left:-30px\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30791,7 +30843,11 @@ var render = function () {
     "div",
     { staticClass: "container mt-4" },
     [
-      _c("Analytics"),
+      Object.keys(_vm.analytics).length > 0
+        ? _c("Analytics", { attrs: { analytics: _vm.analytics } })
+        : _c("h4", { staticClass: "text-danger" }, [
+            _vm._v("Error occured while fetching analytics."),
+          ]),
       _vm._v(" "),
       _c("div", { staticClass: "row mt-3" }, [
         _c("div", { staticClass: "col-md-12" }, [_c("Emails")], 1),
@@ -30836,7 +30892,7 @@ var render = function () {
                   _c("h2", { staticClass: "d-flex align-items-center mb-0" }, [
                     _vm._v(
                       "\n                                      " +
-                        _vm._s(_vm.info.total_emails) +
+                        _vm._s(_vm.analytics.total_emails) +
                         "\n                                  "
                     ),
                   ]),
@@ -30856,7 +30912,7 @@ var render = function () {
                   _c("h2", { staticClass: "d-flex align-items-center mb-0" }, [
                     _vm._v(
                       "\n                                      " +
-                        _vm._s(_vm.info.total_sent) +
+                        _vm._s(_vm.analytics.total_sent) +
                         "\n                                  "
                     ),
                   ]),
@@ -30876,7 +30932,7 @@ var render = function () {
                   _c("h2", { staticClass: "d-flex align-items-center mb-0" }, [
                     _vm._v(
                       "\n                                       " +
-                        _vm._s(_vm.info.total_posted) +
+                        _vm._s(_vm.analytics.total_posted) +
                         "\n                                  "
                     ),
                   ]),
@@ -30896,7 +30952,7 @@ var render = function () {
                   _c("h2", { staticClass: "d-flex align-items-center mb-0" }, [
                     _vm._v(
                       "\n                                      " +
-                        _vm._s(_vm.info.total_failed) +
+                        _vm._s(_vm.analytics.total_failed) +
                         "\n                                  "
                     ),
                   ]),
@@ -31257,111 +31313,121 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container mt-4" }, [
-    _c("h3", { staticClass: "text-center" }, [_vm._v("Mail Information")]),
-    _vm._v(" "),
-    _c("div", { staticClass: "card col-md-8 email" }, [
-      _c("div", { staticClass: "row " }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("h3", { staticClass: "mt-4" }, [
-            _vm._v(_vm._s(_vm.email.subject)),
+    Object.keys(_vm.email).length > 0
+      ? _c("div", [
+          _c("h3", { staticClass: "text-center" }, [
+            _vm._v("Mail Information"),
           ]),
           _vm._v(" "),
-          _c("h6", { staticClass: "mt-3" }, [
-            _vm._v("From : " + _vm._s(_vm.email.from_email)),
-          ]),
-          _vm._v(" "),
-          _c("h6", { staticClass: "mt-3" }, [
-            _vm._v("To : " + _vm._s(_vm.email.to_email)),
-          ]),
-          _vm._v(" "),
-          _c("h6", { staticClass: "mt-3" }, [
-            _vm._v("Date : " + _vm._s(_vm.email.sent_at)),
-          ]),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("div", { staticClass: "row email-row body-row" }, [
-        _c("div", { staticClass: "col-md-8  email-row" }, [
-          _c("p", { domProps: { innerHTML: _vm._s(_vm.email.html_content) } }),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row email-row mt-4" }, [
-        _c("div", { staticClass: "col-md-12" }, [
-          _c("h5", [_vm._v("Attachments")]),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _vm.filesCount
-            ? _c(
-                "ul",
-                { attrs: { id: "example-1" } },
-                _vm._l(_vm.email.attachments, function (attachment) {
-                  return _c("li", { key: attachment.id }, [
+          _c("div", { staticClass: "card col-md-8 email" }, [
+            _c("div", { staticClass: "row " }, [
+              _c("div", { staticClass: "col-md-8" }, [
+                _c("h3", { staticClass: "mt-4" }, [
+                  _vm._v(_vm._s(_vm.email.subject)),
+                ]),
+                _vm._v(" "),
+                _c("h6", { staticClass: "mt-3" }, [
+                  _vm._v("From : " + _vm._s(_vm.email.from_email)),
+                ]),
+                _vm._v(" "),
+                _c("h6", { staticClass: "mt-3" }, [
+                  _vm._v("To : " + _vm._s(_vm.email.to_email)),
+                ]),
+                _vm._v(" "),
+                _c("h6", { staticClass: "mt-3" }, [
+                  _vm._v("Date : " + _vm._s(_vm.email.sent_at)),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _c("div", { staticClass: "row email-row body-row" }, [
+              _c("div", { staticClass: "col-md-8  email-row" }, [
+                _c("p", {
+                  domProps: { innerHTML: _vm._s(_vm.email.html_content) },
+                }),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row email-row mt-4" }, [
+              _c("div", { staticClass: "col-md-12" }, [
+                _c("h5", [_vm._v("Attachments")]),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _vm.filesCount
+                  ? _c(
+                      "ul",
+                      { attrs: { id: "example-1" } },
+                      _vm._l(_vm.email.attachments, function (attachment) {
+                        return _c("li", { key: attachment.id }, [
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#" },
+                              on: {
+                                click: function ($event) {
+                                  return _vm.downloadWithAxios(
+                                    attachment.filepath,
+                                    attachment.filename
+                                  )
+                                },
+                              },
+                            },
+                            [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(attachment.filename) +
+                                  "\n                            "
+                              ),
+                            ]
+                          ),
+                        ])
+                      }),
+                      0
+                    )
+                  : _c("p", [_vm._v("Oops ! Email has no attachment")]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _vm.email.failed_reason
+              ? _c("div", { staticClass: "row email-row mt-4" }, [
+                  _c("div", { staticClass: "col-md-12" }, [
                     _c(
                       "a",
                       {
                         attrs: { href: "#" },
                         on: {
                           click: function ($event) {
-                            return _vm.downloadWithAxios(
-                              attachment.filepath,
-                              attachment.filename
-                            )
+                            _vm.isShow = !_vm.isShow
                           },
                         },
                       },
                       [
                         _vm._v(
-                          "\n                            " +
-                            _vm._s(attachment.filename) +
-                            "\n                        "
+                          _vm._s(
+                            !_vm.isShow
+                              ? "Show failure response"
+                              : "Hide response"
+                          )
                         ),
                       ]
                     ),
-                  ])
-                }),
-                0
-              )
-            : _c("p", [_vm._v("Oops ! Email has no attachment")]),
-        ]),
-      ]),
-      _vm._v(" "),
-      _vm.email.failed_reason
-        ? _c("div", { staticClass: "row email-row mt-4" }, [
-            _c("div", { staticClass: "col-md-12" }, [
-              _c(
-                "a",
-                {
-                  attrs: { href: "#" },
-                  on: {
-                    click: function ($event) {
-                      _vm.isShow = !_vm.isShow
-                    },
-                  },
-                },
-                [
-                  _vm._v(
-                    _vm._s(
-                      !_vm.isShow ? "Show failure response" : "Hide response"
-                    )
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _vm.isShow
-                ? _c("div", [
-                    _c("hr"),
                     _vm._v(" "),
-                    _c("p", [_vm._v(_vm._s(_vm.email.failed_reason))]),
-                  ])
-                : _vm._e(),
-            ]),
-          ])
-        : _vm._e(),
-    ]),
+                    _vm.isShow
+                      ? _c("div", [
+                          _c("hr"),
+                          _vm._v(" "),
+                          _c("p", [_vm._v(_vm._s(_vm.email.failed_reason))]),
+                        ])
+                      : _vm._e(),
+                  ]),
+                ])
+              : _vm._e(),
+          ]),
+        ])
+      : _vm._e(),
   ])
 }
 var staticRenderFns = []
@@ -31387,30 +31453,34 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("SearchFilter", {
-        attrs: { SearchFilter: "", errors: _vm.errors },
-        on: { applyFilter: _vm.search, clearFilter: _vm.clearFilter },
-      }),
-      _vm._v(" "),
-      _c(
+  return _vm.emails.length
+    ? _c(
         "div",
-        { staticClass: "emails  card mt-3" },
         [
-          _c("Table", { attrs: { emails: _vm.emails } }),
-          _vm._v(" "),
-          _c("Pagination", {
-            attrs: { pagination: _vm.pagination },
-            on: { fetchEmails: _vm.fetchEmails },
+          _c("SearchFilter", {
+            ref: "searchFilter",
+            on: { applyFilter: _vm.search },
           }),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "emails mt-3" },
+            [
+              _c("Table", { attrs: { emails: _vm.emails } }),
+              _vm._v(" "),
+              _c("Pagination", {
+                attrs: { pagination: _vm.pagination },
+                on: { fetchEmails: _vm.fetchEmails },
+              }),
+            ],
+            1
+          ),
         ],
         1
-      ),
-    ],
-    1
-  )
+      )
+    : _c("h4", { staticClass: "text-danger" }, [
+        _vm._v("Error occured while fetching emails."),
+      ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -31577,36 +31647,39 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.emails.length
-    ? _c(
-        "div",
-        { staticClass: "container mt-4" },
-        [
-          _c("h4", [_vm._v("Emails sent to " + _vm._s(_vm.email))]),
-          _vm._v(" "),
-          _c("SearchFilter", {
-            staticClass: "mt-3",
-            attrs: { errors: _vm.errors },
-            on: { applyFilter: _vm.search, clearFilter: _vm.clearFilter },
-          }),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "emails  card mt-3" },
-            [
-              _c("Table", { attrs: { emails: _vm.emails } }),
-              _vm._v(" "),
-              _c("Pagination", {
-                attrs: { pagination: _vm.pagination },
-                on: { fetchEmails: _vm.fetchEmails },
-              }),
-            ],
-            1
-          ),
-        ],
-        1
-      )
-    : _vm._e()
+  return _c("div", { staticClass: "container mt-4" }, [
+    _vm.emails.length
+      ? _c(
+          "div",
+          [
+            _c("h4", [_vm._v("Emails sent to " + _vm._s(_vm.email))]),
+            _vm._v(" "),
+            _c("SearchFilter", {
+              ref: "searchFilter",
+              staticClass: "mt-3",
+              on: { applyFilter: _vm.search },
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "emails mt-3" },
+              [
+                _c("Table", { attrs: { emails: _vm.emails } }),
+                _vm._v(" "),
+                _c("Pagination", {
+                  attrs: { pagination: _vm.pagination },
+                  on: { fetchEmails: _vm.fetchEmails },
+                }),
+              ],
+              1
+            ),
+          ],
+          1
+        )
+      : _c("h4", { staticClass: "text-danger" }, [
+          _vm._v("Error occured while fetching emails."),
+        ]),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -31631,230 +31704,173 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card search" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-11" }, [
-        _c(
-          "form",
-          {
-            on: {
-              submit: function ($event) {
-                $event.preventDefault()
-                return _vm.applyFilter.apply(null, arguments)
-              },
-            },
+  return _c("div", { staticClass: " card search" }, [
+    _c(
+      "form",
+      {
+        on: {
+          submit: function ($event) {
+            $event.preventDefault()
+            return _vm.applyFilter.apply(null, arguments)
           },
-          [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-md-3" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.searchData.sender,
-                      expression: "searchData.sender",
-                    },
-                  ],
-                  staticClass: "form-control ",
-                  attrs: {
-                    type: "text",
-                    placeholder: "Sender",
-                    maxlength: 225,
-                  },
-                  domProps: { value: _vm.searchData.sender },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.searchData, "sender", $event.target.value)
-                    },
-                  },
-                }),
-                _vm._v(" "),
-                _vm.errors.sender
-                  ? _c("p", { staticClass: "text-danger mt-1 error-message" }, [
-                      _vm._v(_vm._s(_vm.errors.sender[0])),
-                    ])
-                  : _vm._e(),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-3" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.searchData.recipient,
-                      expression: "searchData.recipient",
-                    },
-                  ],
-                  staticClass: "form-control ",
-                  attrs: {
-                    type: "text",
-                    placeholder: "Recipient",
-                    maxlength: 225,
-                  },
-                  domProps: { value: _vm.searchData.recipient },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.searchData, "recipient", $event.target.value)
-                    },
-                  },
-                }),
-                _vm._v(" "),
-                _vm.errors.recipient
-                  ? _c("p", { staticClass: "text-danger mt-1 error-message" }, [
-                      _vm._v(_vm._s(_vm.errors.sender[0])),
-                    ])
-                  : _vm._e(),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-3" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.searchData.subject,
-                      expression: "searchData.subject",
-                    },
-                  ],
-                  staticClass: "form-control ",
-                  attrs: {
-                    type: "text",
-                    placeholder: "Subject",
-                    maxlength: 225,
-                  },
-                  domProps: { value: _vm.searchData.subject },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.searchData, "subject", $event.target.value)
-                    },
-                  },
-                }),
-                _vm._v(" "),
-                _vm.errors.subject
-                  ? _c("p", { staticClass: "text-danger mt-1 error-message" }, [
-                      _vm._v(_vm._s(_vm.errors.subject[0])),
-                    ])
-                  : _vm._e(),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-2" }, [
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.searchData.status,
-                        expression: "searchData.status",
-                      },
-                    ],
-                    staticClass: "form-control",
-                    on: {
-                      change: function ($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function (o) {
-                            return o.selected
-                          })
-                          .map(function (o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.searchData,
-                          "status",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      },
-                    },
-                  },
-                  [
-                    _c("option", { attrs: { value: "" } }, [
-                      _vm._v("Select status"),
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "Posted" } }, [
-                      _vm._v("Posted"),
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "Sent" } }, [
-                      _vm._v("Sent"),
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "Failed" } }, [
-                      _vm._v("Failed"),
-                    ]),
-                  ]
-                ),
-                _vm._v(" "),
-                _vm.errors.status
-                  ? _c("p", { staticClass: "text-danger mt-1 error-message" }, [
-                      _vm._v(_vm._s(_vm.errors.status[0])),
-                    ])
-                  : _vm._e(),
-              ]),
-              _vm._v(" "),
-              _vm._m(0),
+        },
+      },
+      [
+        _c("div", { staticClass: "form-row" }, [
+          _c("div", { staticClass: "col-md-3 mb-3" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.searchData.sender,
+                  expression: "searchData.sender",
+                },
+              ],
+              staticClass: "form-control ",
+              attrs: { type: "text", placeholder: "Sender", maxlength: 225 },
+              domProps: { value: _vm.searchData.sender },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.searchData, "sender", $event.target.value)
+                },
+              },
+            }),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-danger mt-1 error-message" }, [
+              _vm._v(_vm._s(_vm.sender_error)),
             ]),
-          ]
-        ),
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-md-1 d-flex action" },
-        [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-danger btn-send",
-              on: { click: _vm.clearFilter },
-            },
-            [_c("i", { staticClass: "fas fa-undo" })]
-          ),
+          ]),
           _vm._v(" "),
-          _c(
-            "router-link",
-            { attrs: { to: { name: "emails.send" }, exact: "" } },
-            [
-              _c("button", { staticClass: "btn btn-info btn-send" }, [
-                _c("i", { staticClass: "fas fa-paper-plane" }),
-              ]),
-            ]
-          ),
-        ],
-        1
-      ),
-    ]),
+          _c("div", { staticClass: "col-md-3 mb-3" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.searchData.recipient,
+                  expression: "searchData.recipient",
+                },
+              ],
+              staticClass: "form-control ",
+              attrs: { type: "text", placeholder: "Recipient", maxlength: 225 },
+              domProps: { value: _vm.searchData.recipient },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.searchData, "recipient", $event.target.value)
+                },
+              },
+            }),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-danger mt-1 error-message" }, [
+              _vm._v(_vm._s(_vm.recipient_error)),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-3 mb-3" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.searchData.subject,
+                  expression: "searchData.subject",
+                },
+              ],
+              staticClass: "form-control ",
+              attrs: { type: "text", placeholder: "Subject", maxlength: 225 },
+              domProps: { value: _vm.searchData.subject },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.searchData, "subject", $event.target.value)
+                },
+              },
+            }),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-danger mt-1 error-message" }, [
+              _vm._v(_vm._s(_vm.subject_error)),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-2 mb-3" }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.searchData.status,
+                    expression: "searchData.status",
+                  },
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", id: "validationDefault05" },
+                on: {
+                  change: function ($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function (o) {
+                        return o.selected
+                      })
+                      .map(function (o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.searchData,
+                      "status",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  },
+                },
+              },
+              [
+                _c("option", { attrs: { value: "" } }, [
+                  _vm._v("Select status"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Posted" } }, [
+                  _vm._v("Posted"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Sent" } }, [_vm._v("Sent")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Failed" } }, [
+                  _vm._v("Failed"),
+                ]),
+              ]
+            ),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-danger mt-1 error-message" }, [
+              _vm._v(_vm._s(_vm.status_error)),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-1 mb-3" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { disabled: _vm.isSubmit, type: "submit" },
+              },
+              [_c("i", { staticClass: "fa fa-search" })]
+            ),
+          ]),
+        ]),
+      ]
+    ),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-1" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-success btn-send", attrs: { type: "submit" } },
-        [_c("i", { staticClass: "fa fa-search" })]
-      ),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

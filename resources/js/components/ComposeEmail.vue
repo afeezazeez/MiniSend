@@ -15,7 +15,7 @@
 
                             >
                             <div class="help-block with-errors">
-                                <p  class="text-danger mt-1 error-message">{{from_email_error}}</p>
+                                <p class="text-danger mt-1 error-message">{{from_email_error}}</p>
                             </div>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                                 required="required"
                             >
                             <div class="help-block with-errors">
-                                <p  class="text-danger mt-1 error-message">{{to_email_error}}</p>
+                                <p class="text-danger mt-1 error-message">{{to_email_error}}</p>
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                                 required="required"
                                 >
                             <div class="help-block with-errors">
-                                <p  class="text-danger mt-1 error-message">{{subject_error}}</p>
+                                <p class="text-danger mt-1 error-message">{{subject_error}}</p>
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                                 @change="handleFileObject()"
                             >
                             <div class="help-block with-errors">
-                                 <p  class="text-danger mt-1 error-message">{{attachments_error}}</p>
+                                 <p class="text-danger mt-1 error-message">{{attachments_error}}</p>
                             </div>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                             >
                             </textarea>
                             <div class="help-block with-errors">
-                                <p  class="text-danger mt-1 error-message">{{html_content_error}}</p>
+                                <p class="text-danger mt-1 error-message">{{html_content_error}}</p>
                             </div>
                         </div>
                     </div>
@@ -166,12 +166,20 @@ import { extensionIsValid } from '../utils';
                 this.to_email_error = 'The to email field is required'
                 passed = false
             }
+            if( this.formData.from_email.length > 225  || this.formData.to_email.length > 225){
+                this.to_email_error = 'The to email and from email cannot be greater than 225 characters.'
+                passed = false
+            }
             if( (this.formData.from_email != '')  && this.formData.to_email === this.formData.from_email){
                 this.to_email_error = 'The to email and from email must be different.'
                 passed = false
             }
             if(!this.formData.subject){
                 this.subject_error = 'The subject field is required'
+                passed = false
+            }
+            if(!this.formData.subject.length > 225){
+                this.subject_error = 'The subject cannot be greater than 225 characters'
                 passed = false
             }
              if(!this.formData.html_content){

@@ -14,7 +14,6 @@ use App\Traits\ApiResponseStructure;
 use App\Http\Resources\EmailResource;
 use App\Http\Requests\SendEmailRequest;
 use App\Http\Resources\EmailShowResource;
-use App\Http\Resources\EmailResourceCollection;
 
 class EmailController extends Controller
 {
@@ -78,6 +77,7 @@ class EmailController extends Controller
 
     public function searchEmails(SearchRequest $request)
     {
+
         $emails = $this->emailService->applyFilter();
 
         return EmailResource::collection($emails);

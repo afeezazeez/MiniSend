@@ -1,11 +1,12 @@
 <template>
-    <div>
-     <SearchFilter  SearchFilter :errors="errors" @applyFilter="search" @clearFilter='clearFilter'></SearchFilter>
-        <div class="emails  card mt-3">
-           <Table  :emails="emails"></Table>
+    <div v-if="emails.length">
+     <SearchFilter ref="searchFilter"  @applyFilter="search" ></SearchFilter>
+        <div class="emails mt-3" >
+           <Table :emails="emails"></Table>
            <Pagination :pagination="pagination" @fetchEmails="fetchEmails"></Pagination>
         </div>
     </div>
+    <h4 v-else class="text-danger">Error occured while fetching emails.</h4>
 </template>
 <script>
 
@@ -23,7 +24,6 @@ import { makePagination } from '../utils';
                  emails:[],
                  searchValue:'',
                  filteredEmails:[],
-                 errors:{},
                  pagination: {},
             };
         },
@@ -37,9 +37,18 @@ import { makePagination } from '../utils';
         },
         methods:{
                 clearFilter(){
-                    this.errors = {}
                     this.fetchEmails()
                 },
+
+                errorAlert(error) {
+                      this.$swal({
+                        type: 'error',
+                        title: 'Failed!',
+                        text: error
+                    });
+                },
+
+
 
                 fetchEmails(page_url){
                     page_url = page_url || '/'
@@ -49,7 +58,7 @@ import { makePagination } from '../utils';
                         this.pagination = makePagination(response.data.meta,response.data.links)
                     })
                     .catch((error) => {
-                        console.log(error);
+                        this.errorAlert(error.response.data.message)
                     });
                 },
                 search (searchData) {
@@ -77,11 +86,11 @@ import { makePagination } from '../utils';
                               this.pagination = makePagination(response.data.meta,response.data.links)
                         })
                         .catch((error) => {
-                            this.errors = error.response.data.data
+                           this.$refs.searchFilter.clearFilter()
+                           this.errorAlert(error.response.data.message)
                         });
 
                     }
-
 
                 },
 
