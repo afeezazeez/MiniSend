@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group(['prefix'=>'v1'], function(){
+Route::group(['prefix'=>'v1', 'middleware' => 'throttle:60'], function(){
 
     Route::get('/emails/analytics','App\Http\Controllers\Api\EmailController@analytics');
     Route::get('/emails/search','App\Http\Controllers\Api\EmailController@searchEmails');
