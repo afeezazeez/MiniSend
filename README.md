@@ -1,64 +1,123 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# MiniSend Email Service
+ A simple transactional email app that allows clients to; 
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> Send emails with a sender and recipient emails,subject,text content,html content and attachments(optional)
 
-## About Laravel
+> Check analytics of email activities on frontend dashboard
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+> View all emails
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+> Search emails by sender,recipient,subject and status (possible statuses are 'Posted','Sent' and 'Failed')
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+> View single email
 
-## Learning Laravel
+> View list of emails for a single recipient
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
+## Requirements
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+This project was built with Vue.js, Laravel and MYSQL .
+## Running the App
+To run the App, you must have:
+- **PHP** (https://www.php.net/downloads)
+- **MYSQL** (https://www.mysql.com/downloads/)
 
-## Contributing
+## Clone
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    $ git clone https://github.com/BlackSkinDev/MiniSend.git
+    $ cd MiniSend
 
-## Code of Conduct
+## Configure app
+Create an `.env` and copy `.env.example` content into it using the command.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```console
+$ cp .env.example .env
+```
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Environment
+Configure environment variables in `.env` for dev environment based on your MYSQL database configuration
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```  
+DB_CONNECTION=<YOUR_MYSQL_TYPE>
+DB_HOST=<YOUR_MYSQL_HOST>
+DB_PORT=<YOUR_MYSQL_PORT>
+DB_DATABASE=<YOUR_DB_NAME>
+DB_USERNAME=<YOUR_DB_USERNAME>
+DB_PASSWORD=<YOUR_DB_PASSWORD>
+
+```
+Also, Ensure to set your mailclient configuration in the `.env` (test will fail if this is not done)
+
+```
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=
+MAIL_PASSWORD=
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=hello@minisend.com
+MAIL_FROM_NAME="${APP_NAME}"
+
+```
+### LARAVEL INSTALLATION
+Install the dependencies and start the server and run app setup command. 
+Also Seeder was set up for emails. Emails can be seeded into database using 
+`php artisan db:seed` as stated below
+
+```console
+$ composer install
+$ php artisan key:generate
+$ php artisan db:seed 
+$ php artisan serve
+```
+
+### VUE INSTALLATION
+Install the dependencies and start the server
+
+```console
+$ npm install && npm run dev
+```
+
+You should be able to visit your app at your laravel app base url e.g http://localhost:8000 or http://minisend.test/ (Provided you use Laravel Valet).
+
+
+>If you will like to setup queue,Database was used as queue driver. When app is setup, Update `QUEUE_CONNECTION` to `database` in `.env`and ensure to run `php artisan queue:work` in seperate terminal of your project to make sure your queue workers runs in background otherwise leave the queue driver as default `sync` in `.env`
+
+## Design & Implementation Decisions
+- Attachments sizes was validated to be less or equal to 5MB (both clients and server side)
+- Validation was added to prevent clients from entering same sender and recipient emails (both clients and server side)
+- Email fields were strictly validated against CSRF/XSS attacks before saving to database
+- Other forms of validation were implemented on both client and server side respectively
+- Reusable components were used on frontend to avoid duplication
+- To view emails for a recipient, All recipient emails on the dashboard were made clickable which link to a page for viewing emails of the recipient
+-  Email  attachments were uploaded to public storage.
+- Queueing systems was implemented for sending emails. Database was configured as
+queue driver. By this, Clients don't need to wait for long time to get response when they send emails. Instead,emails sent are saved, then picked up by a job that runs in the background. This job will send the email to appropriate recipient.
+- Emails sent have status 'Posted' by default
+- The underground job is responsible for updating the email status in the database to 'Sent' or 'Failed' depending on the outcome of the job action.
+- If sending of emails fails, the underground jpb will update the status in db and also
+add the failure reason in a new column which I added for emails. This can be viewd on the frontend
+- Whenever an email is sent and get saved in the database, if it has attachments,attachments are immediately uploaded. If these two operations are successful, the email get sent to the recipient.
+- In a case where attachments upload fail, Database transaction was used to rollback such email from the database and mail doesn't get sent.
+- As  a layer of security against DDOS, backend api was throttled(rate limited)
+- In this project, As I had in mind that volumes of emails being sent may increase, Laravel query builder was used for fetching large data (emails). Eloquent was used to retrieve relatively small data like getting single email.
+- Pagination was implemented for easy retrieval of data
+- Multiple emails were seeded to test query performance
+
+## Suggesions
+- As it was mentioned earlier, Email attachments were uploaded to app server public storage. For reliable security and simplicity of management storages such as Amazon S3, Cloudinary e.t.c should be used to upload attachments.
+
+- A retry logic can be implemented which will be used to resend emails that have failed. This can simply be done by grabbing the emails and sending them back to the underground job which will resend again again and subsequently update email status.
+
+- As it was mentioned earlier,Database was configured as queue driver.
+As opposed to this, Redis,Memcached or Amazon SQS can be used as queue driver.
+
+
+
+## Feedback on Assessment
+The Assessment was a very good one. 
