@@ -1,6 +1,6 @@
 @component('mail::message')
 
-{!!$email->text_content!!}
+{!!$email->html_content!!}
 
 
 @endcomponent

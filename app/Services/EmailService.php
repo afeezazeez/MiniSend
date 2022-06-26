@@ -34,10 +34,17 @@ class EmailService{
             DB::beginTransaction();
 
                 // store the email database
-                //compute email text content
-                $emailData =array_merge($request->validated(),['text_content' =>Str::ScriptStripper($request->html_content)]);
 
-                $email =  Email::create(Arr::except($emailData ,'files'));
+                $emailData = [
+                    'to_email'=>$request['to_email'],
+                    'from_email'=>$request['from_email'],
+                    'subject'=>Str::ScriptStripper($request['subject']),
+                    'html_content'=>$sanitized_content =  Str::ScriptStripper($request->html_content) ,
+                    'text_content'=>strip_tags($sanitized_content)
+                ];
+
+
+                $email =  Email::create($emailData);
                 // upload email attachments
                 if($request->hasFile('files')){
                     $this->fileService->uploadFiles($request->file('files'),$email);
