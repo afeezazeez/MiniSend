@@ -16,7 +16,7 @@
 
             </div>
 
-            <hr>
+   <hr>
 
             <div class="row email-row body-row">
                 <div class="col-md-8  email-row">
@@ -24,7 +24,7 @@
                 </div>
             </div>
 
-            <div class="row email-row mt-4">
+            <div class="row">
                 <div class="col-md-12">
                     <h5>Attachments</h5>
                     <hr>
@@ -39,15 +39,28 @@
                 </div>
             </div>
 
-            <div class="row email-row mt-4" v-if="email.failed_reason">
+            <div class="row email-row mt-1" v-if="email.failed_reason">
                 <div class="col-md-12">
-                    <a href="#" @click="isShow = !isShow">{{ !isShow ? 'Show failure response' : 'Hide response' }}</a>
-                    <div v-if="isShow">
+                    <span class="info" @click="showFResponse = !showFResponse">{{ !showFResponse ? 'Show failure response' : 'Hide response' }}</span>
+                    <div v-if="showFResponse">
                         <hr>
                         <p>{{email.failed_reason}}</p>
                     </div>
                 </div>
             </div>
+
+                <div class="row email-row mt-1">
+                    <div class="col-md-12">
+                        <span class="content" @click="showTContent = !showTContent">{{ !showTContent ? 'Show email as text ' : 'Hide text' }}</span>
+                        <div v-if="showTContent">
+                            <hr>
+                            <p>{{email.text_content}}</p>
+                        </div>
+                    </div>
+                </div>
+
+
+
 
         </div>
     </div>
@@ -66,7 +79,8 @@
                  email:[],
                  id:this.$route.params.id,
                  filesCount:0,
-                 isShow:false
+                 showFResponse:false,
+                 showTContent:false
             };
         },
         mounted(){
@@ -98,7 +112,7 @@
                     responseType: 'arraybuffer',
                 })
                 .then((response) => {
-                   
+
                     this.forceFileDownload(response, filename)
                 })
                 .catch(() => console.log('error occured'))
@@ -132,5 +146,15 @@
     .email{
 
         margin: 0 auto;
+    }
+    .info{
+        color: red;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+     .content{
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
     }
 </style>
