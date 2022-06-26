@@ -56,6 +56,7 @@ class EmailController extends Controller
     public function index()
     {
 
+
         $emails = DB::table('emails')->select('id','from_email','to_email','subject','status','created_at')
         ->orderBy('created_at','desc')
         ->paginate(10);

@@ -2,8 +2,11 @@
     <div>
      <SearchFilter ref="searchFilter"  @applyFilter="search"  @refresh="fetchEmails"></SearchFilter>
         <div class="emails mt-2" >
-           <Table :emails="emails"></Table>
-           <Pagination :pagination="pagination" @fetchEmails="fetchEmails"></Pagination>
+           <div v-if="!isLoading">
+                <Table :emails="emails"></Table>
+                <Pagination :pagination="pagination" @fetchEmails="fetchEmails"></Pagination>
+           </div>
+           <Spinner v-else  :text="'Loading Emails...'"></Spinner>
         </div>
     </div>
 
@@ -13,6 +16,7 @@
 import SearchFilter from './SearchFilter'
 import Table from './Table'
 import Pagination from './Pagination'
+import Spinner from './Spinner'
 
 import { makePagination } from '../utils';
 
@@ -25,12 +29,14 @@ import { makePagination } from '../utils';
                  searchValue:'',
                  filteredEmails:[],
                  pagination: {},
+                 isLoading:true,
             };
         },
         components:{
             SearchFilter,
             Table,
-            Pagination
+            Pagination,
+            Spinner
         },
         mounted(){
             this.fetchEmails()
@@ -51,19 +57,22 @@ import { makePagination } from '../utils';
 
 
                 fetchEmails(page_url){
+                    this.isLoading = true
                     page_url = page_url || '/'
                     axios.get(page_url)
                     .then((response) => {
                         console.log(response)
                         this.emails = response.data.data;
                         this.pagination = makePagination(response.data.current_page,response.data.last_page,response.data.prev_page_url,response.data.next_page_url,response.data.total)
+                        this.isLoading=false
                     })
                     .catch((error) => {
                         this.errorAlert(error.response.data.message)
+                         this.isLoading=false
                     });
                 },
                 search (searchData) {
-
+                    this.isLoading=true
                     let queryString = "";
                     let isEmpty = true;
                     const payload = {}
@@ -83,12 +92,14 @@ import { makePagination } from '../utils';
                         });
                         axios.get(`/search/${queryString}`)
                         .then((response) => {
-                              this.emails = response.data.data
-                              this.pagination = makePagination(response.data.current_page,response.data.last_page,response.data.prev_page_url,response.data.next_page_url,response.data.total)
-                        })
+                            this.emails = response.data.data
+                            this.pagination = makePagination(response.data.current_page,response.data.last_page,response.data.prev_page_url,response.data.next_page_url,response.data.total)
+                            this.isLoading=false
+                       })
                         .catch((error) => {
                            this.$refs.searchFilter.clearFilter()
                            this.errorAlert(error.response.data.message)
+                           this.isLoading=false
                         });
 
                     }
@@ -100,5 +111,7 @@ import { makePagination } from '../utils';
     }
 </script>
 <style scoped>
-
+    .spinner{
+        column-gap: 10px;
+    }
 </style>

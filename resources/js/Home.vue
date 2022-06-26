@@ -2,9 +2,9 @@
 
 <div class="container mt-4">
 
-    <Analytics v-if="Object.keys(analytics).length > 0" :analytics="analytics"></Analytics>
     <div class="row mt-3">
         <div class="col-md-12">
+             <Analytics v-if="Object.keys(analytics).length > 0" :analytics="analytics"></Analytics>
             <Emails></Emails>
         </div>
     </div>
