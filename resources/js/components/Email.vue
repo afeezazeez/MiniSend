@@ -26,7 +26,7 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <h5>Attachments</h5>
+                    <h5>Attachments (Click files to download)</h5>
                     <hr>
                     <ul v-if="filesCount" id="example-1">
                         <li v-for="attachment in email.attachments" :key="attachment.id">

@@ -78,7 +78,7 @@ $ php artisan storage:link (create a symbolic link from public/storage to storag
 $ php artisan serve
 ```
 
-### VUE INSTALLATION
+### VUE INSTALLATION (Optional)
 Install the dependencies and start the server
 
 ```console
@@ -119,6 +119,8 @@ add the failure reason in a new column which I added for emails. This can be vie
 
 - As it was mentioned earlier,Database was configured as queue driver.
 As opposed to this, Redis,Memcached or Amazon SQS can be used as queue driver.
+
+- Uploading files via WYSWYG wasn't catered for.
 
 
 
