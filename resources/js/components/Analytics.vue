@@ -1,5 +1,5 @@
 <template>
-  <div class="analytics mt-3">
+    <div class="analytics mt-3">
         <div class="col-md-10 ">
             <div class="row ">
                 <div class="col-xl-3 col-lg-6">
@@ -11,7 +11,7 @@
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
                                     <h2 class="d-flex align-items-center mb-0">
-                                        {{analytics.total_emails}}
+                                        {{ analytics.total_emails }}
                                     </h2>
                                 </div>
                             </div>
@@ -28,7 +28,7 @@
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
                                     <h2 class="d-flex align-items-center mb-0">
-                                        {{analytics.total_sent}}
+                                        {{ analytics.total_sent }}
                                     </h2>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
                                     <h2 class="d-flex align-items-center mb-0">
-                                         {{analytics.total_posted}}
+                                        {{ analytics.total_posted }}
                                     </h2>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
                                     <h2 class="d-flex align-items-center mb-0">
-                                        {{analytics.total_failed}}
+                                        {{ analytics.total_failed }}
                                     </h2>
                                 </div>
                             </div>
@@ -77,19 +77,16 @@
 <script>
 
 
+export default {
 
- export default {
+    props: {
+        analytics: Object
+    },
+    data() {
+        return {};
+    },
 
-        props:{
-            analytics:Object
-        },
-        data(){
-            return {
-
-            };
-        },
-
-    }
+}
 </script>
 
 <style scoped>
@@ -99,7 +96,7 @@
     border: none;
     position: relative;
     margin-bottom: 30px;
-    box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,0.1), 0 0.9375rem 1.40625rem rgba(90,97,105,0.1), 0 0.25rem 0.53125rem rgba(90,97,105,0.12), 0 0.125rem 0.1875rem rgba(90,97,105,0.1);
+    box-shadow: 0 0.46875rem 2.1875rem rgba(90, 97, 105, 0.1), 0 0.9375rem 1.40625rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.53125rem rgba(90, 97, 105, 0.12), 0 0.125rem 0.1875rem rgba(90, 97, 105, 0.1);
 }
 
 </style>

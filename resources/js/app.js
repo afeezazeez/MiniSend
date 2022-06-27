@@ -27,7 +27,6 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 
-
 Vue.use(VueSweetalert2);
 Vue.use(VueQuillEditor)
 Vue.use(VueRouter);

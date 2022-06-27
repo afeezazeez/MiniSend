@@ -6,7 +6,8 @@
                     <a class="page-link" href="#" @click="fetchEmails(pagination.prev_page_url)">Previous</a>
                 </li>
                 <li class="page-item disabled">
-                    <a class="page-link text-dark" href="#">Page {{pagination.current_page}} of {{pagination.last_page}}</a>
+                    <a class="page-link text-dark" href="#">Page {{ pagination.current_page }} of
+                        {{ pagination.last_page }}</a>
                 </li>
                 <li v-bind:class="[{disabled:!pagination.next_page_url}]" class="page-item">
                     <a class="page-link" href="#" @click="fetchEmails(pagination.next_page_url)">Next</a>
@@ -16,13 +17,13 @@
     </div>
 </template>
 <script>
- export default {
-     props:{
+export default {
+    props: {
         pagination: Object
     },
-    methods:{
-        fetchEmails(page_url){
-            this.$emit('fetchEmails',page_url)
+    methods: {
+        fetchEmails(page_url) {
+            this.$emit('fetchEmails', page_url)
         }
     }
 
@@ -30,7 +31,7 @@
 </script>
 
 <style scoped>
-    .pagination{
-        justify-content: right;
-    }
+.pagination {
+    justify-content: right;
+}
 </style>
