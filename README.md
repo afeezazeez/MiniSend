@@ -66,7 +66,7 @@ MAIL_FROM_NAME="${APP_NAME}"
 ```
 ### LARAVEL INSTALLATION
 Install the dependencies and start the server and run app setup command. 
-Also Seeder was set up for emails. Emails can be seeded into database using 
+Also Seeder was set up for emails. Emails can be seeded into database together with thier attachments using 
 `php artisan db:seed` as stated below
 
 ```console
