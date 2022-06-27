@@ -36,15 +36,14 @@ class SendEmailJob implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
-        try{
-            if( Mail::to($this->email->to_email)->send(new SendEmail($this->email))){
-                $this->email->update(['status'=> Email::EMAIL_SENT_STATUS]);
+        try {
+            if (Mail::to($this->email->to_email)->send(new SendEmail($this->email))) {
+                $this->email->update(['status' => Email::EMAIL_SENT_STATUS]);
             }
-        }
-        catch(\Exception $e){
-            $this->email->update(['status'=> Email::EMAIL_FAILED_STATUS,'failed_reason'=>$e->getMessage()]);
+        } catch (\Exception $e) {
+            $this->email->update(['status' => Email::EMAIL_FAILED_STATUS, 'failed_reason' => $e->getMessage()]);
             Logger::logError($e);
         }
 

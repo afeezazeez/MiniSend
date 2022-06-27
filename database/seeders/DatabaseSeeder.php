@@ -23,10 +23,8 @@ class DatabaseSeeder extends Seeder
         // seed 200 emails with each having 1 to 3 attachments
 
         \App\Models\Email::factory()->count(200)->create()->each(function ($email) {
-            \App\Models\EmailAttachment::factory()->count(array_rand([1,2,3]) +1)->create(['email_id'=>$email->id]);
+            \App\Models\EmailAttachment::factory()->count(array_rand([1, 2, 3]) + 1)->create(['email_id' => $email->id]);
         });
-
-
 
 
         // \App\Models\User::factory()->create([

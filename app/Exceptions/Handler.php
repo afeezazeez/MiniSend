@@ -47,13 +47,12 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
-    public function render($request,Throwable $e)
+    public function render($request, Throwable $e)
     {
-        if($e instanceof  ModelNotFoundException || $e instanceof NotFoundHttpException)
-        {
-            return $this->error('Resource not found',Response::HTTP_NOT_FOUND,null);
+        if ($e instanceof ModelNotFoundException || $e instanceof NotFoundHttpException) {
+            return $this->error('Resource not found', Response::HTTP_NOT_FOUND, null);
         }
         Logger::logError($e);
-        return $this->error('Error handling request. Please try again',Response::HTTP_INTERNAL_SERVER_ERROR,null);
+        return $this->error('Error handling request. Please try again', Response::HTTP_INTERNAL_SERVER_ERROR, null);
     }
 }

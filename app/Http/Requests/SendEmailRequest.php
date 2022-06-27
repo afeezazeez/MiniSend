@@ -10,7 +10,6 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
 
-
 class SendEmailRequest extends FormRequest
 {
     /**
@@ -35,7 +34,7 @@ class SendEmailRequest extends FormRequest
             'to_email' => 'email|required|different:from_email',
             'subject' => 'required|max:225',
             'html_content' => 'required',
-            'files'=>'nullable|array',
+            'files' => 'nullable|array',
             'files.*' => 'required|mimes:png,jpg,jpeg,pdf,docx|max:20000',
 
         ];
@@ -52,24 +51,20 @@ class SendEmailRequest extends FormRequest
     }
 
 
-
     protected function failedValidation(Validator $validator)
     {
 
         throw new HttpResponseException(response([
             'status' => 'error',
-            'message' =>'An error occurred while sending email.',
-            'data'=>$validator->errors()
-        ],Response::HTTP_BAD_REQUEST));
+            'message' => 'An error occurred while sending email.',
+            'data' => $validator->errors()
+        ], Response::HTTP_BAD_REQUEST));
         //  throw new HttpResponseException(response()->json([
         //     'status' => 'error',
         //     'message' =>null,
         //     'data'=>$validator->errors()->all()],Response::HTTP_BAD_REQUEST
         // ));
     }
-
-
-
 
 
 }

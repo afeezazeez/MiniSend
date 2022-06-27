@@ -32,10 +32,10 @@ class SearchRequest extends FormRequest
     public function rules()
     {
         return [
-            'sender'=>'|nullable|string|max:225',
-            'recipient'=>'nullable|string|max:225',
-            'subject'=>'nullable|string|max:225',
-            'status'=>['nullable',Rule::in([Email::EMAIL_SENT_STATUS,Email::EMAIL_FAILED_STATUS,Email::EMAIL_POSTED_STATUS])],
+            'sender' => '|nullable|string|max:225',
+            'recipient' => 'nullable|string|max:225',
+            'subject' => 'nullable|string|max:225',
+            'status' => ['nullable', Rule::in([Email::EMAIL_SENT_STATUS, Email::EMAIL_FAILED_STATUS, Email::EMAIL_POSTED_STATUS])],
         ];
     }
 
@@ -52,9 +52,9 @@ class SearchRequest extends FormRequest
 
         throw new HttpResponseException(response([
             'status' => 'error',
-            'message' =>null,
-            'data'=>$validator->errors()
-        ],Response::HTTP_BAD_REQUEST));
+            'message' => null,
+            'data' => $validator->errors()
+        ], Response::HTTP_BAD_REQUEST));
         //  throw new HttpResponseException(response()->json([
         //     'status' => 'error',
         //     'message' =>null,

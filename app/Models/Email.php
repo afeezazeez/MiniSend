@@ -10,11 +10,11 @@ class Email extends Model
 {
     use HasFactory;
 
-    protected $guarded= [];
+    protected $guarded = [];
 
-    CONST EMAIL_POSTED_STATUS = 'Posted';
-    CONST EMAIL_FAILED_STATUS = 'Failed';
-    CONST EMAIL_SENT_STATUS = 'Sent';
+    const EMAIL_POSTED_STATUS = 'Posted';
+    const EMAIL_FAILED_STATUS = 'Failed';
+    const EMAIL_SENT_STATUS = 'Sent';
 
     public function attachments()
     {
@@ -22,16 +22,15 @@ class Email extends Model
     }
 
     /**
-     * Get the user's first name.
+     * Get the email's first name.
      *
      * @return \Illuminate\Database\Eloquent\Casts\Attribute
      */
     protected function createdAt(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) =>   date("d/m/Y H:i", strtotime($value)),
+            get: fn($value) => date("d/m/Y H:i", strtotime($value)),
         );
-
 
 
     }

@@ -32,8 +32,8 @@ class SendEmail extends Mailable
     {
 
         $email = $this->from($this->email->from_email)
-        ->subject($this->email->subject)
-        ->markdown('emails.send_email',['email' => $this->email]);
+            ->subject($this->email->subject)
+            ->markdown('emails.send_email', ['email' => $this->email]);
 
         // Attach email files
         foreach ($this->email->attachments->pluck('filepath') as $attachment) {

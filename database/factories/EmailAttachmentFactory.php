@@ -18,8 +18,8 @@ class EmailAttachmentFactory extends Factory
     public function definition()
     {
         return [
-            'filepath'=>'https://source.unsplash.com/random',
-            'filename'=>$this->faker->word(6).'.'.$this->faker->randomElement(['jpeg','jpeg','png'])
+            'filepath' => 'https://source.unsplash.com/random',
+            'filename' => $this->faker->word(6) . '.' . $this->faker->randomElement(['jpeg', 'jpeg', 'png'])
         ];
     }
 }

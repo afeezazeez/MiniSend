@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Traits;
 
 use Carbon\Carbon;
+use Illuminate\Http\JsonResponse;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +19,10 @@ trait ApiResponseStructure
     /**
      * Return a success JSON response.
      *
-     * @param  array|string  $data
-     * @param  string  $message
-     * @param  int|null  $code
-     * @return \Illuminate\Http\JsonResponse
+     * @param array|string $returnData
+     * @param string|null $message
+     * @param int $responseCode
+     * @return JsonResponse
      */
     protected function success($returnData, string $message = null, int $responseCode = 200)
     {
@@ -34,10 +36,10 @@ trait ApiResponseStructure
     /**
      * Return an error JSON response.
      *
-     * @param  string  $message
-     * @param  int  $code
-     * @param  array|string|null  $data
-     * @return \Illuminate\Http\JsonResponse
+     * @param string|null $message
+     * @param int $responseCode
+     * @param null $returnData
+     * @return JsonResponse
      */
     protected function error(string $message = null, int $responseCode, $returnData = null)
     {
