@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form id="contact-form" method="post" enctype="multipart/form-data" class="card"  @submit.prevent="sendEmail">
+        <form  @blur="1" id="contact-form" method="post" enctype="multipart/form-data" class="card"  @submit.prevent="sendEmail">
             <div class="controls">
 
                 <div class="row">
